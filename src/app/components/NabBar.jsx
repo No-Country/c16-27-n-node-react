@@ -6,7 +6,7 @@ const NabBar = () => {
     <div className='border flex justify-between p-3'>
       <div className='flex items-center'>
         <Image 
-          src='/navbar-logo.png' 
+          src='/meethub-logo.png' 
           alt='navbar-logo' 
           width={90} 
           height={60}
