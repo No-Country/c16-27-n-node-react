@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const NabBar = () => {
   return (
-    <div className='border flex justify-between p-3'>
+    <div className='border-b-2 flex justify-between p-3 '>
       <div className='flex items-center'>
         <Image 
           src='/meethub-logo.png' 

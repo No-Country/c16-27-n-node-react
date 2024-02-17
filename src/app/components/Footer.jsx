@@ -1,9 +1,9 @@
-import React from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <section className="flex flex-col items-center justify-center w-full h-28 bg-[#1B1B1B] text-white">
+    <section className="flex flex-col items-center justify-center w-full h-28 bg-[#1B1B1B] text-white mt-10">
       <Image
         src="/meethub-logo.png"
         alt="card image"
@@ -11,9 +11,7 @@ const Footer = () => {
         height={60}
         className="mr-2"
       />
-      <h1 className="font-bold text-3xl">
-        Nosotros
-      </h1>
+      <h1 className="font-bold text-3xl">Nosotros</h1>
     </section>
   );
 };
