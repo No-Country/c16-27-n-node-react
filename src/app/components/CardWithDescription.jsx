@@ -4,14 +4,15 @@ import Link from "next/link";
 
 const CardWithDescription = ({ img, title, date, location }) => {
   return (
-    <div className=" flex max-w-3xl bg-white border border-blue-500 rounded-lg shadow-xl ">
+    <div className="border border-slate-300 m-3 flex h-[240px] w-[42rem] bg-white rounded-lg shadow-xl ">
       <Image
         src={img || "/imgCard-1.png"}
         alt="card image"
-        width={350}
-        height={400}
+        width={280}
+        height={300}
+        className="rounded-lg"
       />
-      <div className="p-5 flex flex-col justify-center">
+      <div className="p-5 flex flex-col justify-center ">
         <h5 class="mb-2 text-xl font-bold tracking-tight ">
           {title || "Titulo del evento"}
         </h5>
