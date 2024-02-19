@@ -26,20 +26,6 @@ const NabBar = () => {
               placeholder='Buscar eventos...' 
               className='border-none bg-transparent focus:outline-none ml-2' 
             />
-            <div className='flex mr-3 h-14 border'>
-              <Image 
-                src='/locationLogo.svg' 
-                alt='locationLogo' 
-                width={25} 
-                height={25}
-                className='ml-2' 
-              />
-              <select className='focus:outline-none border-none'>
-                <option value=''>Medellín, CO</option>
-                <option value=''>Buenos Aires, AR</option>
-                <option value=''>Santiago, CL</option>
-              </select>
-            </div>
           </div>
         </div>
       </div>
@@ -53,7 +39,7 @@ const NabBar = () => {
           />
         </button>
         <Image 
-          src='/profileImg.png' 
+          src='/loginLogo.svg' 
           alt='logo' 
           width={60} 
           height={60} 
