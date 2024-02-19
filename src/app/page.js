@@ -1,5 +1,6 @@
 import React from "react";
 import CardEvent from "./components/CardEvent";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -21,10 +22,12 @@ const page = () => {
           de tu mano.
         </p>
       </section>
-      <section className="h-[670px] flex flex-col items-center justify-center gap-10 bg-gradient-to-t from-zinc-100 to-slate-50">
-        <button className="bg-[#23B0FF] h-20 rounded-lg text-3xl text-white p-2 font-bold">
-          !Descubre eventos aqui!
-        </button>
+      <section className="h-[670px] flex flex-col items-center justify-center gap-10 ">
+        <Link href={'/searchPage'} >
+          <button className="bg-[#23B0FF] h-20 rounded-lg text-3xl text-white p-2 font-bold">
+            !Descubre eventos aqui!
+          </button>
+        </Link>
         <section className="flex gap-8 mt-2">
           <CardEvent
             img={"/images/imgCard-1.png"}

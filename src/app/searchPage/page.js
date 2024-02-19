@@ -1,11 +1,12 @@
 import React from 'react';
 import CardWithDescription from '../components/CardWithDescription';
-
+import { eventsData } from '../../../eventsData';
+import Link from 'next/link';
 
 const page = () => {
   return (
-    <main className=" flex flex-col items-center border border-red-500 h-screen  ">
-      <section className=" mb-8 mt-8 w-[1600px] flex items-center gap-3 border border-black h-16">
+    <main className=" flex flex-col items-center h-screen  ">
+      <section className=" mb-8 mt-8 w-[1400px] flex items-center gap-3 h-16">
         <select className='border border-slate-400 rounded h-8'>
           <option value="" selected >Cualquier ciudad</option>
           <option value="">Medellín, CO</option>
@@ -32,43 +33,18 @@ const page = () => {
         </select>
         <button className='bg-[#23B0FF] text-white font-bold rounded p-2'>Restablecer filtros</button>
       </section>
-      <section className='flex flex-wrap gap-7 w-[1600px] border border-black'>
-        <CardWithDescription 
-          img={"/images/imgCard-1.png"}
-          title={"Mercados Monetarios (Forex & Monedas Digitales)"}
-          date={"02/03/2024 - 7:00 PM (GMT-5)"}
-          location={"Lima, PE"}
-        />
-        <CardWithDescription 
-          img={"/images/imgCard-1.png"}
-          title={"Mercados Monetarios (Forex & Monedas Digitales)"}
-          date={"02/03/2024 - 7:00 PM (GMT-5)"}
-          location={"Lima, PE"}
-        />
-        <CardWithDescription 
-          img={"/images/imgCard-1.png"}
-          title={"Mercados Monetarios (Forex & Monedas Digitales)"}
-          date={"02/03/2024 - 7:00 PM (GMT-5)"}
-          location={"Lima, PE"}
-        />
-        <CardWithDescription 
-          img={"/images/imgCard-1.png"}
-          title={"Mercados Monetarios (Forex & Monedas Digitales)"}
-          date={"02/03/2024 - 7:00 PM (GMT-5)"}
-          location={"Lima, PE"}
-        />
-        <CardWithDescription 
-          img={"/images/imgCard-1.png"}
-          title={"Mercados Monetarios (Forex & Monedas Digitales)"}
-          date={"02/03/2024 - 7:00 PM (GMT-5)"}
-          location={"Lima, PE"}
-        />
-        <CardWithDescription 
-          img={"/images/imgCard-1.png"}
-          title={"Mercados Monetarios (Forex & Monedas Digitales)"}
-          date={"02/03/2024 - 7:00 PM (GMT-5)"}
-          location={"Lima, PE"}
-        />
+      <section className='flex flex-wrap w-[1400px] justify-between'>
+        {eventsData.map((event, index) => (
+          <Link href={'/eventviewpage'} className='cursor-pointer'>
+            <CardWithDescription
+              key={index}
+              img={event.img}
+              title={event.title}
+              date={event.date}
+              location={event.location}
+            />
+          </Link>
+        ))}
       </section>
     </main>
   );
