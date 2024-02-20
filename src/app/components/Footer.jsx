@@ -3,16 +3,16 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <section className="flex flex-col items-center justify-center w-full h-28 bg-[#1B1B1B] text-white mt-10">
+    <footer className="fixed bottom-0 w-[1400px] bg-[#1B1B1B] text-white p-4 flex items-center justify-center">
       <Image
         src="/meethub-logo.png"
-        alt="card image"
+        alt="Logo de Meethub"
         width={60}
         height={60}
         className="mr-2"
       />
       <h1 className="font-bold text-3xl">Nosotros</h1>
-    </section>
+    </footer>
   );
 };
 
