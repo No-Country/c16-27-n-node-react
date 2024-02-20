@@ -1,6 +1,5 @@
 import express from "express";
-import eventSchema from "../models/event.js";
-// const eventSchema = require('./../models/event');
+import eventSchema from "./../models/event.js";
 
 const router = express.Router();
 
@@ -13,11 +12,23 @@ router.get('/events', (req,res) => {
         .catch(err => res.json(err));
 
     // res.send(`Hello desee ${req.baseUrl}`);
+});
+
+// Endpoint Get Event By Id
+router.get('/events/:id', (req, res) => {
+    const {id} = req.params;
+
+    eventSchema
+        .findById(id)
+        .then(data => res.json(data))
+        .catch(err => res.json(err));
+
 })
 
+// Endpoint Create
 router.post('/events', (req,res) => {
 
-    const {body} = req.body;
+    const body = req.body;
 
     const event =  eventSchema(body);
 
@@ -26,7 +37,17 @@ router.post('/events', (req,res) => {
         .then(data => res.json(data))
         .catch(err => res.json(err));
 
-    eventSchema.save(body)
+});
+
+// Endpoint Delete
+router.delete('/events/:id', (req, res) => {
+
+    const {id} = req.params;
+
+    eventSchema
+        .deleteOne({_id : id})
+        .then(data => res.json(data))
+        .catch(err => res.json(err));
 })
 
 

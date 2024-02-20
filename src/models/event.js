@@ -30,6 +30,10 @@ const eventSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  place:{
+    type: String,
+    required: true,
+  },
 });
 
 
