@@ -1,11 +1,15 @@
-import React from 'react';
+'use client'
+import  React from 'react';
 import CardWithDescription from '../components/CardWithDescription';
 import { eventsData } from '../../../eventsData';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const page = () => {
+
+
   return (
-    <main className=" flex flex-col items-center h-screen  ">
+    <main className=" flex flex-col items-center">
       <section className=" mb-8 mt-8 w-[1400px] flex items-center gap-3 h-16">
         <select className='border border-slate-400 rounded h-8'>
           <option value="" selected >Cualquier ciudad</option>
@@ -35,13 +39,14 @@ const page = () => {
       </section>
       <section className='flex flex-wrap w-[1400px] justify-between'>
         {eventsData.map((event, index) => (
-          <Link href={'/eventviewpage'} className='cursor-pointer'>
+          <Link href={`/eventviewpage/${event.id}`}  className='cursor-pointer'>
             <CardWithDescription
-              key={index}
+              key={event.id}
               img={event.img}
               title={event.title}
               date={event.date}
               location={event.location}
+              description={event.description}
             />
           </Link>
         ))}
