@@ -1,8 +1,17 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
-const userSchema = mongoose.Schema({});
+const userSchema = mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  image: Blob,
+  password: String,
+  email: String,
+  country: String,
+  isAdmin: Boolean,
+});
 
 
-const user = mongoose.model("User", userSchema);
 
-export default user;
+const users = mongoose.model("Users", userSchema);
+
+export default users;

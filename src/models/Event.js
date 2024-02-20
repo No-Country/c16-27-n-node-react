@@ -1,8 +1,25 @@
 import mongoose from "mongoose";
 
-const eventSchema = mongoose.Schema({});
+const eventSchema = mongoose.Schema({
+  title: String,
+  description: String,
+  image: Blob,
+  date: Date,
+  type: Enumerator,
+  creatorUserId: mongoose.Types.ObjectId,
+  maxUsers: Uint16Array,
+});
+
+const eventOnlineSchema = mongoose.Schema({
+  eventId: mongoose.type.ObjectId,
+  link: String,
+});
+
+const eventOnSuiteSchema = mongoose.Schema({
+  eventId: mongoose.type.ObjectId,
+  place: String,
+});
 
 
-const event = mongoose.model("Event", eventSchema);
-
-export default event;
+const events = mongoose.model("Events", eventSchema);
+export default events;
