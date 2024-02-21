@@ -82,13 +82,14 @@ export default function Event({ params }) {
                   <h2 className='text-[#23B0FF] font-bold text-xl'>{eventData.address}</h2>
                 </article>
                 <article className=' h-[350px] rounded-lg p-5'>
-                  <Image
-                    src={'/mapsImage.png'}
-                    alt={`Imagen del evento ${id}`}
-                    width={250}
-                    height={250}
-                    className='w-full h-full object-cover rounded-lg shadow-lg'
-                  />
+                  <iframe 
+                    src="https://www.google.com/maps/embed?q=Nueva+York" 
+                    width="400" 
+                    height="330" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
                 </article>
               </article>
               <article className='p-5 border-t'>
