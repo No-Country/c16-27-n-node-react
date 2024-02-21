@@ -5,40 +5,48 @@ const eventSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  description:{
+  description: {
     type: String,
     required: true,
   },
-  image:{
+  image: {
+    type: String,
+    default: 'https://icon-library.com/images/events-icon-png/events-icon-png-6.jpg'
+  },  
+  type: {
+    type: String,
+    required: true,
+    enum: ['online', 'onSuite'],
+  },
+  creatorUserId: {
     type: String,
     required: true,
   },
-  date:{
-    type: String,
-    required: true,
-  },
-  type:{
-    type: String,
-    required: true,
-    enum : ['online', 'presencial'],
-  },
-  creatorUserId:{
-    type: String,
-    required: true,
-  },
-  maxUsers:{
+  maxUsers: {
     type: Number,
     required: true,
   },
-  place:{
+  address: {
+    type: String
+  },
+  participants: {
     type: String,
     required: true,
   },
-  participants:{
-    type: String,
-    required: true,
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Users',
+    required: true
   },
-});
+  attendees: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Users'
+  }]
+},
+  {
+    timestamps: { createdAt: true, updatedAt: true }
+  }
+);
 
-
-export default mongoose.model("Event", eventSchema);
+const Event = mongoose.model("Event", eventSchema);
+export default Event;

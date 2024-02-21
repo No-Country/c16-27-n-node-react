@@ -1,5 +1,16 @@
 import eventService from './../services/eventService.js';
 
+// const newEvent = new Event({
+//     title: 'Tech Conference',
+//     description: 'A conference for tech enthusiasts',
+//     image: 'https://example.com/event.jpg',
+//     date: new Date('2024-06-01'),
+//     type: 'in-person',
+//     maxAttendees: 500,
+//     location: 'New York City',
+//     createdBy: newUser._id,
+//     participants: []
+//   });
 
 const find = (req,res) => {
     eventService

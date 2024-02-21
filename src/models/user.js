@@ -10,8 +10,8 @@ const userSchema = mongoose.Schema({
     required: true 
   },
   image: { 
-    type: Blob, 
-    required: true 
+    type: String,
+    default: 'https://www.svgrepo.com/show/105517/user-icon.svg'    
   },
   password: { 
     type: String, 
@@ -20,16 +20,9 @@ const userSchema = mongoose.Schema({
   email: { 
     type: String, 
     required: true 
-  },
-  country: { 
-    type: String, 
-    required: true 
-  },
-  isAdmin: {
-    type: Boolean,
-  }
+  }  
 });
 
-const users = mongoose.model("Users", userSchema);
+const Users = mongoose.model("Users", userSchema);
 
-export default users;
+export default Users;
