@@ -75,11 +75,11 @@ export default function Event({ params }) {
                   width={30}
                   height={30}
                 />
-                <h1 className='text-[#23B0FF] text-2xl font-bold'>{eventData.location}</h1>
+                <h1 className='text-[#23B0FF] text-2xl font-bold'>{eventData.type}</h1>
               </article>
               <article className='rounded-lg border-t'>
                 <article className='p-2'>
-                  <h2 className='text-[#23B0FF] font-bold text-xl'>Av. de la Arqueología 206, San Borja 15021, Perú</h2>
+                  <h2 className='text-[#23B0FF] font-bold text-xl'>{eventData.address}</h2>
                 </article>
                 <article className=' h-[350px] rounded-lg p-5'>
                   <Image
