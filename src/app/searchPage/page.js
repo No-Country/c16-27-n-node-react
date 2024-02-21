@@ -39,7 +39,7 @@ const page = () => {
       </section>
       <section className='flex flex-wrap w-[1400px] justify-between'>
         {eventsData.map((event, index) => (
-          <Link href={`/eventviewpage/${event.id}`}  className='cursor-pointer'>
+          <Link href={`/event/${event.id}`}  className='cursor-pointer'>
             <CardWithDescription
               key={event.id}
               img={event.img}
