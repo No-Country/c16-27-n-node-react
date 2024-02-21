@@ -45,7 +45,7 @@ const page = () => {
               img={event.img}
               title={event.title}
               date={event.date}
-              location={event.location}
+              location={event.type}
               description={event.description}
             />
           </Link>
