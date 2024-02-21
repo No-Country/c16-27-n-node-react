@@ -1,45 +1,70 @@
 export const eventsData = [
-    {
-      "id": "1",
-      "img": "/images/imgCard-1.png",
-      "title": "Mercados Monetarios (Forex & Monedas Digitales)",
-      "date": "02/03/2024 - 7:00 PM (GMT-5)",
-      "location": "Lima, PE",
-    },
-    {
-      "id": "2",
-      "img": "/images/imgCard-2.png",
-      "title": "Mercados Monetarios (Forex & Monedas Digitales)",
-      "date": "02/03/2024 - 7:00 PM (GMT-5)",
-      "location": "Lima, PE"
-    },
-    {
-      "id": "3",
-      "img": "/images/imgCard-3.png",
-      "title": "Mercados Monetarios (Forex & Monedas Digitales)",
-      "date": "02/03/2024 - 7:00 PM (GMT-5)",
-      "location": "Lima, PE"
-    },
-    {
-      "id": "4",
-      "img": "/images/imgCard-1.png",
-      "title": "Mercados Monetarios (Forex & Monedas Digitales)",
-      "date": "02/03/2024 - 7:00 PM (GMT-5)",
-      "location": "Lima, PE"
-    },
-    {
-      "id": "5",
-      "img": "/images/imgCard-1.png",
-      "title": "Mercados Monetarios (Forex & Monedas Digitales)",
-      "date": "02/03/2024 - 7:00 PM (GMT-5)",
-      "location": "Lima, PE"
-    },
-    {
-      "id": "6",
-      "img": "/images/imgCard-1.png",
-      "title": "Mercados Monetarios (Forex & Monedas Digitales)",
-      "date": "02/03/2024 - 7:00 PM (GMT-5)",
-      "location": "Lima, PE"
-    }
-  ]
-  
+  {
+    "id": "1",
+    "img": "/images/imgCard-1.png",
+    "title": "Mercados Monetarios (Forex & Monedas Digitales)",
+    "date": "20-03-2024",
+    "type": "Presencial",
+    "creatorUserId": "zuluaga",
+    "maxUsers": "11",
+    "address": "Av. de la Arqueología 206, San Borja 15021, Perú",
+    "participants": "users",
+  },
+  {
+    "id": "2",
+    "img": "/images/imgCard-2.png",
+    "title": "Mercados Monetarios (Forex & Monedas Digitales)",
+    "date": "13-03-2024",
+    "type": "Online",
+    "creatorUserId": "perez",
+    "maxUsers": "15",
+    "address": "link al evento en línea",
+    "participants": "attendees",
+  },
+  {
+    "id": "3",
+    "img": "/images/imgCard-3.png",
+    "title": "Mercados Monetarios (Forex & Monedas Digitales)",
+    "date": "01-05-2024",
+    "type": "Presencial",
+    "creatorUserId": "gomez",
+    "maxUsers": "10",
+    "address": "Av. Principal 123, Lima, PE",
+    "participants": "registrants",
+  },
+  {
+    "id": "4",
+    "img": "/images/imgCard-1.png",
+    "title": "Mercados Monetarios (Forex & Monedas Digitales)",
+    "date": "04-02-2024",
+    "type": "Presencial",
+    "creatorUserId": "gonzalez",
+    "maxUsers": "8",
+    "address": "Centro de Convenciones XYZ, Lima, PE",
+    "participants": "guests",
+  },
+  {
+    "id": "5",
+    "img": "/images/imgCard-1.png",
+    "title": "Mercados Monetarios (Forex & Monedas Digitales)",
+    "date": "06-05-2024",
+    "type": "Online",
+    "creatorUserId": "martinez",
+    "maxUsers": "20",
+    "address": "link al evento en línea",
+    "participants": "viewers",
+  },
+  {
+    "id": "6",
+    "title": "Mercados Monetarios (Forex & Monedas Digitales)",
+    "description": "description del evento",
+    "img": "/images/imgCard-1.png",
+    "date": "03-03-2024",
+    "type": "Online",
+    "creatorUserId": "rodriguez",
+    "maxUsers": "12",
+    "address": "link al evento en línea",
+    "participants": "array de participantes",
+  }
+];
+
