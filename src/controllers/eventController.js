@@ -42,7 +42,7 @@ const save = (req,res) => {
 const deleteOne = (req,res) => {
     
     const { id } = req.params;
-
+    
     eventService
         .deleteOne(id)
         .then(data => res.json(data))

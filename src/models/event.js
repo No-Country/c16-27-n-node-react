@@ -4,11 +4,11 @@ const eventSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
-  },
+  }, 
   description: {
     type: String,
     required: true,
-  },
+  }, 
   image: {
     type: String,
     default: 'https://icon-library.com/images/events-icon-png/events-icon-png-6.jpg'
@@ -17,11 +17,7 @@ const eventSchema = mongoose.Schema({
     type: String,
     required: true,
     enum: ['online', 'onSuite'],
-  },
-  creatorUserId: {
-    type: String,
-    required: true,
-  },
+  },  
   maxUsers: {
     type: Number,
     required: true,
@@ -41,7 +37,7 @@ const eventSchema = mongoose.Schema({
   attendees: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users'
-  }]
+  }]  
 },
   {
     timestamps: { createdAt: true, updatedAt: true }
