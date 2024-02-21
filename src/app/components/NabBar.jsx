@@ -3,16 +3,16 @@ import Image from 'next/image';
 
 const NabBar = () => {
   return (
-    <div className='border-b-2 flex justify-between p-3 '>
+    <div className='border-b-2 flex justify-between p-1 '>
       <div className='flex items-center'>
         <Image 
           src='/meethub-logo.png' 
           alt='navbar-logo' 
-          width={90} 
+          width={70} 
           height={60}
           className='mr-5' 
         />
-        <div className='flex items-center border rounded-lg h-14'>
+        <div className='flex items-center border rounded-lg h-12'>
           <Image 
             src='/searchIcon.svg' 
             alt='searchIcon' 
