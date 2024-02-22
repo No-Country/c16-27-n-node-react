@@ -4,16 +4,16 @@ import React from 'react';
 const EventMap = ({ eventData }) => {
   return (
     <>
-      <article className="p-2">
+      <article className="p-3">
         <h2 className="text-[#23B0FF] font-bold text-xl">
           {eventData.address}
         </h2>
       </article>
-      <article className=" h-[350px] rounded-lg p-5">
+      <article className=" h-[350px] rounded-lg p-3">
         {eventData.type === "Presencial" ? (
           <iframe
             width="400"
-            height="350"
+            height="330"
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
