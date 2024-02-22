@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const CardEvent = ({ img, title, date, location }) => {
+const CardEvent = ({ img, title, date, type }) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl ">
       <Image
@@ -37,7 +37,7 @@ const CardEvent = ({ img, title, date, location }) => {
             className="mr-2"
           />
           <p className="font-bold text-[#23B0FF] ">
-            {location || "Ubicación del evento"}
+            {type || "Ubicación del evento"}
           </p>
         </div>
       </div>
