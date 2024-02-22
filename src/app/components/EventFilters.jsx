@@ -4,32 +4,36 @@ import { eventsData } from '../../../eventsData';
 
 const EventFilters = ({ setAllEvents }) => {
 
-  const [selectedFilter, setSelectedFilter] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('Cualquier Tipo');
   const handleFilterChange = (e) => {
     setSelectedFilter(e.target.value);
   }
+  const resetFilters = () => {
+    setAllEvents(eventsData);
+    setSelectedFilter('Cualquier Tipo');
+  }
 
   useEffect(() => {
-    if (selectedFilter) {
-      // Hacer un fetch para llamar a los datos reales
+    if (selectedFilter === 'Cualquier Tipo') {
+      setAllEvents(eventsData);
+    } else {
       const filteredEvents = eventsData.filter(event => event.type === selectedFilter);
       setAllEvents(filteredEvents);
-    } else {
-      setAllEvents(eventsData);
     }
-  }, [selectedFilter, eventsData]); 
+  }, [selectedFilter, eventsData, setAllEvents]);
 
   return (
     <>
      <select 
           className="border border-slate-400 rounded h-8" 
           onChange={handleFilterChange}
+          value={selectedFilter}
         >
           <option value="Cualquier Tipo" selected>Cualquier Tipo</option>
           <option value="Presencial">Presencial</option>
           <option value="Online">Online</option>
         </select>
-        <button onClick={() => setAllEvents(eventsData)} className="bg-[#23B0FF] text-white font-bold rounded p-2">
+        <button onClick={resetFilters} className="bg-[#23B0FF] text-white font-bold rounded p-2">
           Restablecer filtros
         </button>
     </>
