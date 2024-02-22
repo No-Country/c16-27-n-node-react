@@ -1,6 +1,6 @@
 import eventSchema from "./../models/event.js";
 
-const find = () => {
+const findAllEvents = () => {
 
     return eventSchema
         .find()
@@ -9,7 +9,7 @@ const find = () => {
         .catch(err => console.log(err));
 };
 
-const findById = (id) => {
+const findEventById = (id) => {
     return eventSchema
         .findById(id)
         .then((data) => {
@@ -17,7 +17,7 @@ const findById = (id) => {
         .catch(err => console.log(err));
 };
 
-const save = (newEvent) => {
+const createEvent = (newEvent) => {
 
     const event = new eventSchema(newEvent);
 
@@ -28,7 +28,7 @@ const save = (newEvent) => {
         .catch(err => console.log(err));
 };
 
-const deleteOne = (id) => {
+const deleteEventById = (id) => {
     return eventSchema
         .deleteOne({_id : id})
         .then(data => {
@@ -37,8 +37,8 @@ const deleteOne = (id) => {
 };
 
 export default {
-    find,
-    findById,
-    save,
-    deleteOne,
+    findAllEvents,
+    findEventById,
+    createEvent,
+    deleteEventById,
 }

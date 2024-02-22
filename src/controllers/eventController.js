@@ -12,46 +12,46 @@ import eventService from './../services/eventService.js';
 //     participants: []
 //   });
 
-const find = (req,res) => {
+const findAllEvents = (req,res) => {
     eventService
-        .find()
+        .findAllEvents()
         .then(data => res.json(data))
         .catch(err => res.json(err));
 };
 
-const findById = (req,res) => {
+const findEventById = (req,res) => {
 
     const { id } = req.params;
 
     eventService
-        .findById(id)
+        .findEventById(id)
         .then(data => res.json(data))
         .catch(err => res.json(err));
 };
 
-const save = (req,res) => {
+const createEvent = (req,res) => {
 
     const body = req.body;
 
     eventService
-        .save(body)
+        .createEvent(body)
         .then(data => res.json(data))
         .catch(err => res.json(err));
 };
 
-const deleteOne = (req,res) => {
+const deleteEventById = (req,res) => {
     
     const { id } = req.params;
 
     eventService
-        .deleteOne(id)
+        .deleteEventById(id)
         .then(data => res.json(data))
         .catch(err => res.json(err));
 };
 
 export default {
-    find, 
-    findById, 
-    save, 
-    deleteOne
+    findAllEvents,
+    findEventById,
+    createEvent,
+    deleteEventById,
 };
