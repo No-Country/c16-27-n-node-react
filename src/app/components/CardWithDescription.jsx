@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const CardWithDescription = ({ img, title, date, location }) => {
+const CardWithDescription = ({ img, title, date, type }) => {
   return (
     <div className="border border-slate-300 m-3 flex h-[240px] w-[42rem] bg-white rounded-lg shadow-xl ">
       <Image
@@ -34,15 +34,24 @@ const CardWithDescription = ({ img, title, date, location }) => {
           </p>
         </div>
         <div className="flex items-center">
-          <Image
-            src="/locationLogo.svg"
-            alt="card image"
-            width={20}
-            height={20}
-            className="mr-2"
-          />
-          <p className="font-bold text-[#23B0FF] ">
-            {location || "Ubicación del evento"}
+          {type === "Online"
+          ? <Image
+              src="/camera-reels-fill.svg"
+              alt="card image"
+              width={20}
+              height={20}
+              className="mr-2"
+            />
+          : <Image
+              src="/locationLogo.svg"
+              alt="card image"
+              width={20}
+              height={20}
+              className="mr-2"
+            />
+          }
+          <p className={`font-bold text-[#23B0FF] ${type === 'Online' ? 'text-[#25CC68]' : ''}`}>
+            {type || "Ubicación del evento"}
           </p>
         </div>
       </div>
