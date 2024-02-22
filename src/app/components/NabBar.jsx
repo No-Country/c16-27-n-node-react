@@ -1,17 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link'; 
 
 const NabBar = () => {
   return (
     <div className='border-b-2 flex justify-between m-4 p-1 '>
       <div className='flex items-center'>
-        <Image 
-          src='/meethub-logo.png' 
-          alt='navbar-logo' 
-          width={70} 
-          height={60}
-          className='mr-5' 
-        />
+        <Link href={'/'} >
+          <Image 
+            src='/meethub-logo.png' 
+            alt='navbar-logo' 
+            width={70} 
+            height={60}
+            className='mr-5' 
+          />
+        </Link>
         <div className='flex items-center border rounded-lg h-12'>
           <Image 
             src='/searchIcon.svg' 
