@@ -13,7 +13,7 @@ const EventMap = ({ eventData }) => {
         {eventData.type === "Presencial" ? (
           <iframe
             width="400"
-            height="330"
+            height="320"
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
