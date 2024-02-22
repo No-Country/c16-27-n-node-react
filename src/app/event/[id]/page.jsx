@@ -72,29 +72,31 @@ export default function Event({ params }) {
               </article>
             </section>
             <section className="flex flex-col justify-between w-2/6 p-4 border border-slate-200">
-              <article className="flex gap-3">
-                <CalendarDate eventData={eventData} />
-              </article>
-              <article className="flex gap-3">
-                {eventData.type === "Online"
-                  ? <Image
-                      src="/camera-reels-fill.svg"
-                      alt="card image"
-                      width={30}
-                      height={20}
-                      className="mr-1"
-                    />
-                  : <Image
-                      src="/locationLogo.svg"
-                      alt="card image"
-                      width={20}
-                      height={20}
-                      className="mr-2"
-                    />
-                }
-                <h1 className={`text-2xl font-bold text-[#23B0FF] ${eventData.type === 'Online' ? 'text-[#25CC68]' : ''}`}>
-                  {eventData.type}
-                </h1>
+              <article className='flex flex-col h-28 justify-center gap-6'>
+                <article className="flex gap-3">
+                  <CalendarDate eventData={eventData} />
+                </article>
+                <article className="flex gap-3">
+                  {eventData.type === "Online"
+                    ? <Image
+                        src="/camera-reels-fill.svg"
+                        alt="card image"
+                        width={30}
+                        height={20}
+                        className="mr-1"
+                      />
+                    : <Image
+                        src="/locationLogo.svg"
+                        alt="card image"
+                        width={20}
+                        height={20}
+                        className="mr-2"
+                      />
+                  }
+                  <h1 className={`text-2xl font-bold text-[#23B0FF] ${eventData.type === 'Online' ? 'text-[#25CC68]' : ''}`}>
+                    {eventData.type}
+                  </h1>
+                </article>
               </article>
               <article className="rounded-lg border-t">
                <EventMap eventData={eventData} />
