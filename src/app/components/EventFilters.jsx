@@ -5,9 +5,11 @@ import { eventsData } from '../../../eventsData';
 const EventFilters = ({ setAllEvents }) => {
 
   const [selectedFilter, setSelectedFilter] = useState('Cualquier Tipo');
+
   const handleFilterChange = (e) => {
     setSelectedFilter(e.target.value);
   }
+
   const resetFilters = () => {
     setAllEvents(eventsData);
     setSelectedFilter('Cualquier Tipo');
@@ -24,18 +26,23 @@ const EventFilters = ({ setAllEvents }) => {
 
   return (
     <>
-     <select 
-          className="border border-slate-400 rounded h-8" 
-          onChange={handleFilterChange}
-          value={selectedFilter}
-        >
-          <option value="Cualquier Tipo" selected>Cualquier Tipo</option>
-          <option value="Presencial">Presencial</option>
-          <option value="Online">Online</option>
-        </select>
-        <button onClick={resetFilters} className="bg-[#23B0FF] text-white font-bold rounded p-2">
-          Restablecer filtros
-        </button>
+      <select
+        className="border border-slate-400 rounded h-8"
+        onChange={handleFilterChange}
+        value={selectedFilter}
+      >
+        <option value="Cualquier Tipo" selected>
+          Cualquier Tipo
+        </option>
+        <option value="Presencial">Presencial</option>
+        <option value="Online">Online</option>
+      </select>
+      <button
+        onClick={resetFilters}
+        className="bg-[#23B0FF] text-white font-bold rounded p-2"
+      >
+        Restablecer filtros
+      </button>
     </>
   );
 };
