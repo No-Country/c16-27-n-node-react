@@ -24,7 +24,7 @@ export default function Event({ params }) {
     <div>
       {eventData ? (
         <main className="flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg">
-          <section className="border p-5">
+          <section className="border-b p-5">
             <h1 className="text-[2rem] font-bold">{eventData.title}</h1>
             <button className="bg-[#23B0FF] text-white p-1 rounded-xl">
               Categoría
@@ -71,8 +71,8 @@ export default function Event({ params }) {
                 </button>
               </article>
             </section>
-            <section className="flex flex-col justify-between w-2/6 p-4 border border-slate-200">
-              <article className='flex flex-col h-28 justify-center gap-6'>
+            <section className="flex flex-col w-2/6 p-5">
+              <article className='flex flex-col justify-center gap-3 h-28 p-3'>
                 <article className="flex gap-3">
                   <CalendarDate eventData={eventData} />
                 </article>
