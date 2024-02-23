@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 const NabBar = () => {
   return (
-    <div className='border-b-2 flex justify-between m-4 p-1 '>
+    <div className='border-b-2 flex justify-between m-1'>
       <div className='flex items-center'>
         <Link href={'/'} >
           <Image 
-            src='/meethub-logo.png' 
+            src='/MeetHub-Logo.svg' 
             alt='navbar-logo' 
             width={70} 
             height={60}
