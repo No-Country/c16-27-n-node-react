@@ -12,7 +12,7 @@ const CardEvent = ({ img, title, date, type }) => {
       />
       <div className="p-5 h-40 flex flex-col justify-center">
         <a href="#">
-          <h5 class="mb-2 text-xl font-bold tracking-tight ">
+          <h5 className="mb-2 text-xl font-bold tracking-tight ">
             {title || "Titulo del evento"}
           </h5>
         </a>

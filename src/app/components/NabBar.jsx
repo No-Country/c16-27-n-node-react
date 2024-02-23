@@ -4,14 +4,14 @@ import Link from 'next/link';
 
 const NabBar = () => {
   return (
-    <div className='border-b-2 flex justify-between m-1'>
+    <div className='border-b-2 p-2 flex justify-between bg-white'>
       <div className='flex items-center'>
         <Link href={'/'} >
           <Image 
             src='/MeetHub-Logo.svg' 
             alt='navbar-logo' 
-            width={70} 
-            height={60}
+            width={55}
+            height={20}
             className='mr-5' 
           />
         </Link>
@@ -27,7 +27,7 @@ const NabBar = () => {
             <input 
               type='text' 
               placeholder='Buscar eventos...' 
-              className='border-none bg-transparent focus:outline-none ml-2' 
+              className='border-none bg-transparent focus:outline-none ml-3' 
             />
           </div>
         </div>
