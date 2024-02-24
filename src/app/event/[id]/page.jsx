@@ -21,7 +21,7 @@ export default function Event({ params }) {
   }, [id]);
 
   return (
-    <div>
+    <div className='max-w-[1400px] mx-auto'>
       {eventData ? (
         <main className="flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg">
           <section className="border-b p-5">
