@@ -12,7 +12,7 @@ const CardWithDescription = ({ img, title, date, type }) => {
         className="rounded-lg"
       />
       <div className="p-5 flex flex-col justify-center">
-        <h5 class="mb-2 text-xl font-bold tracking-tight ">
+        <h5 className="mb-2 text-xl font-bold tracking-tight ">
           {title || "Titulo del evento"}
         </h5>
         <p className=" leading-5">

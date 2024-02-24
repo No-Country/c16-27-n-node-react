@@ -31,9 +31,7 @@ const EventFilters = ({ setAllEvents }) => {
         onChange={handleFilterChange}
         value={selectedFilter}
       >
-        <option value="Cualquier Tipo" selected>
-          Cualquier Tipo
-        </option>
+        <option value="Cualquier Tipo">Cualquier Tipo</option>
         <option value="Presencial">Presencial</option>
         <option value="Online">Online</option>
       </select>

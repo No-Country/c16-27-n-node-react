@@ -1,10 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link'; 
+import BtnLogoLink from '../ui/BtnLogoLink';
+
 
 const NabBar = () => {
+
+  const createEventModal = () => {
+    console.log('Create Event Modal open');
+  }
+
   return (
-    <div className='border-b-2 p-2 flex justify-between bg-white'>
+    <div className='border-b-2 p-4 flex justify-between bg-white'>
       <div className='flex items-center'>
         <Link href={'/'} >
           <Image 
@@ -32,21 +39,25 @@ const NabBar = () => {
           </div>
         </div>
       </div>
-      <div className='flex justify-between w-32'>
-        <button>
-          <Image 
-            src='/dark-theme-btn.svg' 
-            alt='switchToDark' 
-            width={50} 
-            height={50}
-            className='mx-4'
-          />
-        </button>
-        <Image 
-          src='/login-icon.svg'
-          alt='loginLogo' 
-          width={50} 
-          height={50}
+      <div className='flex justify-between w-36 gap-3'>
+        <BtnLogoLink 
+          src='/circle-half.svg' 
+          alt='darkThemeIcon' 
+          width={40} 
+          height={30} 
+        />
+        <BtnLogoLink 
+          src='/calendar-plus.svg' 
+          alt='calendarIcon' 
+          width={40} 
+          height={30} 
+          onclick={createEventModal}
+        />
+        <BtnLogoLink 
+          src='/login-icon.svg' 
+          alt='loginIcon' 
+          width={40} 
+          height={30} 
         />
       </div>
     </div>
