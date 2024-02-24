@@ -67,4 +67,3 @@ export const eventsData = [
     "participants": "array de participantes",
   }
 ];
-

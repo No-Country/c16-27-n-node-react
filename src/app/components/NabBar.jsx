@@ -11,7 +11,7 @@ const NabBar = () => {
   }
 
   return (
-    <div className='border-b-2 p-4 flex justify-between bg-white'>
+    <div className='border-b-2 p-2 flex justify-between bg-white'>
       <div className='flex items-center'>
         <Link href={'/'} >
           <Image 

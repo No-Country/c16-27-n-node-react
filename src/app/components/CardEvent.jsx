@@ -1,16 +1,16 @@
 import React from "react";
 import Image from "next/image";
 
-const CardEvent = ({ img, title, date, type }) => {
+const CardEvent = ({ img, title, date, location, type }) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl ">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
       <Image
         src={img || "/imgCard-1.png"}
         alt="card image"
         width={400}
         height={400}
       />
-      <div className="p-5 h-40 flex flex-col justify-center">
+      <div className="p-3 h-30 flex flex-col justify-center">
         <a href="#">
           <h5 className="mb-2 text-xl font-bold tracking-tight ">
             {title || "Titulo del evento"}
@@ -24,7 +24,7 @@ const CardEvent = ({ img, title, date, type }) => {
             height={20}
             className="mr-2"
           />
-          <p className="font-normal text-[#FF256F] ">
+          <p className="font-bold text-[#FF256F] ">
             {date || "Fecha del evento"}
           </p>
         </div>
@@ -37,7 +37,7 @@ const CardEvent = ({ img, title, date, type }) => {
             className="mr-2"
           />
           <p className="font-bold text-[#23B0FF] ">
-            {type || "Ubicación del evento"}
+            {location || "Ubicación del evento"}
           </p>
         </div>
       </div>

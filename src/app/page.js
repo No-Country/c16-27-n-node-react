@@ -27,27 +27,30 @@ const page = () => {
       <section className="h-[600px] flex flex-col items-center justify-center gap-10 ">
         <Link href={'/searchPage'} >
           <button className="bg-[#23B0FF] h-15 rounded-[20px] text-3xl text-white p-4 font-bold tracking-wider">
-            !Descubre eventos aqui!
+            ¡Descubre eventos aquí!
           </button>
         </Link>
-        <section className="flex gap-8 mt-2">
+        <section className="flex gap-8">
           <CardEvent
             img={"/images/imgCard-1.png"}
             title={"Mercados Monetarios (Forex & Monedas Digitales)"}
             date={"02/03/2024 - 7:00 PM (GMT-5)"}
             location={"Lima, PE"}
+            type={"inperson"}
           />
           <CardEvent
             img={"/images/imgCard-2.png"}
             title={"Open Beer Bogotá 2024"}
             date={"12/03/2024 - 9:00 PM (GMT-5)"}
             location={"Bogotá, CO"}
+            type={"inperson"}
           />
           <CardEvent
             img={"/images/imgCard-3.png"}
             title={"Inteligencia Artificial: una mirada desde y para la universidad"}
             date={"24/03/2024 - 7:00 PM (GMT-5)"}
-            location={"En línea"}
+            location={"En Línea"}
+            type={"online"}
           />
         </section>
       </section>
