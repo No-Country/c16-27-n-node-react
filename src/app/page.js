@@ -24,9 +24,9 @@ const page = () => {
           de tu mano
         </p>
       </section>
-      <section className="h-[670px] flex flex-col items-center justify-center gap-10 ">
+      <section className="h-[600px] flex flex-col items-center justify-center gap-10 ">
         <Link href={'/searchPage'} >
-          <button className="bg-[#23B0FF] h-20 rounded-lg text-3xl text-white p-2 font-bold">
+          <button className="bg-[#23B0FF] h-15 rounded-[20px] text-3xl text-white p-4 font-bold tracking-wider">
             !Descubre eventos aqui!
           </button>
         </Link>

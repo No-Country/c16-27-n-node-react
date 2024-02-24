@@ -38,14 +38,15 @@ const NabBar = () => {
             src='/dark-theme-btn.svg' 
             alt='switchToDark' 
             width={50} 
-            height={50} 
+            height={50}
+            className='mx-4'
           />
         </button>
         <Image 
           src='/login-icon.svg'
           alt='loginLogo' 
           width={50} 
-          height={50} 
+          height={50}
         />
       </div>
     </div>

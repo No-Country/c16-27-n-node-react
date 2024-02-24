@@ -3,15 +3,15 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#1B1B1B] text-white p-4 flex items-center justify-center mt-auto">
+    <footer className="w-full bg-[#1B1B1B] text-white px-2 py-3 flex items-center mt-auto">
       <Image
-        src="/meethub-logo.png"
+        src="/MeetHub-Logo.svg"
         alt="Logo de Meethub"
         width={60}
-        height={60}
-        className="mr-2"
+        height={50}
+        className="mr-4"
       />
-      <h1 className="font-bold text-3xl">Nosotros</h1>
+      <h1 className="text-2xl">Nosotros</h1>
     </footer>
   );
 };
