@@ -12,8 +12,8 @@ const page = () => {
   const [allEvents, setAllEvents] = useState(eventsData);
   
   return (
-    <main className=" flex flex-col items-center">
-      <section className=" mb-8 mt-8 w-[1400px] flex items-center gap-3 h-16 p-3" >
+    <main className="flex flex-col items-center">
+      <section className="p-2 mb-3 mt-8 w-[1400px] flex items-center gap-3 h-16" >
         <EventFilters 
           eventsData={eventsData} 
           setAllEvents={setAllEvents} 

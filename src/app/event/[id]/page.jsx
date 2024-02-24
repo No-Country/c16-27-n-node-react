@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Attendee from '@/app/components/Attendee';
 import EventMap from '@/app/components/EventMap';
 import CalendarDate from '@/app/components/CalendarDate';
+import AsistBar from '@/app/components/AsistBar';
 
 export default function Event({ params }) {
   const { id } = params;
@@ -21,9 +22,9 @@ export default function Event({ params }) {
   }, [id]);
 
   return (
-    <div className='max-w-[1400px] mx-auto'>
+    <div className="flex flex-col justify-between min-h-screen">
       {eventData ? (
-        <main className="flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg">
+        <main className="mt-8 flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg max-w-[1400px] mx-auto">
           <section className="border-b p-5">
             <h1 className="text-[2rem] font-bold">{eventData.title}</h1>
             <button className="bg-[#23B0FF] text-white p-1 rounded-xl">
@@ -62,44 +63,41 @@ export default function Event({ params }) {
                   magna quis, elementum ante.
                 </p>
               </article>
-              <article className="p-5 flex gap-3 ">
-                <button className="bg-[#25CC68] p-2 rounded-lg text-white text-xl w-32">
-                  Asistiré
-                </button>
-                <button className="bg-[#23B0FF] p-2 rounded-lg text-white text-xl w-32">
-                  Compartir
-                </button>
-              </article>
             </section>
             <section className="flex flex-col w-2/6 p-5">
-              <article className='flex flex-col justify-center gap-3 h-28 p-3'>
+              <article className="flex flex-col justify-center gap-3 h-28 p-3">
                 <article className="flex gap-3">
                   <CalendarDate eventData={eventData} />
                 </article>
                 <article className="flex gap-3">
-                  {eventData.type === "Online"
-                    ? <Image
-                        src="/camera-reels-fill.svg"
-                        alt="card image"
-                        width={30}
-                        height={20}
-                        className="mr-1"
-                      />
-                    : <Image
-                        src="/locationLogo.svg"
-                        alt="card image"
-                        width={20}
-                        height={20}
-                        className="mr-2"
-                      />
-                  }
-                  <h1 className={`text-2xl font-bold text-[#23B0FF] ${eventData.type === 'Online' ? 'text-[#25CC68]' : ''}`}>
+                  {eventData.type === "Online" ? (
+                    <Image
+                      src="/camera-reels-fill.svg"
+                      alt="card image"
+                      width={30}
+                      height={20}
+                      className="mr-1"
+                    />
+                  ) : (
+                    <Image
+                      src="/locationLogo.svg"
+                      alt="card image"
+                      width={20}
+                      height={20}
+                      className="mr-2"
+                    />
+                  )}
+                  <h1
+                    className={`text-2xl font-bold text-[#23B0FF] ${
+                      eventData.type === "Online" ? "text-[#25CC68]" : ""
+                    }`}
+                  >
                     {eventData.type}
                   </h1>
                 </article>
               </article>
               <article className="rounded-lg border-t">
-               <EventMap eventData={eventData} />
+                <EventMap eventData={eventData} />
               </article>
               <article className="p-5 border-t">
                 <div className="flex gap-2">
@@ -153,9 +151,12 @@ export default function Event({ params }) {
       ) : (
         <p>Cargando datos...</p>
       )}
+      <article className="p-5 flex gap-3 sticky bottom-0 border border-slate-200 bg-white shadow-lg">
+        <div className='flex mx-auto w-[1400px]'>
+          <AsistBar />
+        </div>
+      </article>
     </div>
   );
 }
-
-
 
