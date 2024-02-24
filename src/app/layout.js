@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <body className={`${inter.className} font-segoe flex flex-col mx-auto min-h-screen  bg-gradient-to-t from-zinc-100 to-slate-50`}>
         <NabBar />
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow max-width-[1400px]">{children}</main>
         <Footer />
       </body>
     </html>
