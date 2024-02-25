@@ -33,15 +33,19 @@ const eventSchema = mongoose.Schema({
     required: true
   },
   createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Users',
+    // type: mongoose.Schema.Types.ObjectId,
+    type: String,
+    // ref: 'Users',
     required: true
   },
   attendees: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users'
-  }]  
-}
+  }]
+},
+  {
+    timestamps: { createdAt: true, updatedAt: true }
+  }
 );
 
 const Event = mongoose.model("Event", eventSchema);
