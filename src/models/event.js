@@ -25,9 +25,12 @@ const eventSchema = mongoose.Schema({
   address: {
     type: String
   },
-  participants: {
+  city: {
+    type: String
+  },
+  date: {
     type: String,
-    required: true,
+    required: true
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
@@ -38,10 +41,7 @@ const eventSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users'
   }]  
-},
-  {
-    timestamps: { createdAt: true, updatedAt: true }
-  }
+}
 );
 
 const Event = mongoose.model("Event", eventSchema);

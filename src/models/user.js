@@ -5,19 +5,11 @@ const userSchema = mongoose.Schema({
     type: String, 
     required: true 
   },
-  lastName: { 
-    type: String, 
-    required: true 
-  },
   image: { 
     type: String,
     default: 'https://www.svgrepo.com/show/105517/user-icon.svg'    
   },
   password: { 
-    type: String, 
-    required: true 
-  },
-  email: { 
     type: String, 
     required: true 
   }  
