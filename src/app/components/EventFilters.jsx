@@ -4,7 +4,7 @@ import { eventsData } from '../../../eventsData';
 
 const EventFilters = ({ setAllEvents }) => {
 
-  const [selectedFilter, setSelectedFilter] = useState('Cualquier Tipo');
+  const [selectedFilter, setSelectedFilter] = useState('all');
 
   const handleFilterChange = (e) => {
     setSelectedFilter(e.target.value);
@@ -12,11 +12,11 @@ const EventFilters = ({ setAllEvents }) => {
 
   const resetFilters = () => {
     setAllEvents(eventsData);
-    setSelectedFilter('Cualquier Tipo');
+    setSelectedFilter('all');
   }
 
   useEffect(() => {
-    if (selectedFilter === 'Cualquier Tipo') {
+    if (selectedFilter === 'all') {
       setAllEvents(eventsData);
     } else {
       const filteredEvents = eventsData.filter(event => event.type === selectedFilter);
@@ -31,9 +31,9 @@ const EventFilters = ({ setAllEvents }) => {
         onChange={handleFilterChange}
         value={selectedFilter}
       >
-        <option value="Cualquier Tipo">Cualquier Tipo</option>
-        <option value="Presencial">Presencial</option>
-        <option value="Online">Online</option>
+        <option value="all">Cualquier Tipo</option>
+        <option value="in-person">Presencial</option>
+        <option value="online">En línea</option>
       </select>
       <button
         onClick={resetFilters}
