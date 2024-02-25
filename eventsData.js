@@ -56,7 +56,7 @@ export const eventsData = [
     date: "05-05-2024 08:30 GMT-4",
     type: "in-person",
     city: "Caracas, VE",
-    address: "link al evento en línea",
+    address: "G48R+JVC, Subida Sabas Nieves, Caracas, Miranda, Venezuela",
     attendees: [3, 4, 1],
   },
   {
