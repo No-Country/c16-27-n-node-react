@@ -53,5 +53,5 @@ export default {
     find, 
     findById, 
     save, 
-    deleteOne
+    deleteOne    
 };

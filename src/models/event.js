@@ -24,11 +24,7 @@ const eventSchema = mongoose.Schema({
   },
   address: {
     type: String
-  },
-  participants: {
-    type: String,
-    required: true,
-  },
+  },  
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users',
