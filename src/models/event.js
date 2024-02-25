@@ -17,11 +17,7 @@ const eventSchema = mongoose.Schema({
     type: String,
     required: true,
     enum: ['online', 'onSuite'],
-  },  
-  maxUsers: {
-    type: Number,
-    required: true,
-  },
+  },    
   address: {
     type: String
   },
