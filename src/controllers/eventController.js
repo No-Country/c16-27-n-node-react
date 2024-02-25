@@ -15,8 +15,8 @@ import eventService from './../services/eventService.js';
 const findAllEvents = (req,res) => {
     eventService
         .findAllEvents()
-        .then(data => res.json(data))
-        .catch(err => res.json(err));
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json(err));
 };
 
 const findEventById = (req,res) => {
@@ -25,9 +25,18 @@ const findEventById = (req,res) => {
 
     eventService
         .findEventById(id)
-        .then(data => res.json(data))
-        .catch(err => res.json(err));
-};
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json(err));
+    };
+    
+const findEventsByUserId = (req, res) => {
+    const { id } = req.params;
+        
+    eventService
+        .findEventsByUserId(id)
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json(err));
+}
 
 const createEvent = (req,res) => {
 
@@ -35,9 +44,19 @@ const createEvent = (req,res) => {
 
     eventService
         .createEvent(body)
-        .then(data => res.json(data))
-        .catch(err => res.json(err));
+        .then(data => res.status(201).json(data))
+        .catch(err => res.status(400).json(err));
 };
+
+const updateEvent = (req,res) => {
+    const { id } = req.params;
+    const event = req.body;
+
+    eventService
+        .updateEvent(id, event)
+        .then((data) => res.status(200).json(data))
+        .catch((err) => res.status(404).json(err));
+}
 
 const deleteEventById = (req,res) => {
     
@@ -45,13 +64,15 @@ const deleteEventById = (req,res) => {
     
     eventService
         .deleteEventById(id)
-        .then(data => res.json(data))
-        .catch(err => res.json(err));
+        .then(data => res.status(204).json(data))
+        .catch(err => res.status(404).json(err));
 };
 
 export default {
     findAllEvents,
     findEventById,
+    findEventsByUserId,
     createEvent,
+    updateEvent,
     deleteEventById,
 };
