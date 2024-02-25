@@ -14,7 +14,7 @@ export default function Avatar() {
             {session?.user ? (
               <Image src={session.user?.image} alt="" width={40} height={60} />
             ) : (
-              <Image src="login-icon.svg" width={40} height={60} />
+              <Image src="login-icon.svg" alt="" width={40} height={60} />
             )}
           </Menu.Button>
         </div>

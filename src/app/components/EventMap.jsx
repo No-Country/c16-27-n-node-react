@@ -15,8 +15,8 @@ const EventMap = ({ eventData }) => {
             width="400"
             height="320"
             loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
             src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${eventData.address}`}
           ></iframe>
         ) : (

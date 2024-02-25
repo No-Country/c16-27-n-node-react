@@ -33,7 +33,7 @@ export default function Event({ params }) {
           </section>
           <section className="flex">
             <section className="w-4/6">
-              <article class="relative">
+              <article className="relative">
                 <Image
                   src={eventData.img}
                   alt={`Imagen del evento ${id}`}
