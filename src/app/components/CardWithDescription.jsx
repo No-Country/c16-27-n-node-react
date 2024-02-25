@@ -36,7 +36,7 @@ const CardWithDescription = ({ img, title, date, type }) => {
             </p>
           </div>
           <div className="flex items-center">
-            {type === "Online"
+            {type === "online"
             ? <Image
                 src="/camera-reels-fill.svg"
                 alt="card image"
@@ -52,7 +52,7 @@ const CardWithDescription = ({ img, title, date, type }) => {
                 className="mr-2"
               />
             }
-            <p className={`font-bold text-[#23B0FF] ${type === 'Online' ? 'text-[#25CC68]' : ''}`}>
+            <p className={`font-bold text-[#23B0FF] ${type === 'online' ? 'text-[#25CC68]' : ''}`}>
               {type || "Ubicación del evento"}
             </p>
           </div>

@@ -70,7 +70,7 @@ export default function Event({ params }) {
                   <CalendarDate eventData={eventData} />
                 </article>
                 <article className="flex gap-3">
-                  {eventData.type === "Online" ? (
+                  {eventData.type === "online" ? (
                     <Image
                       src="/camera-reels-fill.svg"
                       alt="card image"
@@ -89,7 +89,7 @@ export default function Event({ params }) {
                   )}
                   <h1
                     className={`text-2xl font-bold text-[#23B0FF] ${
-                      eventData.type === "Online" ? "text-[#25CC68]" : ""
+                      eventData.type === "online" ? "text-[#25CC68]" : ""
                     }`}
                   >
                     {eventData.type}
