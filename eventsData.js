@@ -31,7 +31,7 @@ export const eventsData = [
     img: "/images/event3img.png",
     title: "Inteligencia Artificial: una mirada desde y para la universidad",
     description:
-      "¡Únete a nosotros para explorar el fascinante mundo de la inteligencia artificial desde una perspectiva académica! Este evento en línea ofrece una mirada profunda a los avances más recientes en inteligencia artificial y su impacto en el ámbito universitario y más allá. Desde algoritmos de aprendizaje automático hasta aplicaciones prácticas en diferentes disciplinas, nuestros expertos compartirán conocimientos y experiencias sobre el emocionante campo de la IA. Ya sea que estés estudiando en la universidad o simplemente interesado en este tema apasionante, esta sesión te proporcionará información valiosa y oportunidades para interactuar con otros entusiastas de la IA. ¡No te lo pierdas!",
+      "Explora el fascinante mundo de la inteligencia artificial desde una perspectiva académica en nuestro próximo evento en línea. Profundizaremos en los avances más recientes en inteligencia artificial y su impacto en el ámbito universitario y más allá. Desde algoritmos de aprendizaje automático hasta aplicaciones prácticas en diferentes disciplinas, nuestros expertos compartirán conocimientos y experiencias sobre este emocionante campo. Esta sesión es ideal tanto para estudiantes universitarios interesados en la IA como para profesionales en busca de nuevas perspectivas y oportunidades. Únete a nosotros para una exploración enriquecedora de uno de los campos más emocionantes de la ciencia y la tecnología.",
     date: "24-03-2024 19:00 GMT-3",
     type: "online",
     city: "",

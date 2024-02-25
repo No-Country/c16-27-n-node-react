@@ -29,6 +29,7 @@ const page = () => {
               title={event.title}
               date={event.date}
               type={event.type}
+              city={event.city}
               description={event.description}
             />
           </Link>

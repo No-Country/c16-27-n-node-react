@@ -56,7 +56,7 @@ const CardWithDescription = ({ img, title, date, type, city, description }) => {
                 type === "online" ? "text-[#25CC68]" : ""
               }`}
             >
-              {type || "Ubicación del evento"}
+              {city || "En línea"}
             </p>
           </div>
         </div>
