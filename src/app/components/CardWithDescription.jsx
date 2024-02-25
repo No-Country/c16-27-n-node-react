@@ -3,14 +3,16 @@ import Image from "next/image";
 
 const CardWithDescription = ({ img, title, date, type }) => {
   return (
-    <div className="border border-slate-300 m-3 flex h-[240px] w-[42rem] bg-white rounded-lg shadow-xl ">
+    <div className="border border-slate-300 m-3 flex h-[240px] w-[42rem] bg-white rounded-lg shadow-xl overflow-hidden">
+      <div className="flex-shrink-0 h-full w-64 relative">
       <Image
         src={img || "/imgCard-1.png"}
         alt="card image"
-        width={280}
-        height={300}
-        className="rounded-lg"
+        layout="fill"
+        objectFit="cover"
+        className="rounded-l-lg"
       />
+      </div>
       <div className="p-5 flex flex-col justify-center">
         <h5 className="mb-2 text-xl font-bold tracking-tight ">
           {title || "Titulo del evento"}

@@ -13,7 +13,7 @@ export default function Event({ params }) {
 
   useEffect(() => {
     // Hacer un fetch para llamar a los datos reales
-    const selectedEvent = eventsData.find(event => event.id === id);
+    const selectedEvent = eventsData.find(event => event.id === parseInt(id));
     if (selectedEvent) {
       setEventData(selectedEvent);
     } else {
@@ -37,8 +37,8 @@ export default function Event({ params }) {
                 <Image
                   src={eventData.img}
                   alt={`Imagen del evento ${id}`}
-                  width={280}
-                  height={300}
+                  width={1000}
+                  height={1000}
                   className="w-full h-[500px] object-cover"
                 />
               </article>
