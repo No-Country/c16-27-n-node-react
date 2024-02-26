@@ -76,7 +76,7 @@ export default function Avatar() {
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       {active ? '' : ''}
-                      Iniciar Session
+                      Iniciar Sesión
                     </button>
                   )}
                 </Menu.Item>

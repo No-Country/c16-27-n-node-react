@@ -6,16 +6,21 @@ import Attendee from '@/app/components/Attendee';
 import EventMap from '@/app/components/EventMap';
 import CalendarDate from '@/app/components/CalendarDate';
 import AsistBar from '@/app/components/AsistBar';
+import { usersData } from '/usersData';
 
 export default function Event({ params }) {
   const { id } = params;
   const [eventData, setEventData] = useState(null);
+  const [creatorUserData, setCreatorUserData] = useState(null);
 
   useEffect(() => {
-    // Hacer un fetch para llamar a los datos reales
     const selectedEvent = eventsData.find(event => event.id === parseInt(id));
     if (selectedEvent) {
       setEventData(selectedEvent);
+      const creatorUser = usersData.find(user => user.userId === selectedEvent.creatorUserId);
+      if (creatorUser) {
+        setCreatorUserData(creatorUser);
+      }
     } else {
       console.error(`Evento con ID ${id} no encontrado.`);
     }
@@ -44,23 +49,7 @@ export default function Event({ params }) {
               </article>
               <article className="text-xl mt-8 p-3">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Mauris orci lorem, sodales vulputate purus sit amet, tincidunt
-                  vestibulum tortor. Donec ac dolor id mauris sagittis
-                  sollicitudin. Morbi mollis velit quis odio maximus, eget
-                  posuere urna lobortis. Vivamus aliquet volutpat nibh, nec
-                  malesuada justo dapibus eu. Vivamus at laoreet nulla, ac
-                  egestas mauris. Praesent scelerisque diam tincidunt tortor
-                  consectetur malesuada. Aliquam erat volutpat. Morbi placerat
-                  convallis diam. Phasellus aliquet pellentesque est. Praesent
-                  porta eget ipsum sed aliquet. Quisque semper vel dolor
-                  interdum hendrerit. Nunc quis sem tincidunt, tincidunt magna
-                  quis, elementum ante.
-                </p>
-                <p>
-                  Praesent porta eget ipsum sed aliquet. Quisque semper vel
-                  dolor interdum hendrerit. Nunc quis sem tincidunt, tincidunt
-                  magna quis, elementum ante.
+                  {eventData.description || "No hay descripción"}
                 </p>
               </article>
             </section>
@@ -102,14 +91,14 @@ export default function Event({ params }) {
               <article className="p-5 border-t">
                 <div className="flex gap-2">
                   <Image
-                    src={"/anfitrion.png"}
+                    src={creatorUserData ? creatorUserData.photo : "Agregar foto default"}
                     alt={`Imagen del evento anfitrión del evento ${id}`}
                     width={80}
                     height={40}
-                    className="mb-6"
+                    className="mb-6 rounded-full shadow"
                   />
                   <div className="flex flex-col justify-center">
-                    <h3 className="font-bold text-xl">Samuel Almeida</h3>
+                    <h3 className="font-bold text-xl">{`${creatorUserData.firstName} ${creatorUserData.lastName}`}</h3>
                     <p className="text-[#FF256F] font-bold text-lg">
                       Anfitrión
                     </p>
