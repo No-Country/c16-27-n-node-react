@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const CardWithDescription = ({ img, title, date, type, city, description }) => {
   return (
-    <div className="border border-slate-300 m-3 flex h-[240px] w-[42rem] bg-white rounded-lg shadow-xl overflow-hidden">
+    <div className="border border-slate-300 m-3 flex h-[240px] w-[42rem] bg-white rounded-lg shadow overflow-hidden">
       <div className="flex-shrink-0 h-full w-64 relative">
         <Image
           src={img || "/imgCard-1.png"}
@@ -36,7 +36,7 @@ const CardWithDescription = ({ img, title, date, type, city, description }) => {
           <div className="flex items-center">
             {type === "online" ? (
               <Image
-                src="/camera-reels-fill.svg"
+                src="/webicon.svg"
                 alt="card image"
                 width={20}
                 height={20}

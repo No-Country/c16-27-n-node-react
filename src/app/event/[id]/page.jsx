@@ -72,7 +72,7 @@ export default function Event({ params }) {
                 <article className="flex gap-3">
                   {eventData.type === "online" ? (
                     <Image
-                      src="/camera-reels-fill.svg"
+                      src="/webicon.svg"
                       alt="card image"
                       width={30}
                       height={20}

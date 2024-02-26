@@ -4,7 +4,7 @@ import Link from 'next/link';
 const page = () => {
   return (
       <main>
-        <section className="bg-[#0F0F0F] flex flex-col items-center justify-center h-[300px] ">
+        <section className="bg-[#0F0F0F] flex flex-col items-center justify-center h-[300px] mb-10">
           <h1 className=" text-5xl text-center mb-5 text-white font-bold font-segoe">
             ¡Bienvenido a{' '}
 
@@ -25,7 +25,7 @@ const page = () => {
             alcance de tu mano
           </p>
         </section>
-        <section className="h-[600px] flex flex-col items-center justify-center gap-10 ">
+        <section className="h-[600px] flex flex-col items-center justify-center gap-10 m-5">
           <Link href={'/searchPage'}>
             <button className="bg-[#23B0FF] h-15 rounded-[20px] text-3xl text-white p-4 font-bold tracking-wider">
               ¡Descubre eventos aquí!

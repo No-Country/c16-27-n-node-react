@@ -6,7 +6,7 @@ export const eventsData = [
     title: "Mercados Monetarios (Forex & Monedas Digitales)",
     description:
       "Únete a nosotros en una inmersión profunda en el emocionante y dinámico mundo de los mercados monetarios. Desde las fluctuaciones del Forex hasta la innovación de las criptomonedas, este evento presencial está diseñado para ofrecerte una visión única y valiosa de las tendencias y estrategias que están dando forma al panorama financiero global. Durante este evento de dos días, los participantes tendrán la oportunidad de interactuar con expertos en Forex y criptomonedas, así como con líderes de opinión de la industria financiera. Desde sesiones magistrales hasta paneles de discusión, exploraremos temas que van desde la teoría económica subyacente hasta las estrategias prácticas de inversión. Descubre cómo las divisas tradicionales se entrelazan con las nuevas formas de dinero digital, y cómo puedes capitalizar estas interacciones para diversificar tu cartera y maximizar tus oportunidades de inversión. Aprende sobre las últimas tecnologías, tendencias regulatorias y análisis de mercado que están moldeando el futuro de las finanzas. Ya seas un operador experimentado en Forex, un entusiasta de las criptomonedas o simplemente alguien interesado en explorar nuevas oportunidades de inversión, este evento es tu ventana al mundo de los mercados monetarios. Únete a nosotros mientras desentrañamos los secretos de los mercados financieros y te equipamos con el conocimiento y las herramientas necesarias para navegar con confianza en este emocionante paisaje económico. ¡Reserva tu lugar hoy y prepárate para sumergirte en una experiencia enriquecedora que transformará tu comprensión de los mercados monetarios para siempre!",
-    date: "02/03/2024 19:00 GMT-5",
+    date: "18/03/2024 19:00 GMT-5",
     type: "in-person",
     city: "Lima, PE",
     address: "Av. de la Arqueología 206, San Borja 15021, Perú",
@@ -19,7 +19,7 @@ export const eventsData = [
     title: "Open Beer Bogotá 2024",
     description:
       "¡Únete a nosotros en el evento de cerveza más emocionante del año! Open Beer Bogotá 2024 es una celebración de la cultura cervecera que no te puedes perder. Prepárate para disfrutar de una amplia selección de cervezas artesanales, música en vivo, deliciosa comida callejera y un ambiente lleno de energía y camaradería. Desde los clásicos favoritos hasta las últimas novedades en el mundo de la cerveza, este evento es perfecto para los amantes de la cerveza de todos los niveles. ¡Ven y brinda con nosotros en Open Beer Bogotá 2024!",
-    date: "12-03-2024 09:00 GMT-5",
+    date: "21-03-2024 09:00 GMT-5",
     type: "in-person",
     city: "Bogotá, CO",
     address: "Cl. 39 # 25 - 13, Bogotá, Colombia",
