@@ -28,7 +28,7 @@ const PresencialForm = () => {
           ></textarea>
         </div>
         <div className="flex flex-col border-l w-1/2 p-4">
-          <div className="h-1/2 flex flex-col">
+          <div className="h-1/2 flex flex-col gap-2">
             <label htmlFor="">Ciudad</label>
             <select name="" id="" className="border rounded-md"></select>
             <label htmlFor="">Dirección</label>
