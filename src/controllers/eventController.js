@@ -1,3 +1,4 @@
+import { validationResult } from 'express-validator';
 import eventService from './../services/eventService.js';
 
 // const newEvent = new Event({
@@ -40,22 +41,38 @@ const findEventsByUserId = (req, res) => {
 
 const createEvent = (req,res) => {
 
-    const body = req.body;
+    const errors = validationResult(req);
 
-    eventService
-        .createEvent(body)
-        .then(data => res.status(201).json(data))
-        .catch(err => res.status(400).json(err));
+    if(errors.isEmpty()){
+        const body = req.body;
+    
+        eventService
+            .createEvent(body)
+            .then(data => res.status(201).json({errors: errors.array(), data : data}))
+            .catch(err => res.status(400).json(err));
+    } else {
+        res.status(400).json({ errors: errors.array()})
+    }
+
 };
 
 const updateEvent = (req,res) => {
-    const { id } = req.params;
-    const event = req.body;
 
-    eventService
+    const errors = validationResult(req);
+
+    if(errors.isEmpty()){
+
+        const { id } = req.params;
+        const event = req.body;
+        
+        eventService
         .updateEvent(id, event)
         .then((data) => res.status(200).json(data))
         .catch((err) => res.status(404).json(err));
+    }
+    else {
+        res.status(400).json({errors: errors.array()})
+    }
 }
 
 const deleteEventById = (req,res) => {

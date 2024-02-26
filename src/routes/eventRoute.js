@@ -1,15 +1,71 @@
 import express from "express";
 import eventController from "./../controllers/eventController.js";
+import { body, validationResult } from "express-validator";
 
 const router = express.Router();
 
 // Enrutadores de los controladores
 router.get('/events', eventController.findAllEvents);
+
 router.get('/events/:id', eventController.findEventById);
+
 router.get('/events/user/:id', eventController.findEventsByUserId);
-router.post('/events/', eventController.createEvent);
-router.put('/events/:id', eventController.updateEvent);
+
 router.delete('/events/:id', eventController.deleteEventById);
+
+router.post('/events', [
+    body('creatorUserId', "Ingrese un nombre del creador del evento")
+        .exists()
+        .isLength({min:20}),
+    body('title', 'Ingrese un titulo para el evento')
+        .exists()
+        .isLength({min: 5, max:50}),
+    body('description', 'Ingrese una descripción válida para el evento')
+        .exists()
+        .isLength({min: 10, max:250}),
+    body('type', 'Ingrese un tipo de evento válido')
+        .exists()
+        .isLength({min:6, max:7}),
+    body('category', 'Ingrese un tipo de categoría válido')
+        .exists()
+        .isInt({min:1, max:20}),
+    body('address', 'Ingrese una dirección válida')
+        .exists()
+        .isLength({min:10, max:100}),
+    body('date', 'Ingrese una fecha válida')
+        .exists()
+        .isLength({min:6, max:20}),
+    body('attendees', 'Ingrese al menos 1 asistente para el evento')
+        .exists()
+
+] ,eventController.createEvent);
+
+router.put('/events/:id', [
+    body('creatorUserId', "Ingrese un nombre del creador del evento")
+        .exists()
+        .isLength({min:20}),
+    body('title', 'Ingrese un titulo para el evento')
+        .exists()
+        .isLength({min: 5, max:50}),
+    body('description', 'Ingrese una descripción válida para el evento')
+        .exists()
+        .isLength({min: 10, max:250}),
+    body('type', 'Ingrese un tipo de evento válido')
+        .exists()
+        .isLength({min:6, max:7}),
+    body('category', 'Ingrese un tipo de categoría válido')
+        .exists()
+        .isInt({min:1, max:20}),
+    body('address', 'Ingrese una dirección válida')
+        .exists()
+        .isLength({min:10, max:100}),
+    body('date', 'Ingrese una fecha válida')
+        .exists()
+        .isLength({min:6, max:20}),
+    body('attendees', 'Ingrese al menos 1 asistente para el evento')
+        .exists()
+
+]  ,eventController.updateEvent);
 
 
 export default router;
