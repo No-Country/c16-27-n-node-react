@@ -3,10 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BtnLogoLink from '../ui/BtnLogoLink';
 import Avatar from '../ui/Avatar';
+import BtnCalendarIcon from './BtnCalendarIcon';
+
 const NabBar = () => {
-  const createEventModal = () => {
-    console.log('Create Event Modal open');
-  };
 
   return (
     <div className="border-b-2 p-2 flex justify-between bg-white">
@@ -44,13 +43,7 @@ const NabBar = () => {
           width={40}
           height={30}
         />
-        <BtnLogoLink
-          src="/calendar-plus.svg"
-          alt="calendarIcon"
-          width={40}
-          height={30}
-          onclick={createEventModal}
-        />
+        <BtnCalendarIcon />
         <Avatar />
       </div>
     </div>
