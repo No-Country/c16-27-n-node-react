@@ -16,56 +16,55 @@ router.delete('/events/:id', eventController.deleteEventById);
 router.post('/events', [
     body('creatorUserId', "Ingrese un nombre del creador del evento")
         .exists()
-        .isLength({min:20}),
+        .isLength({ min: 20 }),
     body('title', 'Ingrese un titulo para el evento')
         .exists()
-        .isLength({min: 5, max:50}),
+        .isLength({ min: 5, max: 50 }),
     body('description', 'Ingrese una descripción válida para el evento')
         .exists()
-        .isLength({min: 10, max:250}),
+        .isLength({ min: 10, max: 250 }),
     body('type', 'Ingrese un tipo de evento válido')
         .exists()
-        .isLength({min:6, max:7}),
+        .isLength({ min: 6, max: 7 }),
     body('category', 'Ingrese un tipo de categoría válido')
         .exists()
-        .isInt({min:1, max:20}),
+        .isInt({ min: 1, max: 20 }),
     body('address', 'Ingrese una dirección válida')
         .exists()
-        .isLength({min:10, max:100}),
+        .isLength({ min: 10, max: 100 }),
     body('date', 'Ingrese una fecha válida')
         .exists()
-        .isLength({min:6, max:20}),
+        .isLength({ min: 6, max: 20 }),
     body('attendees', 'Ingrese al menos 1 asistente para el evento')
         .exists()
 
-] ,eventController.createEvent);
+], eventController.createEvent);
 
 router.put('/events/:id', [
     body('creatorUserId', "Ingrese un nombre del creador del evento")
-        .exists()
-        .isLength({min:20}),
+        .optional()
+        .isLength({ min: 20 }),
     body('title', 'Ingrese un titulo para el evento')
-        .exists()
-        .isLength({min: 5, max:50}),
+        .optional()
+        .isLength({ min: 5, max: 50 }),
     body('description', 'Ingrese una descripción válida para el evento')
-        .exists()
-        .isLength({min: 10, max:250}),
+        .optional()
+        .isLength({ min: 10, max: 250 }),
     body('type', 'Ingrese un tipo de evento válido')
-        .exists()
-        .isLength({min:6, max:7}),
+        .optional()
+        .isLength({ min: 6, max: 7 }),
     body('category', 'Ingrese un tipo de categoría válido')
-        .exists()
-        .isInt({min:1, max:20}),
+        .optional()
+        .isInt({ min: 1, max: 20 }),
     body('address', 'Ingrese una dirección válida')
-        .exists()
-        .isLength({min:10, max:100}),
+        .optional()
+        .isLength({ min: 10, max: 100 }),
     body('date', 'Ingrese una fecha válida')
-        .exists()
-        .isLength({min:6, max:20}),
+        .optional()
+        .isLength({ min: 6, max: 20 }),
     body('attendees', 'Ingrese al menos 1 asistente para el evento')
-        .exists()
-
-]  ,eventController.updateEvent);
+        .optional()
+], eventController.updateEvent);
 
 
 export default router;
