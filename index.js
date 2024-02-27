@@ -13,7 +13,7 @@ import eventRoute from "./src/routes/eventRoute.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const allowedDomains = process.env.PORT
+const allowedDomains = process.env.FRONTEND_URL
 
 
 const corsOptions = {
@@ -31,8 +31,8 @@ const __dirname = dirname(__filename);
 const src = path.join(__dirname, "views");
 
 // MIDDLEWARE
-app.use(cors(corsOptions));
 dotenv.config();
+app.use(cors(corsOptions));
 app.use(express.static(src));
 app.use(express.json());
 

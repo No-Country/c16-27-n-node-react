@@ -26,8 +26,7 @@ const findEventsByUserId = (userId) => {
         .catch(err => console.log(err));
 }
 
-const createEvent = (newEvent) => {
-
+const createEvent = async (newEvent) => {
     const event = new eventSchema(newEvent);
 
     return event

@@ -34,15 +34,15 @@ const eventSchema = mongoose.Schema({
     required : true,
   },
   city: {
-    type: String
+    type: String,
+    required: true
   },
   date: {
     type: String,
     required: true
   },
   attendees: {
-    type: [String],
-    required: true,
+    type: [String],    
     // type: [Object],
     // type: mongoose.Schema.Types.ObjectId,
     // ref: 'Users'

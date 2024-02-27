@@ -17,7 +17,7 @@ router.delete('/events/:id', eventController.deleteEventById);
 router.post('/events', [
     body('creatorUserId', "Ingrese un nombre del creador del evento")
         .exists()
-        .isLength({ min: 20 }),
+        .isLength({ min: 5 }),
     body('title', 'Ingrese un titulo para el evento')
         .exists()
         .isLength({ min: 5, max: 50 }),
@@ -35,7 +35,7 @@ router.post('/events', [
         .isLength({ min: 10, max: 100 }),
     body('date', 'Ingrese una fecha válida')
         .exists()
-        .isLength({ min: 6, max: 20 }),
+        .isLength({ min: 6, max: 40 }),
     body('attendees', 'Ingrese al menos 1 asistente para el evento')
         .exists()
 
@@ -67,14 +67,13 @@ router.put('/events/:id', [
         .optional()
 ], eventController.updateEvent);
 
-
-
-router.post('/events/updateImage', eventController.updateImage);
 router.post('/events/aa', async ( req, res, next) => {
     const file = req.file;
     const imageUrl = await uploadToGCS(file)
     console.log(imageUrl)
 });
+
+router.post('/events/updateImage', eventController.updateImage);
 
 
 export default router;
