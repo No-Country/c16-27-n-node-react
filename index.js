@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import multer from 'multer'
+import multer from 'multer';
+import cors from "cors";
 import { Storage } from "@google-cloud/storage";
 // import cors from "cors";
 import { fileURLToPath } from 'url';
@@ -12,15 +13,26 @@ import eventRoute from "./src/routes/eventRoute.js";
 
 const app = express();
 const PORT = process.env.PORT || 4000;
+const allowedDomains = process.env.PORT
+
+
+const corsOptions = {
+    origin: function(origin, callback){
+        if(allowedDomains.includes(origin) !== -1){
+            callback(null,true)
+        }else{
+            callback(new Error("Not allowed by CORS"))
+        }
+    }
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const src = path.join(__dirname, "views");
 
 // MIDDLEWARE
-// app.use(cors());
+app.use(cors(corsOptions));
 dotenv.config();
-
 app.use(express.static(src));
 app.use(express.json());
 
