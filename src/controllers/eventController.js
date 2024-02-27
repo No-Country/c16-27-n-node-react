@@ -1,3 +1,4 @@
+import { validationResult } from 'express-validator';
 import { multerGCSUploader, uploadToGCS } from '../helpers/adapter/MulterAdapter.js';
 import eventService from './../services/eventService.js';
 
@@ -13,18 +14,49 @@ import eventService from './../services/eventService.js';
 //     participants: []
 //   });
 
+const findAllEvents = (req,res) => {
 const find = (req, res) => {
     eventService
-        .find()
-        .then(data => res.json(data))
-        .catch(err => res.json(err));
+        .findAllEvents()
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json(err));
 };
 
+const findEventById = (req,res) => {
 const findById = (req, res) => {
 
     const { id } = req.params;
 
     eventService
+        .findEventById(id)
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json(err));
+    };
+    
+const findEventsByUserId = (req, res) => {
+    const { id } = req.params;
+        
+    eventService
+        .findEventsByUserId(id)
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json(err));
+}
+
+const createEvent = (req,res) => {
+
+    const errors = validationResult(req);
+
+    if(errors.isEmpty()){
+        const body = req.body;
+    
+        eventService
+            .createEvent(body)
+            .then(data => res.status(201).json({errors: errors.array(), data : data}))
+            .catch(err => res.status(400).json(err));
+    } else {
+        res.status(400).json({ errors: errors.array()})
+    }
+
         .findById(id)
         .then(data => res.json(data))
         .catch(err => res.json(err));
@@ -40,14 +72,35 @@ const save = (req, res) => {
         .catch(err => res.json(err));
 };
 
+const updateEvent = (req,res) => {
+
+    const errors = validationResult(req);
+
+    if(errors.isEmpty()){
+
+        const { id } = req.params;
+        const event = req.body;
+        
+        eventService
+        .updateEvent(id, event)
+        .then((data) => res.status(200).json(data))
+        .catch((err) => res.status(404).json(err));
+    }
+    else {
+        res.status(400).json({errors: errors.array()})
+    }
+}
+
+const deleteEventById = (req,res) => {
+    
 const deleteOne = (req, res) => {
 
     const { id } = req.params;
 
     eventService
-        .deleteOne(id)
-        .then(data => res.json(data))
-        .catch(err => res.json(err));
+        .deleteEventById(id)
+        .then(data => res.status(204).json(data))
+        .catch(err => res.status(404).json(err));
 };
 
 
@@ -115,6 +168,12 @@ const some = (req, res) => {
 // }
 
 export default {
+    findAllEvents,
+    findEventById,
+    findEventsByUserId,
+    createEvent,
+    updateEvent,
+    deleteEventById,
     find,
     findById,
     save,

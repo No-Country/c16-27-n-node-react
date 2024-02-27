@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
+import userSchema from "./user.js";
 
 const eventSchema = mongoose.Schema({
+  creatorUserId: {
+    type: String,
+    required: true,
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: 'Users',
+  },
   title: {
     type: String,
     required: true,
@@ -18,22 +25,28 @@ const eventSchema = mongoose.Schema({
     required: true,
     enum: ['online', 'onSuite'],
   },  
-  maxUsers: {
+  category: {
     type: Number,
     required: true,
   },
   address: {
+    type: String,
+    required : true,
+  },
+  city: {
     type: String
-  },  
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Users',
+  },
+  date: {
+    type: String,
     required: true
   },
-  attendees: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Users'
-  }]  
+  attendees: {
+    type: [String],
+    required: true,
+    // type: [Object],
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: 'Users'
+  }
 },
   {
     timestamps: { createdAt: true, updatedAt: true }
