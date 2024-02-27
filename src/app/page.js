@@ -47,7 +47,7 @@ const page = () => {
               type={'inperson'}
             />
             <CardEvent
-              img={'/images/imgCard-3.png'}
+              img={'/images/imgCard-2.png'}
               title={
                 'Inteligencia Artificial: una mirada desde y para la universidad'
               }

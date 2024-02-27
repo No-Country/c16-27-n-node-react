@@ -5,14 +5,13 @@ import Image from 'next/image';
 import { signIn, useSession, signOut } from 'next-auth/react';
 export default function Avatar() {
   const { data: session } = useSession();
-
   return (
     <div>
       <Menu as="div">
         <div>
           <Menu.Button className="flex text-sm font-medium text-white  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
             {session?.user ? (
-              <Image src={session.user?.image} alt="" width={40} height={60} />
+              <Image src={session.user?.image} alt="" width={40} height={60}  className='rounded-full'/>
             ) : (
               <Image src="login-icon.svg" alt="" width={40} height={60} />
             )}

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Mariano Acuña",
+    "role": "Frontend",
+    "github": "https://github.com/ajmariano98",
+    "linkedin": "https://www.linkedin.com/in/j-mariano-acuña/",
+    "profile_picture": "https://github.com/ajmariano98.png"
+  },
+  {
+    "name": "Ismanol Garcia",
+    "role": "Frontend",
+    "github": "https://github.com/ismanolgarcia",
+    "linkedin": "https://www.linkedin.com/in/ismanolgarcia",
+    "profile_picture": "https://github.com/ismanolgarcia.png"
+  },
+  {
+    "name": "Edgardo Silva",
+    "role": "Frontend",
+    "github": "https://github.com/Edgardosilva",
+    "linkedin": "https://www.linkedin.com/in/edgardo-silva/",
+    "profile_picture": "https://github.com/edgardosilva.png"
+  },
+  {
+    "name": "Fabián Flores",
+    "role": "Backend",
+    "github": "https://github.com/FabianVladmir",
+    "linkedin": "https://www.linkedin.com/in/fabian-florez-25b708180/",
+    "profile_picture": "https://github.com/FabianVladmir.png"
+  },
+  {
+    "name": "Santiago Zuluaga",
+    "role": "Backend",
+    "github": "https://github.com/smzuluaga",
+    "linkedin": "https://www.linkedin.com/in/santiago-zuluaga-developer/",
+    "profile_picture": "https://github.com/smzuluaga.png"
+  },
+  {
+    "name": "Veronica Oviedo",
+    "role": "Backend",
+    "github": "https://github.com/veronicaoviedo",
+    "linkedin": "https://www.linkedin.com/in/veronicaoviedo",
+    "profile_picture": "https://github.com/veronicaoviedo.png"
+  },
+  {
+    "name": "Tobias Gómez",
+    "role": "Backend",
+    "github": "https://github.com/tobiasgomez",
+    "linkedin": "https://www.linkedin.com/in/tobiasgomez",
+    "profile_picture": "https://github.com/tobiasgomez.png"
+  }
+]
