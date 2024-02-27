@@ -46,13 +46,10 @@ const createEvent = async (req, res) => {
     if (errors.isEmpty()) {
         const { creatorUserId, title, description, type, category, address, city, date, time, timeZone, attendees } = req.body;
         
-        // console.log(date, time, timeZone)
-        //combines the 3 inputs, date, time and time zone
-        // const combinedDate = new Date(`${date} ${time} ${timeZone}`);
-        // combinedDate.setHours(combinedDate.getHours() - (new Date().getTimezoneOffset() / 60) + parseInt(timeZone));        
         const formattedDateTimes = `${date} ${time} ${timeZone}`
-        eventService
-            .createEvent({
+        
+        try {
+            const data = await eventService.createEvent({
                 creatorUserId,
                 title,
                 description,
@@ -60,16 +57,17 @@ const createEvent = async (req, res) => {
                 category,
                 address,
                 city,
-                // date: combinedDate.toISOString(),
                 date: formattedDateTimes,
                 attendees
-            })
-            .then(data => res.status(201).json({ errors: errors.array(), data: data }))
-            .catch(err => res.status(400).json(err));
+            });
+            
+            res.status(201).json({ errors: errors.array(), data: data });
+        } catch (err) {
+            res.status(400).json(err);
+        }
     } else {
         res.status(400).json({ errors: errors.array() })
     }
-
 };
 
 const updateEvent = (req, res) => {
