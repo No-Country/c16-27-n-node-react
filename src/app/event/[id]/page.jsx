@@ -1,26 +1,33 @@
-'use client'
-import { useEffect, useState } from 'react';
-import { eventsData } from '/eventsData';
-import Image from 'next/image';
-import Attendee from '@/app/components/Attendee';
-import EventMap from '@/app/components/EventMap';
-import CalendarDate from '@/app/components/CalendarDate';
-import AsistBar from '@/app/components/AsistBar';
-import { usersData } from '/usersData';
+"use client";
+import { useEffect, useState } from "react";
+import { eventsData } from "/eventsData";
+import Image from "next/image";
+import Attendee from "@/app/components/Attendee";
+import EventMap from "@/app/components/EventMap";
+import CalendarDate from "@/app/components/CalendarDate";
+import AsistBar from "@/app/components/AsistBar";
+import { usersData } from "/usersData";
 
 export default function Event({ params }) {
   const { id } = params;
   const [eventData, setEventData] = useState(null);
   const [creatorUserData, setCreatorUserData] = useState(null);
+  const [attendees, setAttendees] = useState([]);
 
   useEffect(() => {
-    const selectedEvent = eventsData.find(event => event.id === parseInt(id));
+    const selectedEvent = eventsData.find((event) => event.id === parseInt(id));
     if (selectedEvent) {
       setEventData(selectedEvent);
-      const creatorUser = usersData.find(user => user.userId === selectedEvent.creatorUserId);
+      const creatorUser = usersData.find(
+        (user) => user.userId === selectedEvent.creatorUserId
+      );
       if (creatorUser) {
         setCreatorUserData(creatorUser);
       }
+      const attendeesData = selectedEvent.attendees.map((attendeeId) =>
+        usersData.find((user) => user.userId === attendeeId)
+      );
+      setAttendees(attendeesData);
     } else {
       console.error(`Evento con ID ${id} no encontrado.`);
     }
@@ -48,9 +55,7 @@ export default function Event({ params }) {
                 />
               </article>
               <article className="text-xl mt-8 p-3">
-                <p>
-                  {eventData.description || "No hay descripción"}
-                </p>
+                <p>{eventData.description || "No hay descripción"}</p>
               </article>
             </section>
             <section className="flex flex-col w-2/6 p-5">
@@ -81,7 +86,7 @@ export default function Event({ params }) {
                       eventData.type === "online" ? "text-[#25CC68]" : ""
                     }`}
                   >
-                    {eventData.type}
+                    {eventData.city === "" ? "En línea" : eventData.city}
                   </h1>
                 </article>
               </article>
@@ -89,48 +94,43 @@ export default function Event({ params }) {
                 <EventMap eventData={eventData} />
               </article>
               <article className="p-5 border-t">
+                {/* Chicos, aquí no puedo hacer que la foto venga dentro de un círculo, ya lo inenté de mil formas. Solo sirve con imágenes cuadradas */}
                 <div className="flex gap-2">
-                  <Image
-                    src={creatorUserData ? creatorUserData.photo : "Agregar foto default"}
-                    alt={`Imagen del evento anfitrión del evento ${id}`}
-                    width={80}
-                    height={40}
-                    className="mb-6 rounded-full shadow"
-                  />
+                  <div className="h-30 w-30 overflow-hidden rounded-full shadow">
+                    <Image
+                      src={
+                        creatorUserData
+                          ? creatorUserData.photo
+                          : "Agregar foto default"
+                      }
+                      alt={`Imagen del evento anfitrión del evento ${id}`}
+                      width={100}
+                      height={100}
+                      className=""
+                    />
+                  </div>
                   <div className="flex flex-col justify-center">
-                    <h3 className="font-bold text-xl">{`${creatorUserData.firstName} ${creatorUserData.lastName}`}</h3>
+                    <h3 className="font-bold text-xl">
+                      {creatorUserData.name}
+                    </h3>
                     <p className="text-[#FF256F] font-bold text-lg">
                       Anfitrión
                     </p>
                   </div>
                 </div>
-                <div className=" gap-4 flex flex-col text-center text-white">
+                <div className=" gap-2 flex flex-col text-center text-white mt-5">
                   <h2 className="text-black text-left font-bold">
-                    {"Asistentes (3)"}
+                    {"Asistentes (" + attendees.length + ")"}
                   </h2>
                   <div className="flex gap-3">
-                    <div className=" bg-[#1B1B1B] rounded-lg">
-                      {/*Mapear datos de asistentes */}
+                    {attendees.map(attendee => (
+                      <div className="w-50 h-50 bg-[#1B1B1B] rounded-lg overflow-hidden" key={attendee.userId}>
                       <Attendee
-                        img="/attendee-1.png"
-                        name="Juan"
-                        lastName="Almeida"
+                        img={attendee.photo}
+                        name={attendee.name}
                       />
                     </div>
-                    <div className=" bg-[#1B1B1B] rounded-lg">
-                      <Attendee
-                        img="/attendee-1.png"
-                        name="Juan"
-                        lastName="Almeida"
-                      />
-                    </div>
-                    <div className=" bg-[#1B1B1B] rounded-lg">
-                      <Attendee
-                        img="/attendee-1.png"
-                        name="Juan"
-                        lastName="Almeida"
-                      />
-                    </div>
+                    ))}
                   </div>
                 </div>
               </article>
@@ -141,11 +141,10 @@ export default function Event({ params }) {
         <p>Cargando datos...</p>
       )}
       <article className="p-5 flex gap-3 sticky bottom-0 border border-slate-200 bg-white shadow-lg">
-        <div className='flex mx-auto w-[1400px]'>
+        <div className="flex mx-auto w-[1400px]">
           <AsistBar />
         </div>
       </article>
     </div>
   );
 }
-
