@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const CardEvent = ({ id, img, title, date, location, type }) => {
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+      <Link href={`/event/${id}`}>
       <div>
         <Image
           src={img || "/imgCard-1.png"}
@@ -16,7 +18,7 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
         />
       </div>
       <div className="p-3 h-30 flex flex-col justify-center">
-        <a href="#">
+        <a href={`/event/${id}`}>
           <h5 className="mb-2 text-xl font-bold tracking-tight ">
             {title || "Titulo del evento"}
           </h5>
@@ -46,6 +48,7 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
           </p>
         </div>
       </div>
+      </Link>
     </div>
   );
 };
