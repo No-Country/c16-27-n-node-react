@@ -1,7 +1,19 @@
+"use client";
 import React from 'react';
 import Image from 'next/image';
+import { useState } from "react";
+import { categories } from "/categoriesData";
+import { timezones } from "/timezones";
 
 const OnlineForm = () => {
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedTimezone, setSelectedTimezone] = useState("");
+  const [showSelectCategory, setShowSelectCategory] = useState(true);
+
+  const handleChangeCategory = (e) => {
+    setSelectedCategory(e.target.value);
+    setShowSelectCategory(false);
+  }; 
   return (
     <form
       action="/ruta/del/endpoint"
@@ -14,13 +26,42 @@ const OnlineForm = () => {
             <label htmlFor="">Título</label>
             <input type="text" className="border rounded-md" />
             <label htmlFor="">Categoría</label>
-            <select name="" id="" className="border rounded-md"></select>
+            <select
+              name=""
+              id=""
+              className="border rounded-md"
+              value={selectedCategory}
+              onChange={handleChangeCategory}
+            >
+              {showSelectCategory && (
+                <option disabled value="">
+                  Seleccionar categoría
+                </option>
+              )}
+              {categories.map((category, index) => (
+                <option key={index} value={category.value}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
             <label htmlFor="">Fecha</label>
             <input type="date" className="border rounded-md" />
             <label htmlFor="">Hora</label>
             <input type="time" className="border rounded-md" />
             <label htmlFor="">Zona Horaria</label>
-            <select name="" id="" className="border rounded-md"></select>
+            <select
+              name=""
+              id=""
+              className="border rounded-md"
+              value={selectedTimezone}
+              onChange={(e) => setSelectedTimezone(e.target.value)}
+            >
+              {timezones.map((timezone, index) => (
+                <option key={index} value={timezone}>
+                  {timezone}
+                </option>
+              ))}
+            </select>
           </div>
           <label htmlFor="">Descripción</label>
           <textarea
