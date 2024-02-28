@@ -27,12 +27,15 @@ const page = () => {
           de tu mano.
         </p>
       </section>
-      <section className="h-[600px] flex flex-col items-center justify-center gap-10 m-5">
+      <div className="m-5 justify-center items-center flex">
         <Link href={"/searchPage"}>
           <button className="bg-[#23B0FF] h-15 rounded-[20px] text-3xl text-white p-4 font-bold tracking-wider">
             ¡Descubre eventos aquí!
           </button>
         </Link>
+        </div>
+      <section className="h-400px] flex flex-col items-center justify-center gap-10 m-10">
+        
         <section className="flex gap-8">
           <CardEvent
             id={firstThreeEvents[0].id}

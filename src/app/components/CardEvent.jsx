@@ -18,11 +18,9 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
         />
       </div>
       <div className="p-3 h-30 flex flex-col justify-center">
-        <a href={`/event/${id}`}>
           <h5 className="mb-2 text-xl font-bold tracking-tight ">
             {title || "Titulo del evento"}
           </h5>
-        </a>
         <div className="flex items-center mb-2">
           <Image
             src="/calendarIcon.svg"
