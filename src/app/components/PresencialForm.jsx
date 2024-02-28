@@ -3,9 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 import EventFormMap from '@/app/components/EventFormMap';
 import { useState } from 'react';
+import { categories } from '/categoriesData';
 
 const PresencialForm = () => {
 
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [address, setAddress] = useState('')
 
   return (
@@ -16,7 +18,20 @@ const PresencialForm = () => {
             <label htmlFor="">Título</label>
             <input type="text" className="border rounded-md" />
             <label htmlFor="">Categoría</label>
-            <select name="" id="" className="border rounded-md"></select>
+            <select
+              name=""
+              id=""
+              className="border rounded-md"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="">Seleccionar categoría</option>
+              {categories.map((category, index) => (
+                <option key={index} value={category.value}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
             <label htmlFor="">Fecha</label>
             <input type="date" className="border rounded-md" />
             <label htmlFor="">Hora</label>
