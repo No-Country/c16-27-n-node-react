@@ -1,15 +1,20 @@
 import React from "react";
 import Image from "next/image";
 
-const CardEvent = ({ img, title, date, location, type }) => {
+const CardEvent = ({ id, img, title, date, location, type }) => {
+
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-      <Image
-        src={img || "/imgCard-1.png"}
-        alt="card image"
-        width={400}
-        height={400}
-      />
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+      <div>
+        <Image
+          src={img || "/imgCard-1.png"}
+          alt="card image"
+          width={400}
+          height={400}
+          objectFit="cover"
+          className="rounded-t-lg"
+        />
+      </div>
       <div className="p-3 h-30 flex flex-col justify-center">
         <a href="#">
           <h5 className="mb-2 text-xl font-bold tracking-tight ">

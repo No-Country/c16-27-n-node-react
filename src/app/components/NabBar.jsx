@@ -35,6 +35,7 @@ const NabBar = () => {
             />
           </div>
         </div>
+        <div className='mx-5'><Link href={'/searchPage'} className='p-2 text-[#808080] font-bold text-2xl hover:text-[#23B0FF]'>EVENTOS</Link></div>
       </div>
       <div className="flex justify-between w-36 gap-3 items-center">
         <BtnLogoLink
