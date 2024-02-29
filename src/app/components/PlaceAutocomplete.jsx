@@ -2,9 +2,7 @@
 import React from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
-
 const PlaceAutocomplete = ({ city, setCity }) => {
-
   return (
     <div>
       <GooglePlacesAutocomplete
@@ -15,7 +13,7 @@ const PlaceAutocomplete = ({ city, setCity }) => {
           value: city,
         }}
       />
-  </div>
+    </div>
   );
 };
 
