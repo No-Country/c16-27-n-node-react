@@ -2,11 +2,13 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { eventsData } from '../../../eventsData';
 import { categories } from '/categoriesData'
+import PlaceAutocomplete from "./PlaceAutocomplete";
 
 const EventFilters = ({ setAllEvents }) => {
 
   const [selectedType, setSelectedType] = useState('all');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCity, setSelectedCity] = useState('all');
 
   const handleChangeType = (e) => {
     setSelectedType(e.target.value);
@@ -14,13 +16,13 @@ const EventFilters = ({ setAllEvents }) => {
 
   const handleChangeCategory = (e) => {
     setSelectedCategory(e.target.value);
-
   }; 
 
   const resetFilters = () => {
     setAllEvents(eventsData);
     setSelectedType('all');
     setSelectedCategory('all');
+    setSelectedCity('all')
   }
 
   useEffect(() => {
@@ -33,9 +35,13 @@ const EventFilters = ({ setAllEvents }) => {
     if (selectedCategory !== 'all') {
       filteredEvents = filteredEvents.filter(event => event.category === parseInt(selectedCategory));
     }
+
+    if (selectedCity !== 'all') {
+      filteredEvents = filteredEvents.filter(event => event.city === selectedCity.value.description);
+    }
   
     setAllEvents(filteredEvents);
-  }, [selectedType, selectedCategory, setAllEvents]);
+  }, [selectedType, selectedCategory, selectedCity, setAllEvents]);
 
   return (
     <>
@@ -57,6 +63,10 @@ const EventFilters = ({ setAllEvents }) => {
                 </option>
               ))}
       </select>
+      <PlaceAutocomplete 
+              city={selectedCity}
+              setCity={setSelectedCity}
+            />
       <button
         onClick={resetFilters}
         className="bg-dodgerBlue text-white font-bold rounded p-2"
