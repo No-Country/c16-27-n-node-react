@@ -47,9 +47,9 @@ const createEvent = async (req, res) => {
     const errors = validationResult(req);
     
     if (errors.isEmpty()) {
-        const { creatorUserId, title, description, type, category, address, city, date, time, timeZone, attendees } = req.body;
+        const { creatorUserId, title, description, type, category, address, city, date, attendees } = req.body;
         
-        const formattedDateTimes = `${date} ${time} ${timeZone}`
+        // const formattedDateTimes = `${date} ${time} ${timeZone}`
         
         try {
             const data = await eventService.createEvent({
@@ -60,7 +60,7 @@ const createEvent = async (req, res) => {
                 category,
                 address,
                 city,
-                date: formattedDateTimes,
+                date,
                 attendees
             });
             
@@ -78,14 +78,20 @@ const updateEvent = async (req, res) => {
     const errors = validationResult(req);
 
     if (errors.isEmpty()) {
-        const specificEvent = await eventService
         const { id } = req.params;
         const event = req.body;
+        const specificEvent = await eventService.findEventById(id)
 
-        eventService
+        
+        if(specificEvent){ 
+            console.log(specificEvent);
+            eventService
             .updateEvent(id, event)
             .then((data) => res.status(200).json(data))
             .catch((err) => res.status(404).json(err));
+        } else {
+            res.status(404).json('message: "El Id no existe')
+        }
     }
     else {
         res.status(400).json({ errors: errors.array() })

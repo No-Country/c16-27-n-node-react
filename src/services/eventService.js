@@ -26,18 +26,20 @@ const findEventsByUserId = (userId) => {
         .catch(err => console.log(err));
 }
 
-// const createEvent =  (newEvent) => {
-//     const event = new eventSchema(newEvent);
+const createEvent =  (newEvent) => {
+    
+    const event = new eventSchema(newEvent);
+    
+    return event
+        .save()
+        .then((data) => {
+            return data;})
+        .catch(err => console.log(err));
 
-//     return event
-//         .save()
-//         .then((data) => {
-//             return data;})
-//         .catch(err => console.log(err));
-// };
+};
 
 const updateEvent = async (id, event) => {
-
+    
     const { creatorUserId, 
             title, 
             description, 
@@ -48,13 +50,30 @@ const updateEvent = async (id, event) => {
             city,
             date,
             attendees } = event;
+
+    let updatedEvent;
     
-    return  await eventSchema
-        .findByIdAndUpdate(
+    if (type === "online"){
+        updatedEvent =  eventSchema.findByIdAndUpdate(
             id, 
-            {creatorUserId, title, description, image, type, category, address, city, date, attendees}, 
+            // {...searched}, 
+            {creatorUserId, title, description, image, type, category, address, attendees, date, $unset: {city:''}}, 
             {new : true}
         )
+        
+    } else {
+        updatedEvent =  eventSchema.findByIdAndUpdate(
+            id, 
+            {creatorUserId, title, description, image, type, category, address, attendees, date, city}, 
+            {new : true}
+        )
+    }
+    
+        
+
+    console.log(updateEvent);
+
+    return await updatedEvent
         .then(async (data) => {
             console.log(data);
             return data;})
@@ -75,7 +94,7 @@ export default {
     findAllEvents,
     findEventById,
     findEventsByUserId,
-    // createEvent,
+    createEvent,
     updateEvent,
     deleteEventById,
 }

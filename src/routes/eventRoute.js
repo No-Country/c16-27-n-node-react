@@ -25,7 +25,7 @@ router.post('/events', [
         .exists()
         .isLength({ min: 10, max: 250 }),
     body('type', 'Ingrese un tipo de evento válido')
-        .exists()
+        .isIn(['online', 'onSite'])
         .isLength({ min: 6, max: 7 }),
     body('category', 'Ingrese un tipo de categoría válido')
         .exists()
@@ -35,7 +35,10 @@ router.post('/events', [
         .isLength({ min: 10, max: 100 }),
     body('date', 'Ingrese una fecha válida')
         .exists()
-        .isLength({ min: 6, max: 40 })    
+        .isLength({ min: 6, max: 40 }),
+    body('city','Ingrese un campo de ciudad válido')
+        .optional()
+        .isLength({ min: 10, max: 250 }),    
 
 ], eventController.createEvent);
 

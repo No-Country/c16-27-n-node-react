@@ -15,10 +15,6 @@ const eventSchema = mongoose.Schema({
   description: {
     type: String,
     required: true,
-  }, 
-  image: {
-    type: String,
-    default: 'https://icon-library.com/images/events-icon-png/events-icon-png-6.jpg'
   },  
   type: {
     type: String,
@@ -35,7 +31,6 @@ const eventSchema = mongoose.Schema({
   },
   city: {
     type: String,
-    required: true
   },
   date: {
     type: String,
@@ -46,7 +41,11 @@ const eventSchema = mongoose.Schema({
     // type: [Object],
     // type: mongoose.Schema.Types.ObjectId,
     // ref: 'Users'
-  }
+  },
+  image: {
+    type: String,
+    default: 'https://icon-library.com/images/events-icon-png/events-icon-png-6.jpg'
+  }, 
 },
   {
     timestamps: { createdAt: true, updatedAt: true }
