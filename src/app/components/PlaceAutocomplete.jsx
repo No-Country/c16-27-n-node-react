@@ -12,6 +12,7 @@ const PlaceAutocomplete = ({ city, setCity }) => {
         selectProps={{
           city,
           onChange: setCity,
+          value: city,
         }}
       />
   </div>
