@@ -7,17 +7,23 @@ import EventMap from "@/app/components/EventMap";
 import CalendarDate from "@/app/components/CalendarDate";
 import AsistBar from "@/app/components/AsistBar";
 import { usersData } from "/usersData";
+import { categories } from "/categoriesData";
 
 export default function Event({ params }) {
   const { id } = params;
   const [eventData, setEventData] = useState(null);
   const [creatorUserData, setCreatorUserData] = useState(null);
   const [attendees, setAttendees] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
     const selectedEvent = eventsData.find((event) => event.id === parseInt(id));
     if (selectedEvent) {
       setEventData(selectedEvent);
+      const category = categories.find(
+        (category) => category.value === selectedEvent.category
+      );
+      setCategoryName(category ? category.name : "Categoría desconocida");
       const creatorUser = usersData.find(
         (user) => user.userId === selectedEvent.creatorUserId
       );
@@ -40,7 +46,7 @@ export default function Event({ params }) {
           <section className="border-b p-5">
             <h1 className="text-[2rem] font-bold">{eventData.title}</h1>
             <button className="bg-[#23B0FF] text-white p-1 rounded-xl">
-              Categoría
+              {categoryName}
             </button>
           </section>
           <section className="flex">
@@ -123,13 +129,13 @@ export default function Event({ params }) {
                     {"Asistentes (" + attendees.length + ")"}
                   </h2>
                   <div className="flex gap-3">
-                    {attendees.map(attendee => (
-                      <div className="w-50 h-50 bg-[#1B1B1B] rounded-lg overflow-hidden" key={attendee.userId}>
-                      <Attendee
-                        img={attendee.photo}
-                        name={attendee.name}
-                      />
-                    </div>
+                    {attendees.map((attendee) => (
+                      <div
+                        className="w-50 h-50 bg-[#1B1B1B] rounded-lg overflow-hidden"
+                        key={attendee.userId}
+                      >
+                        <Attendee img={attendee.photo} name={attendee.name} />
+                      </div>
                     ))}
                   </div>
                 </div>

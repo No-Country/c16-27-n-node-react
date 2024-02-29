@@ -12,8 +12,8 @@ export const CardTeam = ({ name, role, profile_picture, github, linkedin }) => {
         className="rounded-md"
       />
       <div className="text-center m-2">
-        <h3 className="font-bold text-white">{name}</h3>
-        <span className="text-white">{role}</span>
+        <h3 className="font-bold text-black">{name}</h3>
+        <span className="text-black">{role}</span>
       </div>
 
       <div className="flex gap-4">

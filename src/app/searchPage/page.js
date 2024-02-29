@@ -2,7 +2,7 @@
 import  React from 'react';
 import { useState } from 'react';
 import CardWithDescription from '../components/CardWithDescription';
-import { eventsData } from '../../../eventsData';
+import { eventsData } from '/eventsData';
 import Link from 'next/link';
 import EventFilters from '../components/EventFilters';
 
