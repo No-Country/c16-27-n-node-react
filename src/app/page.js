@@ -1,8 +1,19 @@
+<<<<<<< HEAD
 'use client';
 import CardEvent from './components/CardEvent';
 import Button from './ui/Button';
 import Link from 'next/link';
 const page = () => {
+=======
+"use client";
+import CardEvent from "./components/CardEvent";
+import Link from "next/link";
+import { eventsData } from "/eventsData";
+
+const page = () => {
+  const firstThreeEvents = eventsData.slice(0, 3);
+
+>>>>>>> 808631b524de0e7f8a107c3df4802e8c566d6fad
   return (
     <main>
       <section className="bg-[#0F0F0F] flex flex-col items-center justify-center h-[300px] mb-10">
@@ -18,6 +29,7 @@ const page = () => {
           ¿Tienes una idea brillante que deseas compartir con el mundo?
           <br></br>¡
           <span className="text-[#23B0FF]">Crea tu propio evento</span> en
+<<<<<<< HEAD
           minutos y deja que la comunidad se una a ti! <br></br> Con{' '}
           <span className="text-[#23B0FF]">Meet</span>
           <span className="text-[#FF256F]">Hub</span>, el mundo está al alcance
@@ -51,6 +63,47 @@ const page = () => {
             date={'24/03/2024 - 7:00 PM (GMT-5)'}
             location={'En Línea'}
             type={'online'}
+=======
+          minutos y deja que la comunidad se una a ti! <br></br> Con{" "}
+          <span className="text-[#23B0FF]">Meet</span>
+          <span className="text-[#FF256F]">Hub</span>, el mundo está al alcance
+          de tu mano.
+        </p>
+      </section>
+      <div className="m-5 justify-center items-center flex">
+        <Link href={"/searchPage"}>
+          <button className="bg-[#23B0FF] h-15 rounded-[20px] text-3xl text-white p-4 font-bold tracking-wider">
+            ¡Descubre eventos aquí!
+          </button>
+        </Link>
+        </div>
+      <section className="h-400px] flex flex-col items-center justify-center gap-10 m-10">
+        
+        <section className="flex gap-8">
+          <CardEvent
+            id={firstThreeEvents[0].id}
+            img={firstThreeEvents[0].img}
+            title={firstThreeEvents[0].title}
+            date={firstThreeEvents[0].date}
+            location={firstThreeEvents[0].location}
+            type={firstThreeEvents[0].type}
+          />
+          <CardEvent
+          id={firstThreeEvents[1].id}
+            img={firstThreeEvents[1].img}
+            title={firstThreeEvents[1].title}
+            date={firstThreeEvents[1].date}
+            location={firstThreeEvents[1].location}
+            type={firstThreeEvents[1].type}
+          />
+          <CardEvent
+          id={firstThreeEvents[2].id}
+            img={firstThreeEvents[2].img}
+            title={firstThreeEvents[2].title}
+            date={firstThreeEvents[2].date}
+            location={firstThreeEvents[2].location}
+            type={firstThreeEvents[2].type}
+>>>>>>> 808631b524de0e7f8a107c3df4802e8c566d6fad
           />
         </section>
       </section>
