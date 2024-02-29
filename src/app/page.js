@@ -7,26 +7,27 @@ const page = () => {
     <main>
       <section className="bg-[#0F0F0F] flex flex-col items-center justify-center h-[300px] mb-10">
         <h1 className=" text-5xl text-center mb-5 text-white font-bold font-segoe">
-          ¡Bienvenido a <span className="text-[#23B0FF] font-tenada">Meet</span>
-          <span className="text-[#FF256F] font-tenada">Hub</span>!
+          ¡Bienvenido a{' '}
+          <span className="text-dodgerBlue font-tenada">Meet</span>
+          <span className="text-radicalRed font-tenada">Hub</span>!
         </h1>
-        <p className="text-center text-3xl w-[100rem] font-normal text-white tracking-wide">
-          <span className="text-[#23B0FF]">
+        <p className="text-center text-3xl w-[100rem] font-normal text-white tracking-wide ">
+          <span className="text-dodgerBlue">
             Tu plataforma central para conectar, crear y asistir a eventos
           </span>
           <br></br>
           ¿Tienes una idea brillante que deseas compartir con el mundo?
           <br></br>¡
-          <span className="text-[#23B0FF]">Crea tu propio evento</span> en
+          <span className="text-dodgerBlue">Crea tu propio evento</span> en
           minutos y deja que la comunidad se una a ti! <br></br> Con{' '}
-          <span className="text-[#23B0FF]">Meet</span>
-          <span className="text-[#FF256F]">Hub</span>, el mundo está al alcance
+          <span className="text-dodgerBlue">Meet</span>
+          <span className="text-radicalRed">Hub</span>, el mundo está al alcance
           de tu mano
         </p>
       </section>
       <section className="h-[600px] flex flex-col items-center justify-center gap-10 m-5">
         <Link href={'/searchPage'}>
-          <Button text="¡Descubre eventos aquí!" bgColor="#23B0FF" />
+          <Button text="¡Descubre eventos aquí!" bgColor="dodgerBlue" />
         </Link>
         <section className="flex gap-8">
           <CardEvent

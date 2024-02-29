@@ -4,7 +4,7 @@ const EventMap = ({ eventData }) => {
   return (
     <>
       <article className="p-3">
-        <h2 className="text-[#23B0FF] font-bold text-xl">
+        <h2 className="text-dodgerBlue font-bold text-xl">
           {eventData.type === "online" ? (
             <p className="text-[#0F0F0F]">
               Enlace:{" "}
@@ -12,13 +12,13 @@ const EventMap = ({ eventData }) => {
                 href={eventData.address}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#23B0FF] hover:underline"
+                className="text-dodgerBlue hover:underline"
               >
                 {eventData.address}
               </a>
             </p>
           ) : (
-            <p className="text-[#23B0FF]">{eventData.address}</p>
+            <p className="text-dodgerBlue">{eventData.address}</p>
           )}
         </h2>
       </article>

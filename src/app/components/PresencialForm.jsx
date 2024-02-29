@@ -111,13 +111,13 @@ const PresencialForm = () => {
       </section>
       <section className="flex h-[91px] text-xl font-bold">
         <button
-          className="bg-[#25CC68] text-white rounded-3xl w-40 m-5"
+          className="bg-Shamrock text-white rounded-3xl w-40 m-5"
           type="submit"
         >
           Confirmar
         </button>
         <button
-          className="bg-[#23B0FF] text-white rounded-3xl w-40 m-5"
+          className="bg-dodgerBlue text-white rounded-3xl w-40 m-5"
           type="button"
         >
           Cancelar

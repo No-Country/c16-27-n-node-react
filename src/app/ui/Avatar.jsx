@@ -1,7 +1,8 @@
 'use client';
 import { Menu, Transition } from '@headlessui/react';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment} from 'react';
 import Image from 'next/image';
+import Link from 'next/link'
 import { signIn, useSession, signOut } from 'next-auth/react';
 export default function Avatar() {
   const { data: session } = useSession();
@@ -32,14 +33,16 @@ export default function Avatar() {
               <div className="px-1 py-1 ">
                 <Menu.Item>
                   {({ active }) => (
+                    <Link href={'/profile'}>
                     <button
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
+                      >
                       {active ? '' : ''}
                       Perfil
                     </button>
+                      </Link>
                   )}
                 </Menu.Item>
               </div>

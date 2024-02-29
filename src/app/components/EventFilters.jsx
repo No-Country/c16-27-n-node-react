@@ -37,7 +37,7 @@ const EventFilters = ({ setAllEvents }) => {
       </select>
       <button
         onClick={resetFilters}
-        className="bg-[#23B0FF] text-white font-bold rounded p-2"
+        className="bg-dodgerBlue text-white font-bold rounded p-2"
       >
         Restablecer filtros
       </button>

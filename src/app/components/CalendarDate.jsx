@@ -10,7 +10,7 @@ const CalendarDate = ({ eventData }) => {
         width={30}
         height={30}
       />
-      <h1 className="text-[#FF256F] text-2xl font-bold">
+      <h1 className="text-radicalRed text-2xl font-bold">
         {eventData.date}
       </h1>
     </>

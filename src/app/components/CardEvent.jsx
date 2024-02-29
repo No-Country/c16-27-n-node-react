@@ -29,7 +29,7 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
             height={20}
             className="mr-2"
           />
-          <p className="font-bold text-[#FF256F] ">
+          <p className="font-bold text-radicalRed ">
             {date || "Fecha del evento"}
           </p>
         </div>
@@ -41,7 +41,7 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
             height={20}
             className="mr-2"
           />
-          <p className="font-bold text-[#23B0FF] ">
+          <p className="font-bold text-dodgerBlue ">
             {location || "Ubicación del evento"}
           </p>
         </div>

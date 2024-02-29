@@ -18,17 +18,14 @@ const page = () => {
               alt=""
               width={250}
               height={200}
-              className="aspect-square rounded-2xl"
+              className="rounded-2xl"
             />
           </div>
         ) : (
           <p>Inicie session o cree una cuenta </p>
         )}
-        <Button text="Borrar Cuenta" bgColor="#F40606" />
+        <Button text="Borrar Cuenta" bgColor="crimsonRed" />
       </div>
-      {/* <div className="h-screen w-96 bg-[#D9D9D9]">
-        <Image src="login-icon.svg" alt="" width={40} height={60} />
-      </div> */}
       <div className="flex flex-col w-full p-8 ">
         <div className="flex flex-col gap-6">
           <label htmlFor="" className="flex flex-col font-semibold text-2xl">
@@ -52,7 +49,7 @@ const page = () => {
         </div>
         <div className="mt-8">
           <hr className="border-2" />
-          <h2 className="text-[#23B0FF] text-3xl font-semibold mt-4 mb-8">
+          <h2 className="text-dodgerBlue text-3xl font-semibold mt-4 mb-8">
             Eventos propios
           </h2>
           <div className="flex flex-wrap gap-4">
@@ -81,7 +78,7 @@ const page = () => {
         </div>
         <div className="mt-8">
           <hr className="border-2 " />
-          <h2 className="text-[#23B0FF] text-3xl font-semibold mt-4 mb-8">
+          <h2 className="text-dodgerBlue text-3xl font-semibold mt-4 mb-8">
             Eventos a los que asistiré
           </h2>
           <div className="flex flex-wrap gap-4">

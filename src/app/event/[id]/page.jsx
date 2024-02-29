@@ -45,7 +45,7 @@ export default function Event({ params }) {
         <main className="mt-8 flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg max-w-[1400px] mx-auto">
           <section className="border-b p-5">
             <h1 className="text-[2rem] font-bold">{eventData.title}</h1>
-            <button className="bg-[#23B0FF] text-white p-1 rounded-xl">
+            <button className="bg-dodgerBlue text-white p-1 rounded-xl">
               {categoryName}
             </button>
           </section>
@@ -88,8 +88,8 @@ export default function Event({ params }) {
                     />
                   )}
                   <h1
-                    className={`text-2xl font-bold text-[#23B0FF] ${
-                      eventData.type === "online" ? "text-[#25CC68]" : ""
+                    className={`text-2xl font-bold text-dodgerBlue ${
+                      eventData.type === "online" ? "text-Shamrock" : ""
                     }`}
                   >
                     {eventData.city === "" ? "En línea" : eventData.city}
@@ -119,7 +119,7 @@ export default function Event({ params }) {
                     <h3 className="font-bold text-xl">
                       {creatorUserData.name}
                     </h3>
-                    <p className="text-[#FF256F] font-bold text-lg">
+                    <p className="text-radicalRed font-bold text-lg">
                       Anfitrión
                     </p>
                   </div>

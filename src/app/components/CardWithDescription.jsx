@@ -29,7 +29,7 @@ const CardWithDescription = ({ img, title, date, type, city, description }) => {
               height={20}
               className="mr-2"
             />
-            <p className="font-bold text-[#FF256F] ">
+            <p className="font-bold text-radicalRed ">
               {date || "Fecha del evento"}
             </p>
           </div>
@@ -52,8 +52,8 @@ const CardWithDescription = ({ img, title, date, type, city, description }) => {
               />
             )}
             <p
-              className={`font-bold text-[#23B0FF] ${
-                type === "online" ? "text-[#25CC68]" : ""
+              className={`font-bold text-dodgerBlue ${
+                type === "online" ? "text-Shamrock" : ""
               }`}
             >
               {city || "En línea"}
