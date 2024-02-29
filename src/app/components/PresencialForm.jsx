@@ -21,7 +21,7 @@ const PresencialForm = () => {
     <form
       action="/ruta/del/endpoint"
       method="POST"
-      className="flex flex-col justify-between"
+      className="flex flex-col justify-between "
     >
       <section className="flex w-full text-lg p-3 h-[60rem]">
         <div className="flex flex-col w-1/2 p-4 border-r">

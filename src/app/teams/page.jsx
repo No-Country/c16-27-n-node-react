@@ -3,7 +3,7 @@ import teams from '../content/perfil_team.json';
 
 const page = () => {
   return (
-    <section className="bg-black h-full pb-[7%] flex flex-col items-center">
+    <section className="h-[100%] flex flex-col items-center">
       <h2 className="text-white text-center text-4xl m-12 font-bold">
         Conoce a nuestro equipo
       </h2>
