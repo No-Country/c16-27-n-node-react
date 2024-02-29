@@ -73,7 +73,7 @@ Technologies used in this proyect:
 | `description`      | `string` | **Required**. Description of the event | 
 | `image`      | `string` |  Image to show in event | 
 | `type`      | `string` | **Required**. Either "online" or "onSuite" | 
-| `category`      | `Number` | **Required**. 1 for online, 2 for onSuite | 
+| `category`      | `Number` | **Required**. ID of the category | 
 | `address`      | `string` | **Required** Physical Adress of the event  | 
 | `city`      | `string` | City and country of the event's location | 
 | `date`      | `string` | **Required**. Date, time and timezone of the event | 
