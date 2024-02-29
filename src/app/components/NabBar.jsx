@@ -19,7 +19,7 @@ const NabBar = () => {
       <div className="flex items-center">
         <div>
           {isNabBarOpen && (
-            <div className=" animate-fade animate-duration-200 flex flex-col absolute top-16 right-0 items-center bg-white border-b-2">
+            <div className=" z-40 animate-fade animate-duration-200 flex flex-col absolute top-16 right-0 items-center bg-white border-b-2">
              <ul className='bg-white text-2xl flex flex-col m-3 gap-6'>
                 <li>
                   <Link href={"/searchPage"}>Inicio</Link>
@@ -31,7 +31,7 @@ const NabBar = () => {
                   <Link href={"/searchPage"}>Nosotros</Link>
                 </li>
                 <li>
-                  <div className='border flex items-center justify-center gap-10'>
+                  <div className='flex items-center justify-center gap-10'>
                     <Avatar />
                     <BtnCalendarIcon />
                   </div>
