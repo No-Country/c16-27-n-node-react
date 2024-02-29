@@ -1,6 +1,8 @@
 import { validationResult } from 'express-validator';
 import eventService from './../services/eventService.js';
 import { multerGCSUploader, uploadToGCS } from '../helpers/adapter/MulterAdapter.js';
+import mongoose from 'mongoose';
+import Event from '../models/event.js';
 
 // const newEvent = new Event({
 //     title: 'Tech Conference',
@@ -100,8 +102,12 @@ const deleteEventById = (req, res) => {
         .catch(err => res.status(404).json(err));
 };
 
-const updateImage = (req, res) => {
-        
+const updateImage = async (req, res) => {
+    const id = req.params.id;
+        if (!id){
+            return res.status(400).json({ error: 'No id specified' });
+        }
+
     multerGCSUploader.single('file')(req, res, async (err) => {
         if (err) {
             return res.status(400).json({ error: err.message });
@@ -113,12 +119,21 @@ const updateImage = (req, res) => {
 
         try {
             const publicUrl = await uploadToGCS(req.file, res);
-            res.status(200).json({ publicUrl });
+            //res.status(200).json({ publicUrl });
+            const result = await Event.findByIdAndUpdate(id, {image: publicUrl}, {new: true});
+            res.status(200).json({result});
+
         } catch (err) {
             console.error('Error uploading file:', err);
             res.status(500).json({ error: 'Failed to upload file' });
         }
+        
+        
+        
+        
+
     });
+
 };
 
 export default {

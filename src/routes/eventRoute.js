@@ -65,7 +65,7 @@ router.post('/events/aa', async ( req, res, next) => {
     console.log(imageUrl)
 });
 
-router.post('/events/updateImage', eventController.updateImage);
+router.post('/events/updateImage/:id', eventController.updateImage);
 
 
 export default router;
