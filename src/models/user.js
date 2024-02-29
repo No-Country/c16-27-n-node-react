@@ -1,18 +1,16 @@
 import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-  firstName: {
+  name: {
     type: String, 
-    required: true 
+    required: true,
+    unique: true
   },
   image: { 
     type: String,
     default: 'https://www.svgrepo.com/show/105517/user-icon.svg'    
-  },
-  password: { 
-    type: String, 
-    required: true 
-  }  
+  }
+  
 });
 
 const Users = mongoose.model("Users", userSchema);

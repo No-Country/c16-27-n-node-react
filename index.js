@@ -9,6 +9,7 @@ import path from 'node:path'
 import { dirname } from "path"
 import connectionDB from "./src/config/db.js";
 import eventRoute from "./src/routes/eventRoute.js";
+import userRoute from "./src/routes/userRoute.js";
 // import fileRoutes from "./src/routes/fileRoute.js";
 
 const app = express();
@@ -37,6 +38,7 @@ app.use(express.static(src));
 app.use(express.json());
 
 app.use('/api', eventRoute);
+app.use('/api', userRoute);
 
 
 // app.use('/files', fileRoutes)

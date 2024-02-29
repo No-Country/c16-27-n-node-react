@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import eventService from './../services/eventService.js';
+import { multerGCSUploader, uploadToGCS } from '../helpers/adapter/MulterAdapter.js';
 
 // const newEvent = new Event({
 //     title: 'Tech Conference',
@@ -42,7 +43,7 @@ const findEventsByUserId = (req, res) => {
 const createEvent = async (req, res) => {
 
     const errors = validationResult(req);
-
+    
     if (errors.isEmpty()) {
         const { creatorUserId, title, description, type, category, address, city, date, time, timeZone, attendees } = req.body;
         
@@ -70,12 +71,12 @@ const createEvent = async (req, res) => {
     }
 };
 
-const updateEvent = (req, res) => {
+const updateEvent = async (req, res) => {
 
     const errors = validationResult(req);
 
     if (errors.isEmpty()) {
-
+        const specificEvent = await eventService
         const { id } = req.params;
         const event = req.body;
 
@@ -100,6 +101,7 @@ const deleteEventById = (req, res) => {
 };
 
 const updateImage = (req, res) => {
+        
     multerGCSUploader.single('file')(req, res, async (err) => {
         if (err) {
             return res.status(400).json({ error: err.message });

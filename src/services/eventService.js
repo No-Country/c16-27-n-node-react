@@ -26,15 +26,15 @@ const findEventsByUserId = (userId) => {
         .catch(err => console.log(err));
 }
 
-const createEvent = async (newEvent) => {
-    const event = new eventSchema(newEvent);
+// const createEvent =  (newEvent) => {
+//     const event = new eventSchema(newEvent);
 
-    return event
-        .save()
-        .then((data) => {
-            return data;})
-        .catch(err => console.log(err));
-};
+//     return event
+//         .save()
+//         .then((data) => {
+//             return data;})
+//         .catch(err => console.log(err));
+// };
 
 const updateEvent = async (id, event) => {
 
@@ -75,7 +75,7 @@ export default {
     findAllEvents,
     findEventById,
     findEventsByUserId,
-    createEvent,
+    // createEvent,
     updateEvent,
     deleteEventById,
 }

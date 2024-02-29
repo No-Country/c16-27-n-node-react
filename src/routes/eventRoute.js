@@ -35,9 +35,7 @@ router.post('/events', [
         .isLength({ min: 10, max: 100 }),
     body('date', 'Ingrese una fecha válida')
         .exists()
-        .isLength({ min: 6, max: 40 }),
-    body('attendees', 'Ingrese al menos 1 asistente para el evento')
-        .exists()
+        .isLength({ min: 6, max: 40 })    
 
 ], eventController.createEvent);
 
