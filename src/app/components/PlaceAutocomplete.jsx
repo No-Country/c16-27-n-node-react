@@ -11,6 +11,7 @@ const PlaceAutocomplete = ({ city, setCity }) => {
           city,
           onChange: setCity,
           value: city,
+          placeholder: "Cualquier ciudad",
         }}
       />
     </div>
