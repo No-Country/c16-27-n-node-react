@@ -5,9 +5,11 @@ import EventFormMap from "@/app/components/EventFormMap";
 import { useState } from "react";
 import { categories } from "/categoriesData";
 import { timezones } from "/timezones";
+import PlaceAutocomplete from "./PlaceAutocomplete";
 
 const PresencialForm = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [city, setCity] = useState(""); // [1
   const [address, setAddress] = useState("");
   const [selectedTimezone, setSelectedTimezone] = useState("");
   const [showSelectCategory, setShowSelectCategory] = useState(true);
@@ -17,11 +19,12 @@ const PresencialForm = () => {
     setShowSelectCategory(false);
   }; 
 
+  
   return (
     <form
-      action="/ruta/del/endpoint"
+      action="http://localhost:4000/api/events"
       method="POST"
-      className="flex flex-col justify-between "
+      className="flex flex-col justify-between"
     >
       <section className="flex w-full text-lg p-3 h-[60rem]">
         <div className="flex flex-col w-1/2 p-4 border-r">
@@ -78,7 +81,10 @@ const PresencialForm = () => {
         <div className="flex flex-col border-l w-1/2 p-4 justify-between">
           <div className="h-1/2 flex flex-col gap-2">
             <label htmlFor="">Ciudad</label>
-            <select name="" id="" className="border rounded-md"></select>
+            <PlaceAutocomplete 
+              city={city}
+              setCity={setCity}
+            />
             <label htmlFor="">Dirección</label>
             <input
               type="text"
