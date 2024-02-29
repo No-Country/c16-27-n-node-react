@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#1B1B1B] text-white px-2 py-3 flex items-center mt-auto">
+    <footer className="w-full bg-[#1B1B1B] text-white px-2 py-3 flex items-center mt-[2%]">
       <Image
         src="/MeetHub-Logo.svg"
         alt="Logo de Meethub"
