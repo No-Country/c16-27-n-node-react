@@ -2,17 +2,21 @@ import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
   name: {
-    type: String, 
+    type: String,
     required: true,
     unique: true
   },
-  image: { 
+  email: {
     type: String,
-    default: 'https://www.svgrepo.com/show/105517/user-icon.svg'    
+    required: true,
+    unique: true
+  },
+  image: {
+    type: String,
+    default: 'https://www.svgrepo.com/show/105517/user-icon.svg'
   }
-  
 });
 
-const Users = mongoose.model("Users", userSchema);
+const User = mongoose.model("User", userSchema);
 
-export default Users;
+export default User;
