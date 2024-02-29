@@ -16,7 +16,7 @@ const OnlineForm = () => {
   }; 
   return (
     <form
-      action="/ruta/del/endpoint"
+      action="http://localhost:4000/api/events"
       method="POST"
       className="flex flex-col justify-between"
     >

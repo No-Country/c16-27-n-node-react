@@ -4,8 +4,17 @@ import { Fragment} from 'react';
 import Image from 'next/image';
 import Link from 'next/link'
 import { signIn, useSession, signOut } from 'next-auth/react';
+import axios from 'axios';
 export default function Avatar() {
   const { data: session } = useSession();
+
+  // const saveUserSession = async (user) => {
+  //   try {
+  //     await axios.post('http://localhost:4000/user', user); 
+  //   } catch (error) {
+  //     console.error('Error saving user session:', error);
+  //   }
+  // };
   return (
     <div>
       <Menu as="div">
@@ -72,7 +81,7 @@ export default function Avatar() {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      onClick={() => signIn()}
+                        onClick={() => signIn()}                      
                       className={`${
                         active ? 'bg-violet-500 text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
