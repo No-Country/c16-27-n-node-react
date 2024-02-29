@@ -13,7 +13,6 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
           alt="card image"
           width={400}
           height={400}
-          objectFit="cover"
           className="rounded-t-lg"
         />
       </div>

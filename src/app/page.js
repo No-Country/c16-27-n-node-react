@@ -31,6 +31,7 @@ const page = () => {
         </Link>
         <section className="flex gap-8">
           <CardEvent
+            id={'1'}
             img={'/images/imgCard-1.png'}
             title={'Mercados Monetarios (Forex & Monedas Digitales)'}
             date={'02/03/2024 - 7:00 PM (GMT-5)'}
@@ -38,6 +39,7 @@ const page = () => {
             type={'inperson'}
           />
           <CardEvent
+            id={'2'}
             img={'/images/imgCard-2.png'}
             title={'Open Beer Bogotá 2024'}
             date={'12/03/2024 - 9:00 PM (GMT-5)'}
@@ -45,6 +47,7 @@ const page = () => {
             type={'inperson'}
           />
           <CardEvent
+            id={'3'}
             img={'/images/imgCard-2.png'}
             title={
               'Inteligencia Artificial: una mirada desde y para la universidad'
