@@ -1,39 +1,61 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { eventsData } from '../../../eventsData';
+import { categories } from '/categoriesData'
 
 const EventFilters = ({ setAllEvents }) => {
 
-  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [selectedType, setSelectedType] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  const handleFilterChange = (e) => {
-    setSelectedFilter(e.target.value);
+  const handleChangeType = (e) => {
+    setSelectedType(e.target.value);
   }
+
+  const handleChangeCategory = (e) => {
+    setSelectedCategory(e.target.value);
+
+  }; 
 
   const resetFilters = () => {
     setAllEvents(eventsData);
-    setSelectedFilter('all');
+    setSelectedType('all');
+    setSelectedCategory('all');
   }
 
   useEffect(() => {
-    if (selectedFilter === 'all') {
-      setAllEvents(eventsData);
-    } else {
-      const filteredEvents = eventsData.filter(event => event.type === selectedFilter);
-      setAllEvents(filteredEvents);
+    let filteredEvents = eventsData;
+  
+    if (selectedType !== 'all') {
+      filteredEvents = filteredEvents.filter(event => event.type === selectedType);
     }
-  }, [selectedFilter, eventsData, setAllEvents]);
+  
+    if (selectedCategory !== 'all') {
+      filteredEvents = filteredEvents.filter(event => event.category === parseInt(selectedCategory));
+    }
+  
+    setAllEvents(filteredEvents);
+  }, [selectedType, selectedCategory, setAllEvents]);
 
   return (
     <>
       <select
         className="border border-slate-400 rounded h-8"
-        onChange={handleFilterChange}
-        value={selectedFilter}
+        onChange={handleChangeType}
+        value={selectedType}
       >
         <option value="all">Cualquier Tipo</option>
         <option value="in-person">Presencial</option>
         <option value="online">En línea</option>
+      </select>
+      <select className="border border-slate-400 rounded h-8" value={selectedCategory}
+              onChange={handleChangeCategory}>
+        <option value="all">Cualquier categoría</option>
+        {categories.map((category, index) => (
+                <option key={index} value={category.value}>
+                  {category.name}
+                </option>
+              ))}
       </select>
       <button
         onClick={resetFilters}
