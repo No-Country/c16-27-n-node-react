@@ -1,18 +1,25 @@
-'use client';
-import React from 'react';
-import { useState } from 'react';
-import CardWithDescription from '../components/CardWithDescription';
-import { eventsData } from '/eventsData';
-import Link from 'next/link';
-import EventFilters from '../components/EventFilters';
-import { useSession } from 'next-auth/react';
-import SearchPageSkeleton from '../ui/SearchPageSkeleton';
+"use client";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import CardWithDescription from "../components/CardWithDescription";
+import { eventsData } from "/eventsData";
+import Link from "next/link";
+import EventFilters from "../components/EventFilters";
+import { useSession } from "next-auth/react";
+import SearchPageSkeleton from "../ui/SearchPageSkeleton";
 
 const page = () => {
-  const [allEvents, setAllEvents] = useState(eventsData);
+  const [allEvents, setAllEvents] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/events")
+      .then((response) => response.json())
+      .then((data) => setAllEvents(data))
+      .catch((error) => console.log("Error:", error));
+  }, []);
 
   const { data: session, status } = useSession();
-  if (status === 'loading') {
+  if (status === "loading") {
     return <SearchPageSkeleton />;
   }
 
