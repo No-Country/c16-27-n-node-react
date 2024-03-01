@@ -1,5 +1,5 @@
 import express from "express";
-import {saveUserSession} from "../controllers/userController.js";
+import saveUserSession from "../controllers/userController.js";
 import userController from "../controllers/userController.js";
 const router = express.Router();
 
@@ -13,10 +13,10 @@ router.put("/users/:id", userController.edit);
 
 router.delete("/users/:id", userController.deleteById);
 
-export default router;
 
 
-router.post('/user', saveUserSession)
+
+//router.post('/user', saveUserSession)
 
 
 export default router;
