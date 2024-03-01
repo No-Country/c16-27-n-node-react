@@ -40,7 +40,7 @@ const page = () => {
                 id={event.id}
                 img={event.img}
                 type={event.type}
-                city={event.city}
+                city={event.city === "" ? 'Evento en linea' : event.city}
                 key={event.id} 
                 title={event.title} 
                 date={event.date} 

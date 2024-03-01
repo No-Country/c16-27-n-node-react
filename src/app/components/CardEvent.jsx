@@ -32,18 +32,33 @@ const CardEvent = ({ id, img, title, date, city, type }) => {
             {date || "Fecha del evento"}
           </p>
         </div>
-        <div className="flex items-center">
-          <Image
-            src="/locationLogo.svg"
-            alt="card image"
-            width={20}
-            height={20}
-            className="mr-2"
-          />
-          <p className="font-bold text-dodgerBlue ">
-            {city || "Ubicación del evento"}
-          </p>
-        </div>
+        {type === "online" 
+          ? <div className="flex items-center">
+            <Image
+              src="/webicon.svg"
+              alt="camera icon"
+              width={20}
+              height={20}
+              className="mr-2"
+            />
+            <p className="font-bold text-[#25CC68] ">
+              {city || "Ubicación del evento"}
+            </p>
+          </div>
+          : <div className="flex items-center">
+            <Image
+              src="/locationLogo.svg"
+              alt="location icon"
+              width={20}
+              height={20}
+              className="mr-2"
+            />
+            <p className="font-bold text-dodgerBlue ">
+              {city || "Ubicación del evento"}
+            </p>
+            </div>
+        }
+       
       </div>
       </Link>
     </div>
