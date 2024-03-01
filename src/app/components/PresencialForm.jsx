@@ -26,8 +26,8 @@ const PresencialForm = () => {
       method="POST"
       className="flex flex-col justify-between"
     >
-      <section className="flex w-full text-lg p-3 h-[60rem]">
-        <div className="flex flex-col w-1/2 p-4 border-r">
+      <section className="flex flex-col md:flex-row w-full text-lg p-3 md:h-[60rem]">
+        <div className="flex flex-col w-full md:w-1/2 p-4 md:border-r">
           <div className="h-1/2 flex flex-col gap-2">
             <label htmlFor="">Título</label>
             <input type="text" className="border rounded-md" />
@@ -69,16 +69,18 @@ const PresencialForm = () => {
               ))}
             </select>
           </div>
-          <label htmlFor="">Descripción</label>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            className="border h-1/2 p-5"
-          ></textarea>
+          <div className='flex flex-col md:flex-none mt-4 md:h-full'>
+            <label htmlFor="">Descripción</label>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              className="border h-28 md:h-1/2 p-5"
+            ></textarea>
+          </div>
         </div>
-        <div className="flex flex-col border-l w-1/2 p-4 justify-between">
+        <div className="flex flex-col md:border-l md:w-1/2 p-4">
           <div className="h-1/2 flex flex-col gap-2">
             <label htmlFor="">Ciudad</label>
             <PlaceAutocomplete 
@@ -93,26 +95,26 @@ const PresencialForm = () => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
             />
-            <div className="h-full flex items-center justify-center">
+            <div className="h-full flex items-center justify-center md:mt-0 md:mb-0 mb-8 mt-5">
               <EventFormMap address={address || "15.5126501,-80.5271313,3"} />
             </div>
           </div>
-          <div className="border h-2/5 bg-[#C4C4C4] flex items-center justify-center rounded-lg">
-            <label htmlFor="fileInput" className="cursor-pointer">
-              <Image
-                src={"/camera-fill.svg"}
-                alt="icono de la cámara"
-                width={300}
-                height={200}
-                className="rounded-lg"
-              />
-              <input
-                type="file"
-                id="fileInput"
-                className="w-0 h-0 overflow-hidden"
-              />
-            </label>
-          </div>
+          <div className=" md:mt-24 border bg-[#C4C4C4] flex items-center justify-center rounded-lg h-38">
+              <label htmlFor="fileInput" className="cursor-pointer">
+                <Image
+                  src={"/camera-fill.svg"}
+                  alt="icono de la cámara"
+                  width={300}
+                  height={300}
+                  className="rounded-lg w-28 md:w-64 mt-4"
+                />
+                <input
+                  type="file"
+                  id="fileInput"
+                  className="w-0 h-0 overflow-hidden"
+                />
+              </label>
+            </div>
         </div>
       </section>
       <section className="flex h-[91px] text-xl font-bold">
