@@ -15,7 +15,7 @@ const NabBar = () => {
   }
 
   return (
-    <div className="border-b-2 p-2 flex justify-between bg-white">
+    <div className=" h-16 border-b-2 p-2 flex justify-between bg-white">
       <div className="flex items-center">
         <div>
           {isNabBarOpen && (
