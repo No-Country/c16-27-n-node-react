@@ -1,7 +1,18 @@
-import React from 'react';
+'use client';
+import { useSession } from 'next-auth/react';
 import PresencialForm from '@/app/components/PresencialForm';
+import FormSkeleton from '../ui/FormSkeleton';
 
 const page = () => {
+  const { data: session, status } = useSession();
+  if (status === 'loading') {
+    return <FormSkeleton color="bg-dodgerBlue" />;
+  }
+
+  if (status === 'unauthenticated') {
+    return <p>Access Denied</p>;
+  }
+
   return (
     <main className="h-[100%]">
       <div className="mt-8 border-slate-200 bg-white shadow-lg rounded-lg max-w-[1100px] border mx-auto flex flex-col justify-between">
@@ -15,8 +26,3 @@ const page = () => {
 };
 
 export default page;
-
-
-
-
-

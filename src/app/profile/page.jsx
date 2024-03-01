@@ -1,79 +1,68 @@
 'use client';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../ui/Button';
 import CardEvent from '../components/CardEvent';
+import { eventsData } from '../../../eventsData';
 
 const page = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') {
+    return <p>Loading...</p>;
+  }
+
+  if (status === 'unauthenticated') {
+    return <p>Access Denied</p>;
+  }
 
   return (
-    <section className="container mx-auto flex justify-between h-[100%]">
-      <div className="bg-[#D9D9D9] w-96  flex flex-col justify-between items-center pt-8 pb-16">
-        {session?.user ? (
-          <div className="">
-            <Image
-              src={session.user?.image}
-              alt=""
-              width={250}
-              height={200}
-              className="rounded-2xl"
-            />
-          </div>
-        ) : (
-          <p>Inicie session o cree una cuenta </p>
-        )}
-        <Button text="Borrar Cuenta" bgColor="crimsonRed" />
+    <section className="container mx-auto flex flex-col md:flex-row  justify-between h-[100%]">
+      <div className="bg-[#D9D9D9] w-full md:w-[30rem] flex flex-col justify-between items-center pt-8 pb-16 gap-10">
+        <div className="w-full flex flex-col items-center">
+          <Image
+            src={session.user?.image}
+            alt=""
+            width={250}
+            height={200}
+            className="rounded-2xl"
+          />
+          <h3 className="font-bold mt-4 text-2xl">{session.user?.name}</h3>
+          <h3 className="font-bold mt-4 text-2xl">{session.user?.email}</h3>
+        </div>
+
+        <Link
+          href={'#'}
+          onClick={async () => {
+            await signOut({
+              callbackUrl: '/',
+            });
+          }}
+        >
+          <Button text="Borrar Cuenta" bgColor="crimsonRed" />
+        </Link>
       </div>
       <div className="flex flex-col w-full p-8 ">
-        <div className="flex flex-col gap-6">
-          <label htmlFor="" className="flex flex-col font-semibold text-2xl">
-            Nombre de Usuario
-            <input
-              type="text"
-              name=""
-              id=""
-              className="text-xl font-normal p-2 border-black border-[1px] w-96"
-            />
-          </label>
-          <label htmlFor="" className="flex flex-col font-semibold text-2xl">
-            Contraseña
-            <input
-              type="text"
-              name=""
-              id=""
-              className="text-xl font-normal p-2 border-black border-[1px] w-96"
-            />
-          </label>
-        </div>
         <div className="mt-8">
           <hr className="border-2" />
           <h2 className="text-dodgerBlue text-3xl font-semibold mt-4 mb-8">
             Eventos propios
           </h2>
           <div className="flex flex-wrap gap-4">
-            <CardEvent
-              img={'/images/imgCard-2.png'}
-              title={'Open Beer Bogotá 2024'}
-              date={'12/03/2024 - 9:00 PM (GMT-5)'}
-              location={'Bogotá, CO'}
-              type={'inperson'}
-            />
-            <CardEvent
-              img={'/images/imgCard-2.png'}
-              title={'Open Beer Bogotá 2024'}
-              date={'12/03/2024 - 9:00 PM (GMT-5)'}
-              location={'Bogotá, CO'}
-              type={'inperson'}
-            />
-            <CardEvent
-              img={'/images/imgCard-2.png'}
-              title={'Open Beer Bogotá 2024'}
-              date={'12/03/2024 - 9:00 PM (GMT-5)'}
-              location={'Bogotá, CO'}
-              type={'inperson'}
-            />
+            {eventsData
+              .map((event, index) => (
+                <CardEvent
+                  id={event.id}
+                  img={event.img}
+                  type={event.type}
+                  city={event.city === '' ? 'Evento en linea' : event.city}
+                  key={event.id}
+                  title={event.title}
+                  date={event.date}
+                />
+              ))
+              .slice(0, 3)}
           </div>
         </div>
         <div className="mt-8">
@@ -82,27 +71,19 @@ const page = () => {
             Eventos a los que asistiré
           </h2>
           <div className="flex flex-wrap gap-4">
-            <CardEvent
-              img={'/images/imgCard-2.png'}
-              title={'Open Beer Bogotá 2024'}
-              date={'12/03/2024 - 9:00 PM (GMT-5)'}
-              location={'Bogotá, CO'}
-              type={'inperson'}
-            />
-            <CardEvent
-              img={'/images/imgCard-2.png'}
-              title={'Open Beer Bogotá 2024'}
-              date={'12/03/2024 - 9:00 PM (GMT-5)'}
-              location={'Bogotá, CO'}
-              type={'inperson'}
-            />
-            <CardEvent
-              img={'/images/imgCard-2.png'}
-              title={'Open Beer Bogotá 2024'}
-              date={'12/03/2024 - 9:00 PM (GMT-5)'}
-              location={'Bogotá, CO'}
-              type={'inperson'}
-            />
+            {eventsData
+              .map((event, index) => (
+                <CardEvent
+                  id={event.id}
+                  img={event.img}
+                  type={event.type}
+                  city={event.city === '' ? 'Evento en linea' : event.city}
+                  key={event.id}
+                  title={event.title}
+                  date={event.date}
+                />
+              ))
+              .slice(0, 3)}
           </div>
         </div>
       </div>

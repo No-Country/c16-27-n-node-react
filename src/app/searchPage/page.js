@@ -1,16 +1,25 @@
-'use client'
-import  React from 'react';
+'use client';
+import React from 'react';
 import { useState } from 'react';
 import CardWithDescription from '../components/CardWithDescription';
 import { eventsData } from '/eventsData';
 import Link from 'next/link';
 import EventFilters from '../components/EventFilters';
-
+import { useSession } from 'next-auth/react';
+import SearchPageSkeleton from '../ui/SearchPageSkeleton';
 
 const page = () => {
-
   const [allEvents, setAllEvents] = useState(eventsData);
-  
+
+  const { data: session, status } = useSession();
+  if (status === 'loading') {
+    return <SearchPageSkeleton />;
+  }
+
+  // if (status === 'unauthenticated') {
+  //   return <p>Access Denied</p>;
+  // }
+
   return (
     <main className="flex flex-col items-center">
       <section className="p-2 mb-3 mt-8 w-full xl:w-[1400px] flex items-center gap-3 h-16">
