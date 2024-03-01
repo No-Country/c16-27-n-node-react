@@ -20,8 +20,8 @@ const OnlineForm = () => {
       method="POST"
       className="flex flex-col justify-between"
     >
-      <section className="flex w-full text-lg p-3 h-[60rem]">
-        <div className="flex flex-col w-1/2 p-4 border-r">
+      <section className="flex flex-col md:flex-row w-full text-lg p-3 md:h-[60rem]">
+        <div className="flex flex-col w-full md:w-1/2 p-4 md:border-r">
           <div className="h-1/2 flex flex-col gap-2">
             <label htmlFor="">Título</label>
             <input type="text" className="border rounded-md" />
@@ -63,27 +63,29 @@ const OnlineForm = () => {
               ))}
             </select>
           </div>
-          <label htmlFor="">Descripción</label>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            className="border h-1/2 p-5"
-          ></textarea>
+          <div className='flex flex-col md:flex-none mt-4 md:h-full'>
+            <label htmlFor="">Descripción</label>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              className="border h-28 md:h-1/2 p-5"
+            ></textarea>
+          </div>
         </div>
-        <div className="flex flex-col border-l w-1/2 p-4">
-          <div className="h-1/2 flex flex-col">
+        <div className="flex flex-col md:border-l md:w-1/2 p-4">
+          <div className="md:h-1/2 md:flex md:flex-col">
             <label htmlFor="">Enlace</label>
-            <input type="text" className="border rounded-md mb-5" />
-            <div className="border bg-[#C4C4C4] flex items-center justify-center rounded-lg">
+            <input type="text" className="border rounded-md mb-5 w-full" />
+            <div className="border bg-[#C4C4C4] flex items-center justify-center rounded-lg h-38">
               <label htmlFor="fileInput" className="cursor-pointer">
                 <Image
                   src={"/camera-fill.svg"}
                   alt="icono de la cámara"
                   width={300}
                   height={300}
-                  className="rounded-lg"
+                  className="rounded-lg w-28 md:w-64 mt-4"
                 />
                 <input
                   type="file"

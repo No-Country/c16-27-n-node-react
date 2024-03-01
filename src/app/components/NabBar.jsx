@@ -9,31 +9,33 @@ import { useState } from 'react';
 const NabBar = () => {
 
   const [isNabBarOpen, setIsNabBarOpen] = useState(false);
+
   const handleNabBar = () => {
     setIsNabBarOpen(!isNabBarOpen);
-    console.log(isNabBarOpen)
   }
 
   return (
-    <div className="border-b-2 p-2 flex justify-between bg-white">
+    <div className=" h-16 border-b-2 p-2 flex justify-between bg-white">
       <div className="flex items-center">
         <div>
           {isNabBarOpen && (
-            <div className=" z-40 animate-fade animate-duration-200 flex flex-col absolute top-16 right-0 items-center bg-white border-b-2">
+            <div className=" md:hidden z-40 animate-fade animate-duration-200 flex flex-col absolute top-16 right-0 items-center bg-white border-b-2">
              <ul className='bg-white text-2xl flex flex-col m-3 gap-6'>
-                <li>
-                  <Link href={"/searchPage"}>Inicio</Link>
+                <li onClick={() => setIsNabBarOpen(false)}>
+                  <Link href={"/"}>Inicio</Link>
                 </li>
-                <li>
+                <li onClick={() => setIsNabBarOpen(false)}>
                   <Link href={"/searchPage"}>Eventos</Link>
                 </li>
-                <li>
-                  <Link href={"/searchPage"}>Nosotros</Link>
+                <li onClick={() => setIsNabBarOpen(false)}>
+                  <Link href={"/teams"}>Nosotros</Link>
                 </li>
                 <li>
                   <div className='flex items-center justify-center gap-10'>
                     <Avatar />
-                    <BtnCalendarIcon />
+                    <BtnCalendarIcon 
+                       setIsNabBarOpen={setIsNabBarOpen}
+                    />
                   </div>
                 </li>
              </ul>
@@ -49,22 +51,6 @@ const NabBar = () => {
             className="hidden md:block mr-7 md:mr-5"
           />
         </Link>
-        <div className="flex items-center border rounded-lg h-11">
-          <Image
-            src="/searchIcon.svg"
-            alt="searchIcon"
-            width={20}
-            height={20}
-            className="ml-3"
-          />
-          <div className="flex divide-x">
-            <input
-              type="text"
-              placeholder="Buscar eventos..."
-              className="border-none bg-transparent focus:outline-none ml-3"
-            />
-          </div>
-        </div>
         <Image
           src={"/hamburguerIcon.svg"}
           alt="navbar-logo"
@@ -81,15 +67,25 @@ const NabBar = () => {
             EVENTOS
           </Link>
         </div>
+        <div className=" hidden md:block md:mx-5">
+          <Link
+            href={"/teams"}
+            className="p-2 text-[#808080] font-bold text-2xl hover:text-[#23B0FF]"
+          >
+            NOSOTROS
+          </Link>
+        </div>
       </div>
-      <div className="hidden md:flex justify-between w-36 gap-3 items-center">
-        <BtnLogoLink
+      <div className="hidden md:flex justify-between w-37 gap-3 items-center" >
+        {/* <BtnLogoLink
           src={"/circle-half.svg"}
           alt="darkThemeIcon"
           width={40}
           height={30}
+        /> */}
+        <BtnCalendarIcon 
+          setIsNabBarOpen={setIsNabBarOpen}
         />
-        <BtnCalendarIcon />
         <Avatar />
       </div>
     </div>

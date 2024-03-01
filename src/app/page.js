@@ -8,7 +8,7 @@ const page = () => {
   return (
     <main>
       <section className="bg-[#0F0F0F] flex flex-col items-center justify-center md:h-[500px] mb-10">
-        <h1 className=" text-5xl text-center mb-5 mt-5 text-white font-bold font-segoe">
+        <h1 className=" text-5xl text-center mb-5 mt-16 md:mt-5 text-white font-bold font-segoe">
           ¡Bienvenido a{" "}
           <span className="text-dodgerBlue font-tenada">Meet</span>
           <span className="text-radicalRed font-tenada">Hub</span>!

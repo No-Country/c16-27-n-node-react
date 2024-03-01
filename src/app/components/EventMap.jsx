@@ -4,7 +4,7 @@ const EventMap = ({ eventData }) => {
   return (
     <>
       <article className="p-3">
-        <h2 className="text-dodgerBlue font-bold text-xl">
+        <h2 className="text-dodgerBlue font-bold text-xl mt-8 md:mt-0">
           {eventData.type === "online" ? (
             <p className="text-[#0F0F0F]">
               Enlace:{" "}
@@ -25,9 +25,7 @@ const EventMap = ({ eventData }) => {
       <article>
         {eventData.type === "in-person" ? (
           <iframe
-            className=" h-[350px] rounded-lg p-3"
-            width="400"
-            height="320"
+            className="h-[350px] rounded-lg p-3 w-full"
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
