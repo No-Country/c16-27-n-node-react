@@ -51,22 +51,6 @@ const NabBar = () => {
             className="hidden md:block mr-7 md:mr-5"
           />
         </Link>
-        <div className="flex items-center border rounded-lg h-11">
-          <Image
-            src="/searchIcon.svg"
-            alt="searchIcon"
-            width={20}
-            height={20}
-            className="ml-3"
-          />
-          <div className="flex divide-x">
-            <input
-              type="text"
-              placeholder="Buscar eventos..."
-              className="border-none bg-transparent focus:outline-none ml-3"
-            />
-          </div>
-        </div>
         <Image
           src={"/hamburguerIcon.svg"}
           alt="navbar-logo"
@@ -83,14 +67,22 @@ const NabBar = () => {
             EVENTOS
           </Link>
         </div>
+        <div className=" hidden md:block md:mx-5">
+          <Link
+            href={"/teams"}
+            className="p-2 text-[#808080] font-bold text-2xl hover:text-[#23B0FF]"
+          >
+            NOSOTROS
+          </Link>
+        </div>
       </div>
-      <div className="hidden md:flex justify-between w-36 gap-3 items-center" >
-        <BtnLogoLink
+      <div className="hidden md:flex justify-between w-37 gap-3 items-center" >
+        {/* <BtnLogoLink
           src={"/circle-half.svg"}
           alt="darkThemeIcon"
           width={40}
           height={30}
-        />
+        /> */}
         <BtnCalendarIcon 
           setIsNabBarOpen={setIsNabBarOpen}
         />

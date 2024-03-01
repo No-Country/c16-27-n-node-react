@@ -11,9 +11,9 @@ const Footer = () => {
         height={50}
         className="mr-4"
       />
-      <Link href={'/teams'}>
+      {/* <Link href={'/teams'}>
         <h3 className="text-2xl">Nosotros</h3>
-      </Link>
+      </Link> */}
     </footer>
   );
 };
