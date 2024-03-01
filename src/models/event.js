@@ -19,7 +19,7 @@ const eventSchema = mongoose.Schema({
   type: {
     type: String,
     required: true,
-    enum: ['online', 'onSuite'],
+    enum: ['online', 'inPerson'],
   },  
   category: {
     type: Number,

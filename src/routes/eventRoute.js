@@ -26,7 +26,7 @@ router.post('/events', [
         .isLength({ min: 10, max: 2000 }),
     body('type', 'Ingrese un tipo de evento válido')
         .isIn(['online', 'inPerson'])
-        .isLength({ min: 6, max: 7 }),
+        .isLength({ min: 6, max: 8 }),
     body('category', 'Ingrese un tipo de categoría válido')
         .exists()
         .isInt({ min: 1, max: 20 }),
