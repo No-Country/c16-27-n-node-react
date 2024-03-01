@@ -10,7 +10,9 @@ import { dirname } from "path"
 import connectionDB from "./src/config/db.js";
 import eventRoute from "./src/routes/eventRoute.js";
 import userRoute from "./src/routes/userRoute.js";
+
 // import fileRoutes from "./src/routes/fileRoute.js";
+
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -36,6 +38,7 @@ dotenv.config();
 app.use(cors(corsOptions));
 app.use(express.static(src));
 app.use(express.json());
+
 
 app.use('/api', eventRoute);
 app.use('/api', userRoute);
@@ -67,6 +70,7 @@ app.get("/", (req, res) => {
     // res.send(`<h1>Welcome to MeetHub Api</h1> ${req.baseUrl}`)
     res.sendFile(__dirname + "/index.html");
 })
+
 
 app.get("/upload", async (req, res) => {
     try {
@@ -102,6 +106,5 @@ app.post("/upload", multerGCSUploader.single('imgfile'), (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Server working to the port ${PORT}`)
-})
-
+  console.log(`Server working to the port ${PORT}`);
+});
