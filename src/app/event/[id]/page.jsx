@@ -40,31 +40,31 @@ export default function Event({ params }) {
   }, [id]);
 
   return (
-    <div className="flex flex-col justify-between min-h-screen">
+    <div className="flex flex-col justify-between min-h-screen p-3">
       {eventData ? (
-        <main className="mt-8 flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg max-w-[1400px] mx-auto">
+        <main className=" md:mt-8 flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg max-w-[1400px] md:mx-auto">
           <section className="border-b p-5">
             <h1 className="text-[2rem] font-bold">{eventData.title}</h1>
             <button className="bg-dodgerBlue text-white p-1 rounded-xl">
               {categoryName}
             </button>
           </section>
-          <section className="flex">
-            <section className="w-4/6">
-              <article className="relative">
+          <section className="md:flex flex-col md:flex-row">
+            <section className="md:w-3/6 xl:w-4/6">
+              <article className="relative md:flex">
                 <Image
                   src={eventData.img}
                   alt={`Imagen del evento ${id}`}
                   width={1000}
                   height={1000}
-                  className="w-full h-[500px] object-cover"
+                  className="md:h-[500px] object-cover p-4"
                 />
               </article>
-              <article className="text-xl mt-8 p-3">
+              <article className="text-xl mt-4 md:mt-8 p-4 h-52 overflow-y-scroll">
                 <p>{eventData.description || "No hay descripción"}</p>
               </article>
             </section>
-            <section className="flex flex-col w-2/6 p-5">
+            <section className="flex flex-col md:w-3/6 xl:w-2/6 p-1 mt-8 md:mt-0 md:p-5">
               <article className="flex flex-col justify-center gap-3 h-28 p-3">
                 <article className="flex gap-3">
                   <CalendarDate eventData={eventData} />
@@ -99,7 +99,7 @@ export default function Event({ params }) {
               <article className="rounded-lg border-t">
                 <EventMap eventData={eventData} />
               </article>
-              <article className="p-5 border-t">
+              <article className="p-5 border-t mt-10 md:mt-0">
                 {/* Chicos, aquí no puedo hacer que la foto venga dentro de un círculo, ya lo inenté de mil formas. Solo sirve con imágenes cuadradas */}
                 <div className="flex gap-2">
                   <div className="h-30 w-30 overflow-hidden rounded-full shadow">
@@ -128,7 +128,7 @@ export default function Event({ params }) {
                   <h2 className="text-black text-left font-bold">
                     {"Asistentes (" + attendees.length + ")"}
                   </h2>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 justify-center">
                     {attendees.map((attendee) => (
                       <div
                         className="w-50 h-50 bg-[#1B1B1B] rounded-lg overflow-hidden"
