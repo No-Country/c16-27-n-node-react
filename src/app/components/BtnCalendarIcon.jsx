@@ -3,19 +3,19 @@ import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 
-const BtnCalendarIcon = () => {
+const BtnCalendarIcon = ({ setIsNabBarOpen }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const createEventModal = () => {
-    console.log('Create Event Modal open');
     setIsModalOpen(!isModalOpen);
-    console.log(isModalOpen)
   }
 
   const closeEventModal = () => {
-    setIsModalOpen(!isModalOpen);
-  }
+    console.log('Modal de eventos cerrado correctamente');
+    setIsModalOpen(false);
+    setIsNabBarOpen(false);
+  };
 
   return (
     <>
@@ -28,7 +28,7 @@ const BtnCalendarIcon = () => {
         />
       </button>
       {isModalOpen && (
-        <section className=" animate-fade animate-duration-300 text-center h-fit w-36 bg-white text-black absolute top-16 right-2 rounded-b-lg rounded-t-lg">
+        <section className=" top-60 right-0 animate-fade animate-duration-300 text-center h-fit w-36 bg-white text-black absolute md:top-16 md:right-2 rounded-b-lg rounded-t-lg">
           <h1 className='font-bold'>Crear Evento</h1>
           <Link href={'/createEventInPerson'}>
             <div className='bg-dodgerBlue p-2 font-bold  text-white hover:bg-[#7acdfd]'>

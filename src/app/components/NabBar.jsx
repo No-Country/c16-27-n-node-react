@@ -9,9 +9,9 @@ import { useState } from 'react';
 const NabBar = () => {
 
   const [isNabBarOpen, setIsNabBarOpen] = useState(false);
+
   const handleNabBar = () => {
     setIsNabBarOpen(!isNabBarOpen);
-    console.log(isNabBarOpen)
   }
 
   return (
@@ -19,21 +19,23 @@ const NabBar = () => {
       <div className="flex items-center">
         <div>
           {isNabBarOpen && (
-            <div className=" z-40 animate-fade animate-duration-200 flex flex-col absolute top-16 right-0 items-center bg-white border-b-2">
+            <div className=" md:hidden z-40 animate-fade animate-duration-200 flex flex-col absolute top-16 right-0 items-center bg-white border-b-2">
              <ul className='bg-white text-2xl flex flex-col m-3 gap-6'>
-                <li>
-                  <Link href={"/searchPage"}>Inicio</Link>
+                <li onClick={() => setIsNabBarOpen(false)}>
+                  <Link href={"/"}>Inicio</Link>
                 </li>
-                <li>
+                <li onClick={() => setIsNabBarOpen(false)}>
                   <Link href={"/searchPage"}>Eventos</Link>
                 </li>
-                <li>
-                  <Link href={"/searchPage"}>Nosotros</Link>
+                <li onClick={() => setIsNabBarOpen(false)}>
+                  <Link href={"/teams"}>Nosotros</Link>
                 </li>
                 <li>
                   <div className='flex items-center justify-center gap-10'>
                     <Avatar />
-                    <BtnCalendarIcon />
+                    <BtnCalendarIcon 
+                       setIsNabBarOpen={setIsNabBarOpen}
+                    />
                   </div>
                 </li>
              </ul>
@@ -82,14 +84,16 @@ const NabBar = () => {
           </Link>
         </div>
       </div>
-      <div className="hidden md:flex justify-between w-36 gap-3 items-center">
+      <div className="hidden md:flex justify-between w-36 gap-3 items-center" >
         <BtnLogoLink
           src={"/circle-half.svg"}
           alt="darkThemeIcon"
           width={40}
           height={30}
         />
-        <BtnCalendarIcon />
+        <BtnCalendarIcon 
+          setIsNabBarOpen={setIsNabBarOpen}
+        />
         <Avatar />
       </div>
     </div>

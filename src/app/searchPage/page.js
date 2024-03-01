@@ -13,7 +13,7 @@ const page = () => {
   
   return (
     <main className="flex flex-col items-center">
-      <section className="p-2 mb-3 mt-8 w-full xl:w-[1400px] flex items-center gap-3 h-16">
+      <section className="p-2 mb-3 mt-8 w-full xl:w-[1400px] flex items-center gap-3 flex-wrap md:h-16">
         <EventFilters eventsData={eventsData} setAllEvents={setAllEvents} />
       </section>
       <section className="grid grid-cols-1 gap-4 xl:grid-cols-2">
