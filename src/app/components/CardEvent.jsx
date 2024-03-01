@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const CardEvent = ({ id, img, title, date, location, type }) => {
+const CardEvent = ({ id, img, title, date, city, type }) => {
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
@@ -16,7 +16,7 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
           className="rounded-t-lg"
         />
       </div>
-      <div className="p-3 h-30 flex flex-col justify-center">
+      <div className="p-3 flex flex-col justify-between h-36">
           <h5 className="mb-2 text-xl font-bold tracking-tight ">
             {title || "Titulo del evento"}
           </h5>
@@ -41,7 +41,7 @@ const CardEvent = ({ id, img, title, date, location, type }) => {
             className="mr-2"
           />
           <p className="font-bold text-dodgerBlue ">
-            {location || "Ubicación del evento"}
+            {city || "Ubicación del evento"}
           </p>
         </div>
       </div>

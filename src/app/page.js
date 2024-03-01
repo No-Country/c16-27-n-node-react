@@ -2,10 +2,12 @@
 import CardEvent from './components/CardEvent';
 import Button from './ui/Button';
 import Link from 'next/link';
+import { eventsData } from '/eventsData';
+
 const page = () => {
   return (
     <main>
-      <section className="bg-[#0F0F0F] flex flex-col items-center justify-center h-[500px] md:h-[300px] mb-10">
+      <section className="bg-[#0F0F0F] flex flex-col items-center justify-center md:h-[500px] mb-10">
         <h1 className=" text-5xl text-center mb-5 mt-5 text-white font-bold font-segoe">
           ¡Bienvenido a{" "}
           <span className="text-dodgerBlue font-tenada">Meet</span>
@@ -25,39 +27,26 @@ const page = () => {
           </p>
         </div>
       </section>
-      <div className='flex items-center justify-center'>
+      <div className="flex items-center justify-center">
         <Link href={"/searchPage"}>
           <Button text="¡Descubre eventos aquí!" bgColor="dodgerBlue" />
         </Link>
       </div>
-      <section className="h-[100] md:h-[600px] flex flex-col items-center justify-center gap-10 md:m-5">
-        <section className="mt-10 md:mt-0 flex flex-col md:flex-row gap-8">
-          <CardEvent
-            id={"1"}
-            img={"/images/imgCard-1.png"}
-            title={"Mercados Monetarios (Forex & Monedas Digitales)"}
-            date={"02/03/2024 - 7:00 PM (GMT-5)"}
-            location={"Lima, PE"}
-            type={"inperson"}
-          />
-          <CardEvent
-            id={"2"}
-            img={"/images/imgCard-2.png"}
-            title={"Open Beer Bogotá 2024"}
-            date={"12/03/2024 - 9:00 PM (GMT-5)"}
-            location={"Bogotá, CO"}
-            type={"inperson"}
-          />
-          <CardEvent
-            id={"3"}
-            img={"/images/imgCard-2.png"}
-            title={
-              "Inteligencia Artificial: una mirada desde y para la universidad"
-            }
-            date={"24/03/2024 - 7:00 PM (GMT-5)"}
-            location={"En Línea"}
-            type={"online"}
-          />
+      <section className="h-[100] md:h-full flex flex-col items-center justify-center md:m-5">
+        <section className="">
+          <section className="md:max-w-[1300px] flex flex-wrap justify-center gap-8 mt-8">
+            {eventsData.map((event, index) => (
+              <CardEvent 
+                id={event.id}
+                img={event.img}
+                type={event.type}
+                city={event.city}
+                key={event.id} 
+                title={event.title} 
+                date={event.date} 
+              />
+            )).slice(0, 3)}
+          </section>
         </section>
       </section>
     </main>
@@ -65,3 +54,14 @@ const page = () => {
 };
 
 export default page;
+
+
+
+// <CardEvent
+//   id={"2"}
+//   img={"/images/imgCard-2.png"}
+//   title={"Open Beer Bogotá 2024"}
+//   date={"12/03/2024 - 9:00 PM (GMT-5)"}
+//   location={"Bogotá, CO"}
+//   type={"inperson"}
+// />;
