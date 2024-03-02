@@ -2,6 +2,7 @@
 import { error } from "console";
 import User from "../models/user.js";
 import userService from "./../services/userService.js";
+import { validationResult } from "express-validator";
 
 // const find = async (req, res) => {
 //   const user = await Users.find();
@@ -55,11 +56,48 @@ import userService from "./../services/userService.js";
 
 const findUserByEmail = async (req, res) => {
 
-    const { email } = req.body
+    const errors = validationResult(req)
 
-    await userService.findUserByEmail(email)
+    if(errors.isEmpty()){
+        
+        const { email } = req.body
+        
+        await userService.findUserByEmail(email)
         .then((data) => res.status(200).json(data))
         .catch((error) => res.status(404).json(error));
+
+    } else {
+        res.status(400).json({errors: errors})
+    }
+
+}
+
+const attendEvent = async (req,res) => {
+
+    const errors = validationResult(req)
+
+    if (errors.isEmpty()){
+
+        const { eventId } = req.params;
+        const { email } = req. body;
+        
+        await userService
+        .findUserByEmail(email)
+        .then(async (data) => {
+            if(data){
+                await userService.attendEvent(eventId, email)
+                .then((data) => res.status(200).json(data))
+                .catch((error) => res.status(400).json(error));
+            }
+            else {
+                res.status(404).json({message: 'el usuario no puede asistir al evento porque no existe'})
+            }
+        })
+
+    } else {
+        res.status(400).json({errors: errors})
+    }
+
 
 }
 
@@ -120,5 +158,6 @@ export default {
   // edit,
   // deleteById,
   saveUserSession,
-  findUserByEmail
+  findUserByEmail,
+  attendEvent
 };
