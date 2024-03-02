@@ -3,6 +3,7 @@ import eventService from './../services/eventService.js';
 import { multerGCSUploader, uploadToGCS } from '../helpers/adapter/MulterAdapter.js';
 import mongoose from 'mongoose';
 import Event from '../models/event.js';
+import userController from './userController.js';
 
 // const newEvent = new Event({
 //     title: 'Tech Conference',
@@ -47,24 +48,50 @@ const createEvent = async (req, res) => {
     const errors = validationResult(req);
     
     if (errors.isEmpty()) {
-        const { creatorUserId, title, description, type, category, address, city, date, attendees } = req.body;
+        const { creatorUserEmail, title, description, type, category, address, city, date, attendees } = req.body;
+        const url = `http://localhost:4000/api/users/email`;
         
         // const formattedDateTimes = `${date} ${time} ${timeZone}`
-        
         try {
-            const data = await eventService.createEvent({
-                creatorUserId,
-                title,
-                description,
-                type,
-                category,
-                address,
-                city,
-                date,
-                attendees
-            });
+            // const searchedUser =await userController.findUserByEmail(creatorUserEmail)
+            await fetch(url, {
+                method: 'POST',
+                mode: 'cors',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify({email:creatorUserEmail})
+            })
+            .then(response => response.json())
+            .then((async (data)=> {
+
+                console.log("usuario encontrado: fromEvent", data);
+
+                const  userReturned = data;
+                if( userReturned) {
+    
+                    const newUser = await eventService.createEvent({
+                        creatorUserEmail,
+                        title,
+                        description,
+                        type,
+                        category,
+                        address,
+                        city,
+                        date,
+                        attendees
+                    });
+
+                    
+                    res.status(201).json({ errors: errors.array(), data: newUser });
+                } else {
+                    res.status(404).json({message : "El Usuario que pretende crear el evento no existe en la BD"})
+                }
+    
+
+            }))
+
             
-            res.status(201).json({ errors: errors.array(), data: data });
         } catch (err) {
             res.status(400).json(err);
         }

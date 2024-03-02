@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import userSchema from "./user.js";
 
 const eventSchema = mongoose.Schema({
-  creatorUserId: {
+  creatorUserEmail: {
     type: String,
     required: true,
     // type: mongoose.Schema.Types.ObjectId,

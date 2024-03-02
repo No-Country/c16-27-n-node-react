@@ -1,5 +1,7 @@
 
+import { error } from "console";
 import User from "../models/user.js";
+import userService from "./../services/userService.js";
 
 // const find = async (req, res) => {
 //   const user = await Users.find();
@@ -51,7 +53,15 @@ import User from "../models/user.js";
 //   }
 // };
 
+const findUserByEmail = async (req, res) => {
 
+    const { email } = req.body
+
+    await userService.findUserByEmail(email)
+        .then((data) => res.status(200).json(data))
+        .catch((error) => res.status(404).json(error));
+
+}
 
 
 // import NextAuth from "next-auth" 
@@ -103,11 +113,12 @@ const saveUserSession = async (req, res) => {
 //     },
 //   },
 // });
-export {
+export default {
   // find,
   // findId,
   // save,
   // edit,
   // deleteById,
-  saveUserSession
+  saveUserSession,
+  findUserByEmail
 };

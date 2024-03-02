@@ -40,7 +40,7 @@ const createEvent =  (newEvent) => {
 
 const updateEvent = async (id, event) => {
     
-    const { creatorUserId, 
+    const { creatorUserEmail, 
             title, 
             description, 
             image, 
@@ -57,14 +57,14 @@ const updateEvent = async (id, event) => {
         updatedEvent =  eventSchema.findByIdAndUpdate(
             id, 
             // {...searched}, 
-            {creatorUserId, title, description, image, type, category, address, attendees, date, $unset: {city:''}}, 
+            {creatorUserEmail, title, description, image, type, category, address, attendees, date, $unset: {city:''}}, 
             {new : true}
         )
         
     } else {
         updatedEvent =  eventSchema.findByIdAndUpdate(
             id, 
-            {creatorUserId, title, description, image, type, category, address, attendees, date, city}, 
+            {creatorUserEmail, title, description, image, type, category, address, attendees, date, city}, 
             {new : true}
         )
     }

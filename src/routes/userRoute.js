@@ -1,5 +1,5 @@
 import express from "express";
-import {saveUserSession} from "../controllers/userController.js";
+import userController from "../controllers/userController.js";
 
 const router = express.Router();
 
@@ -14,9 +14,9 @@ const router = express.Router();
 // router.delete("/users/:id", userController.deleteById);
 
 
+router.post('/users/email', userController.findUserByEmail)
 
-
-router.post('/user', saveUserSession)
+router.post('/users', userController.saveUserSession)
 
 
 export default router;

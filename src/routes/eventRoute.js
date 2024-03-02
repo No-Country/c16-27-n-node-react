@@ -15,8 +15,9 @@ router.get('/events/user/:id', eventController.findEventsByUserId);
 router.delete('/events/:id', eventController.deleteEventById);
 
 router.post('/events', [
-    body('creatorUserId', "Ingrese un nombre del creador del evento")
+    body('creatorUserEmail', "Ingrese un nombre del creador del evento")
         .exists()
+        .isEmail()
         .isLength({ min: 5 }),
     body('title', 'Ingrese un titulo para el evento')
         .exists()
