@@ -1,43 +1,63 @@
 "use client";
 import { useEffect, useState } from "react";
-import { eventsData } from "/eventsData";
 import Image from "next/image";
 import Attendee from "@/app/components/Attendee";
 import EventMap from "@/app/components/EventMap";
 import CalendarDate from "@/app/components/CalendarDate";
 import AsistBar from "@/app/components/AsistBar";
-import { usersData } from "/usersData";
 import { categories } from "/categoriesData";
 
 export default function Event({ params }) {
   const { id } = params;
-  const [eventData, setEventData] = useState(null);
-  const [creatorUserData, setCreatorUserData] = useState(null);
+  const [eventData, setEventData] = useState([]);
+  const [creatorUserData, setCreatorUserData] = useState([]);
+  const [usersData, setUsersData] = useState([]);
   const [attendees, setAttendees] = useState([]);
   const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
-    const selectedEvent = eventsData.find((event) => event.id === parseInt(id));
-    if (selectedEvent) {
-      setEventData(selectedEvent);
-      const category = categories.find(
-        (category) => category.value === selectedEvent.category
-      );
-      setCategoryName(category ? category.name : "Categoría desconocida");
-      const creatorUser = usersData.find(
-        (user) => user.userId === selectedEvent.creatorUserId
-      );
-      if (creatorUser) {
-        setCreatorUserData(creatorUser);
-      }
-      const attendeesData = selectedEvent.attendees.map((attendeeId) =>
-        usersData.find((user) => user.userId === attendeeId)
-      );
-      setAttendees(attendeesData);
-    } else {
-      console.error(`Evento con ID ${id} no encontrado.`);
-    }
-  }, [id]);
+    fetch("http://localhost:4000/api/events")
+      .then((response) => response.json())
+      .then((data) => {
+        const selectedEvent = data.find((event) => event._id === id);
+        if (selectedEvent) {
+          setEventData(selectedEvent);
+          const category = categories.find(
+            (category) => category.value === selectedEvent.category
+          );
+          setCategoryName(category ? category.name : "Categoría desconocida");
+
+          const creatorUser = usersData.find(
+            (user) => user.email === selectedEvent.creatorUserEmail
+          );
+          if (creatorUser) {
+            setCreatorUserData(creatorUser);
+          }
+
+          const attendeesData = selectedEvent.attendees.map((attendeeEmail) =>
+            usersData.find((user) => user.email === attendeeEmail)
+          );
+          setAttendees(attendeesData.filter(Boolean));
+        } else {
+          console.error(`Evento con ID ${id} no encontrado.`);
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener la información de los eventos:", error);
+      });
+  }, [id, usersData]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/api/user")
+      .then((response) => response.json())
+      .then((data) => setUsersData(data))
+      .catch((error) => {
+        console.error(
+          "Error al obtener la información de los usuarios:",
+          error
+        );
+      });
+  }, []);
 
   return (
     <div className="flex flex-col justify-between min-h-screen p-3">
@@ -52,8 +72,8 @@ export default function Event({ params }) {
           <section className="md:flex flex-col md:flex-row">
             <section className="md:w-3/6 xl:w-4/6">
               <article className="relative md:flex">
-                <Image
-                  src={eventData.img}
+                <img
+                  src={eventData.image}
                   alt={`Imagen del evento ${id}`}
                   width={1000}
                   height={1000}
@@ -103,10 +123,10 @@ export default function Event({ params }) {
                 {/* Chicos, aquí no puedo hacer que la foto venga dentro de un círculo, ya lo inenté de mil formas. Solo sirve con imágenes cuadradas */}
                 <div className="flex gap-2">
                   <div className="h-30 w-30 overflow-hidden rounded-full shadow">
-                    <Image
+                    <img
                       src={
                         creatorUserData
-                          ? creatorUserData.photo
+                          ? creatorUserData.image
                           : "Agregar foto default"
                       }
                       alt={`Imagen del evento anfitrión del evento ${id}`}
@@ -132,9 +152,9 @@ export default function Event({ params }) {
                     {attendees.map((attendee) => (
                       <div
                         className="w-50 h-50 bg-[#1B1B1B] rounded-lg overflow-hidden"
-                        key={attendee.userId}
+                        key={attendee.email}
                       >
-                        <Attendee img={attendee.photo} name={attendee.name} />
+                        <Attendee image={attendee.image} name={attendee.name} />
                       </div>
                     ))}
                   </div>

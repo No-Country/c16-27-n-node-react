@@ -23,7 +23,7 @@ const EventMap = ({ eventData }) => {
         </h2>
       </article>
       <article>
-        {eventData.type === "in-person" ? (
+        {eventData.type === "inPerson" ? (
           <iframe
             className="h-[350px] rounded-lg p-3 w-full"
             loading="lazy"

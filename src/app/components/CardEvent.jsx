@@ -2,14 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const CardEvent = ({ id, img, title, date, city, type }) => {
+const CardEvent = ({ id, image, title, date, city, type }) => {
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <Link href={`/event/${id}`}>
       <div>
         <Image
-          src={img || "/imgCard-1.png"}
+          src={image || "/imgCard-1.png"}
           alt="card image"
           width={400}
           height={400}

@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'github.com',
         port: '',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost:4000',
+        port: '',
+      },
     ],
   },
 };

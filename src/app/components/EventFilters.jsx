@@ -51,7 +51,7 @@ const EventFilters = ({ setAllEvents }) => {
         value={selectedType}
       >
         <option value="all">Cualquier Tipo</option>
-        <option value="in-person">Presencial</option>
+        <option value="inPerson">Presencial</option>
         <option value="online">En línea</option>
       </select>
       <select className="border border-slate-400 rounded h-8" value={selectedCategory}

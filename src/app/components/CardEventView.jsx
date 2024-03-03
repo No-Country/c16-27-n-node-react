@@ -1,12 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
 
-const CardEventView = ({ title, img }) => {
+const CardEventView = ({ title, image }) => {
   return (
     <div>
       <h1>{title}</h1>
       <Image
-        src={img}
+        src={image}
         alt="card image"
         width={280}
         height={300}
