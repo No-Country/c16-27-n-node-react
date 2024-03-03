@@ -21,7 +21,7 @@ router.post('/events', [
         .isLength({ min: 5 }),
     body('title', 'Ingrese un titulo para el evento')
         .exists()
-        .isLength({ min: 5, max: 50 }),
+        .isLength({ min: 5, max: 75 }),
     body('description', 'Ingrese una descripción válida para el evento')
         .exists()
         .isLength({ min: 10, max: 2000 }),
@@ -33,13 +33,13 @@ router.post('/events', [
         .isInt({ min: 1, max: 20 }),
     body('address', 'Ingrese una dirección válida')
         .exists()
-        .isLength({ min: 10, max: 100 }),
+        .isLength({ min: 5, max: 100 }),
     body('date', 'Ingrese una fecha válida')
         .exists()
         .isLength({ min: 6, max: 40 }),
     body('city','Ingrese un campo de ciudad válido')
         .optional()
-        .isLength({ min: 5, max: 250 }),    
+        .isLength({ min: 0, max: 250 }),    
 
 ], eventController.createEvent);
 
