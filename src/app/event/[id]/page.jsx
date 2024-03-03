@@ -72,7 +72,7 @@ export default function Event({ params }) {
           <section className="md:flex flex-col md:flex-row">
             <section className="md:w-3/6 xl:w-4/6">
               <article className="relative md:flex">
-                <img
+                <Image
                   src={eventData.image}
                   alt={`Imagen del evento ${id}`}
                   width={1000}
@@ -123,7 +123,7 @@ export default function Event({ params }) {
                 {/* Chicos, aquí no puedo hacer que la foto venga dentro de un círculo, ya lo inenté de mil formas. Solo sirve con imágenes cuadradas */}
                 <div className="flex gap-2">
                   <div className="h-30 w-30 overflow-hidden rounded-full shadow">
-                    <img
+                    <Image
                       src={
                         creatorUserData
                           ? creatorUserData.image
