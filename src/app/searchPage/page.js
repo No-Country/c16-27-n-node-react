@@ -7,9 +7,9 @@ import { useSession } from 'next-auth/react';
 import SearchPageSkeleton from '../ui/SearchPageSkeleton';
 
 const page = () => {
-  const { allEvents, setAllEvents, loading } = useEvents();
+  const { allEvents, setAllEvents } = useEvents();
 
-  const { data: status } = useSession();
+  const { data: session, status } = useSession();
   if (status === 'loading') {
     return <SearchPageSkeleton />;
   }

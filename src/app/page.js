@@ -3,9 +3,17 @@ import CardEvent from './components/CardEvent';
 import Button from './ui/Button';
 import Link from 'next/link';
 import useEvents from './hooks/useEvents';
+import { useSession } from 'next-auth/react';
+import HomePageSkeleton from './ui/HomePageSkeleton';
 
 const page = () => {
   const { allEvents } = useEvents();
+
+  const { data: session, status } = useSession();
+  if (status === 'loading') {
+    return <HomePageSkeleton />;
+  }
+
   return (
     <main>
       <section className="bg-[#0F0F0F] flex flex-col items-center justify-center md:h-[500px] mb-10">
