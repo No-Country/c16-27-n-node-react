@@ -1,11 +1,12 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { eventsData } from '../../../eventsData';
+import useEvents from '../hooks/useEvents';
 import { categories } from '/categoriesData'
 import PlaceAutocomplete from "./PlaceAutocomplete";
 
 const EventFilters = ({ setAllEvents }) => {
 
+  const { allEvents } = useEvents();
   const [selectedType, setSelectedType] = useState('all');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedCity, setSelectedCity] = useState('all');
@@ -19,14 +20,14 @@ const EventFilters = ({ setAllEvents }) => {
   }; 
 
   const resetFilters = () => {
-    setAllEvents(eventsData);
+    setAllEvents(allEvents);
     setSelectedType('all');
     setSelectedCategory('all');
     setSelectedCity('all')
   }
 
   useEffect(() => {
-    let filteredEvents = eventsData;
+    let filteredEvents = allEvents;
   
     if (selectedType !== 'all') {
       filteredEvents = filteredEvents.filter(event => event.type === selectedType);
