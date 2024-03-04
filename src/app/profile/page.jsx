@@ -4,9 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../ui/Button';
 import CardEvent from '../components/CardEvent';
-import { eventsData } from '../../../eventsData';
+import useEvents from '../hooks/useEvents';
 
 const page = () => {
+  const { allEvents, setAllEvents } = useEvents();
   const { data: session, status } = useSession();
 
   if (status === 'loading') {
@@ -33,10 +34,10 @@ const page = () => {
         </div>
 
         <Link
-          href={'#'}
+          href={"#"}
           onClick={async () => {
             await signOut({
-              callbackUrl: '/',
+              callbackUrl: "/",
             });
           }}
         >
@@ -50,19 +51,27 @@ const page = () => {
             Eventos propios
           </h2>
           <div className="flex flex-wrap gap-4">
-            {eventsData
-              .map((event, index) => (
-                <CardEvent
-                  id={event.id}
-                  img={event.img}
-                  type={event.type}
-                  city={event.city === '' ? 'Evento en linea' : event.city}
-                  key={event.id}
-                  title={event.title}
-                  date={event.date}
-                />
-              ))
-              .slice(0, 3)}
+            {allEvents.find(
+              (event) => event.creatorUserEmail === session.user?.email
+            ) ? (
+              allEvents
+                .filter(
+                  (event) => event.creatorUserEmail === session.user?.email
+                )
+                .map((event) => (
+                  <CardEvent
+                    id={event._id}
+                    img={event.image}
+                    type={event.type}
+                    city={event.city === "" ? "Evento en linea" : event.city}
+                    key={event._id}
+                    title={event.title}
+                    date={event.date}
+                  />
+                ))
+            ) : (
+              <p>No tienes eventos creados</p>
+            )}
           </div>
         </div>
         <div className="mt-8">
@@ -71,19 +80,27 @@ const page = () => {
             Eventos a los que asistiré
           </h2>
           <div className="flex flex-wrap gap-4">
-            {eventsData
-              .map((event, index) => (
-                <CardEvent
-                  id={event.id}
-                  img={event.img}
-                  type={event.type}
-                  city={event.city === '' ? 'Evento en linea' : event.city}
-                  key={event.id}
-                  title={event.title}
-                  date={event.date}
-                />
-              ))
-              .slice(0, 3)}
+            {allEvents.length > 0 ? (
+              allEvents
+                .filter(
+                  (event) =>
+                    event.attendees &&
+                    event.attendees.includes(session.user?.email)
+                )
+                .map((event) => (
+                  <CardEvent
+                    id={event._id}
+                    img={event.image}
+                    type={event.type}
+                    city={event.city === "" ? "Evento en linea" : event.city}
+                    key={event._id}
+                    title={event.title}
+                    date={event.date}
+                  />
+                ))
+            ) : (
+              <p>No tienes eventos creados</p>
+            )}
           </div>
         </div>
       </div>
