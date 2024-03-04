@@ -18,7 +18,7 @@ const handler = NextAuth({
         console.log("User email:", user.email); // dralpaca47@gmail.com
         console.log("User name:", user.name); // Dr Alpaca
         console.log("User image:", user.image); // Image URL
-        const response = await fetch(`${process.env.API_URL}/api/user`, {
+        const response = await fetch(`${process.env.API_URL}/api/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
