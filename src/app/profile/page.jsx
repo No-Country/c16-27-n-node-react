@@ -45,9 +45,9 @@ const page = () => {
         </Link>
       </div>
       <div className="flex flex-col w-full p-8 ">
-        <div className="mt-8">
+        <div>
           <hr className="border-2" />
-          <h2 className="text-dodgerBlue text-3xl font-semibold mt-4 mb-8">
+          <h2 className="text-dodgerBlue text-3xl font-semibold mb-8">
             Eventos propios
           </h2>
           <div className="flex flex-wrap gap-4">
