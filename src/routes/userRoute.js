@@ -4,15 +4,15 @@ import { body } from 'express-validator';
 
 const router = express.Router();
 
-router.get("/user", userController.find);
+router.get("/users", userController.find);
 
-router.get("/user/:id", userController.findId);
+router.get("/users/:id", userController.findId);
 
-router.post("/user", userController.save);
+router.post("/users", userController.save);
 
-router.put("/user/:id", userController.edit);
+router.put("/users/:id", userController.edit);
 
-router.delete("/user/:id", userController.deleteById);
+router.delete("/users/:id", userController.deleteById);
 
 
 router.post('/users/email', [
