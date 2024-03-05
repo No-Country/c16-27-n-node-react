@@ -54,7 +54,7 @@ const PresencialForm = () => {
       type: "inPerson",
     };
 
-    fetch("http://localhost:4000/api/events", {
+    fetch("https://apimeethubbackend.onrender.com/api/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const PresencialForm = () => {
         const eventId = data.data._id;
         const imageFormData = new FormData();
         imageFormData.append("file", imagePreview);
-        fetch(`http://localhost:4000/api/events/updateImage/${eventId}`, {
+        fetch(`https://apimeethubbackend.onrender.com/api/events/updateImage/${eventId}`, {
           method: "POST",
           body: imageFormData,
         })

@@ -7,7 +7,7 @@ export default function useEvents() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('http://localhost:4000/api/events');
+        const response = await fetch('https://apimeethubbackend.onrender.com/api/events');
         if (!response.ok) {
           throw new Error('Failed to fetch events');
         }

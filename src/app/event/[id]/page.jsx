@@ -16,7 +16,7 @@ export default function Event({ params }) {
   const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/events")
+    fetch("https://apimeethubbackend.onrender.com/api/events")
       .then((response) => response.json())
       .then((data) => {
         const selectedEvent = data.find((event) => event._id === id);
@@ -48,7 +48,7 @@ export default function Event({ params }) {
   }, [id, usersData]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/user")
+    fetch("https://apimeethubbackend.onrender.com/api/user")
       .then((response) => response.json())
       .then((data) => setUsersData(data))
       .catch((error) => {
