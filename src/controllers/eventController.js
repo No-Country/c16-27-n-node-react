@@ -49,7 +49,7 @@ const createEvent = async (req, res) => {
     
     if (errors.isEmpty()) {
         const { creatorUserEmail, title, description, type, category, address, city, date, attendees } = req.body;
-        const url = `http://localhost:4000/api/users/email`;
+        const url = `https://apimeethubbackend.onrender.com/api/users/email`;
         
         // const formattedDateTimes = `${date} ${time} ${timeZone}`
         try {
