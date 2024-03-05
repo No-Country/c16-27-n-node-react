@@ -25,3 +25,4 @@ upload/
 *.njsproj
 *.sln
 *.sw?
+*.next
