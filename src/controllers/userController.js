@@ -125,7 +125,7 @@ const saveUserSession = async (req, res) => {
         } else {
             console.error("Invalid user data received");
         }
-        res.redirect('https://meethubevents.vercel.app');
+        res.redirect('http://localhost:3000/');
     } catch (error) {
         console.error('Error saving user session:', error);
     }

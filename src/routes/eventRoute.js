@@ -24,7 +24,7 @@ router.post('/events', [
         .isLength({ min: 5, max: 75 }),
     body('description', 'Ingrese una descripción válida para el evento')
         .exists()
-        .isLength({ min: 10, max: 2000 }),
+        .isLength({ min: 0, max: 2000 }),
     body('type', 'Ingrese un tipo de evento válido')
         .isIn(['online', 'inPerson'])
         .isLength({ min: 6, max: 8 }),
@@ -49,7 +49,7 @@ router.put('/events/:id', [
         .isLength({ min: 5, max: 50 }),
     body('description', 'Ingrese una descripción válida para el evento')
         .optional()
-        .isLength({ min: 10, max: 250 }),    
+        .isLength({ min: 10, max: 2500 }),    
     body('category', 'Ingrese un tipo de categoría válido')
         .optional()
         .isInt({ min: 1, max: 20 }),

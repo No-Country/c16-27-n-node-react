@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-.env
+# .env
 upload/
 
 # Editor directories and files
@@ -25,4 +25,3 @@ upload/
 *.njsproj
 *.sln
 *.sw?
-*.next
