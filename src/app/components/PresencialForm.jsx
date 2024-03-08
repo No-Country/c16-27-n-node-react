@@ -7,6 +7,8 @@ import { categories } from "/categoriesData";
 import { timezones } from "/timezones";
 import PlaceAutocomplete from "./PlaceAutocomplete";
 import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
+
 
 const PresencialForm = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -21,6 +23,11 @@ const PresencialForm = () => {
   const [hour, setHour] = useState("");
   const { data: session } = useSession();
   const [cityError, setCityError] = useState("");
+
+
+  const reloadPage = () => {
+    window.location.reload();
+  };
 
   const handleChangeCategory = (e) => {
     setSelectedCategory(e.target.value);
@@ -54,7 +61,7 @@ const PresencialForm = () => {
       type: "inPerson",
     };
 
-    fetch("https://apimeethubbackend.onrender.com/api/events", {
+    fetch("http://localhost:4000/api/events", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +80,7 @@ const PresencialForm = () => {
         const eventId = data.data._id;
         const imageFormData = new FormData();
         imageFormData.append("file", imagePreview);
-        fetch(`https://apimeethubbackend.onrender.com/api/events/updateImage/${eventId}`, {
+        fetch(`http://localhost:4000/api/events/updateImage/${eventId}`, {
           method: "POST",
           body: imageFormData,
         })
@@ -82,7 +89,13 @@ const PresencialForm = () => {
               throw new Error("Failed to upload image");
             }
             console.log("Image uploaded successfully");
-            alert("Evento creado")
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Evento creado exitosamente",
+              showConfirmButton: false,
+              html: `<a href="/event/${eventId}" class="text-blue-500">Ir al evento</a>`,
+            });
           })
           .catch((error) => {
             console.error("Error uploading image:", error);
@@ -158,7 +171,7 @@ const PresencialForm = () => {
               ))}
             </select>
           </div>
-          <div className="flex flex-col md:flex-none mt-4 md:h-full">
+          <div className="flex flex-col md:flex-none mt-4 h-1/2">
             <label htmlFor="">Descripción</label>
             <textarea
               name=""

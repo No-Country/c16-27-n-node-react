@@ -13,6 +13,7 @@ const PlaceAutocomplete = ({ city, setCity }) => {
           value: city,
           placeholder: "Cualquier ciudad",
           isRequired: true,
+          className: "shadow",
         }}
       />
     </div>

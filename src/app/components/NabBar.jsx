@@ -5,10 +5,12 @@ import BtnLogoLink from '../ui/BtnLogoLink';
 import Avatar from '../ui/Avatar';
 import BtnCalendarIcon from './BtnCalendarIcon';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 const NabBar = () => {
 
   const [isNabBarOpen, setIsNabBarOpen] = useState(false);
+  const { data: session } = useSession();
 
   const handleNabBar = () => {
     setIsNabBarOpen(!isNabBarOpen);
@@ -83,9 +85,9 @@ const NabBar = () => {
           width={40}
           height={30}
         /> */}
-        <BtnCalendarIcon 
+        {session ? (<BtnCalendarIcon 
           setIsNabBarOpen={setIsNabBarOpen}
-        />
+        />) : ("") }
         <Avatar />
       </div>
     </div>

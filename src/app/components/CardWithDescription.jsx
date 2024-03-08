@@ -13,7 +13,7 @@ const CardWithDescription = ({ image, title, date, type, city, description }) =>
           className="rounded-l-lg"
         />
       </div>
-      <div className="p-5 flex flex-col md:justify-center justify-between ">
+      <div className="p-5 flex flex-col md:justify-center justify-between w-full">
         <div className="md:hidden flex-shrink-0 h-48 relative">
           <Image
             src={image}

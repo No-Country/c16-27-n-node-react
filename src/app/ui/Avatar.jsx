@@ -45,7 +45,7 @@ export default function Avatar() {
                     <Link href={'/profile'}>
                     <button
                       className={`${
-                        active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                        active ? 'bg-dodgerBlue text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                       >
                       {active ? '' : ''}
@@ -69,11 +69,11 @@ export default function Avatar() {
                         });
                       }}
                       className={`${
-                        active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                        active ? 'bg-dodgerBlue text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       {active ? '' : ''}
-                      Salir
+                      Cerrar sesión
                     </button>
                   )}
                 </Menu.Item>
@@ -83,7 +83,7 @@ export default function Avatar() {
                     <button
                         onClick={() => signIn()}                      
                       className={`${
-                        active ? 'bg-violet-500 text-white' : 'text-gray-900'
+                        active ? 'bg-dodgerBlue text-white' : 'text-gray-900'
                       } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                     >
                       {active ? '' : ''}

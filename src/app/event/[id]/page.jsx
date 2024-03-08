@@ -1,11 +1,15 @@
-"use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Attendee from "@/app/components/Attendee";
-import EventMap from "@/app/components/EventMap";
-import CalendarDate from "@/app/components/CalendarDate";
-import AsistBar from "@/app/components/AsistBar";
-import { categories } from "/categoriesData";
+'use client';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Attendee from '@/app/components/Attendee';
+import EventMap from '@/app/components/EventMap';
+import CalendarDate from '@/app/components/CalendarDate';
+import AsistBar from '@/app/components/AsistBar';
+import { categories } from '/categoriesData';
+import { useSession } from 'next-auth/react';
+import EventPageSkeleton from '../../ui/EventPageSkeleton';
+import Swal from 'sweetalert2';
+
 
 export default function Event({ params }) {
   const { id } = params;
@@ -13,10 +17,10 @@ export default function Event({ params }) {
   const [creatorUserData, setCreatorUserData] = useState([]);
   const [usersData, setUsersData] = useState([]);
   const [attendees, setAttendees] = useState([]);
-  const [categoryName, setCategoryName] = useState("");
+  const [categoryName, setCategoryName] = useState('');
 
   useEffect(() => {
-    fetch("https://apimeethubbackend.onrender.com/api/events")
+    fetch('http://localhost:4000/api/events')
       .then((response) => response.json())
       .then((data) => {
         const selectedEvent = data.find((event) => event._id === id);
@@ -25,7 +29,7 @@ export default function Event({ params }) {
           const category = categories.find(
             (category) => category.value === selectedEvent.category
           );
-          setCategoryName(category ? category.name : "Categoría desconocida");
+          setCategoryName(category ? category.name : 'Categoría desconocida');
 
           const creatorUser = usersData.find(
             (user) => user.email === selectedEvent.creatorUserEmail
@@ -43,24 +47,28 @@ export default function Event({ params }) {
         }
       })
       .catch((error) => {
-        console.error("Error al obtener la información de los eventos:", error);
+        console.error('Error al obtener la información de los eventos:', error);
       });
   }, [id, usersData]);
 
   useEffect(() => {
-    fetch("https://apimeethubbackend.onrender.com/api/user")
+    fetch('http://localhost:4000/api/user')
       .then((response) => response.json())
       .then((data) => setUsersData(data))
       .catch((error) => {
         console.error(
-          "Error al obtener la información de los usuarios:",
+          'Error al obtener la información de los usuarios:',
           error
         );
       });
   }, []);
 
+  const { data: session, status } = useSession();
+  if (status === 'loading') {
+    return <EventPageSkeleton />;
+  }
   return (
-    <div className="flex flex-col justify-between min-h-screen p-3">
+    <div className="flex flex-col justify-between min-h-screen ">
       {eventData ? (
         <main className=" md:mt-8 flex flex-col border border-slate-200 bg-white shadow-lg rounded-lg max-w-[1400px] md:mx-auto">
           <section className="border-b p-5">
@@ -144,19 +152,48 @@ export default function Event({ params }) {
                     </p>
                   </div>
                 </div>
-                <div className=" gap-2 flex flex-col text-center text-white mt-5">
+                <div className="gap-2 flex flex-col text-center text-white mt-5">
                   <h2 className="text-black text-left font-bold">
                     {"Asistentes (" + attendees.length + ")"}
                   </h2>
-                  <div className="flex gap-3 justify-center">
-                    {attendees.map((attendee) => (
-                      <div
-                        className="w-50 h-50 bg-[#1B1B1B] rounded-lg overflow-hidden"
-                        key={attendee.email}
-                      >
-                        <Attendee image={attendee.image} name={attendee.name} />
-                      </div>
-                    ))}
+                  <div className='flex items-center gap-2 justify-center'>
+                    <div className="flex items-center justify-center overflow-hidden h-full gap-3">
+                      {attendees
+                        .map((attendee) => (
+                          <Attendee
+                            image={attendee.image}
+                            name={attendee.name}
+                            key={attendee.email}
+                          />
+                        ))
+                        .slice(0, 3)}
+                    </div>
+                    <div className=' flex items-center'>
+                      {attendees.length > 3 ? (
+                        <button 
+                          className="bg-dodgerBlue text-white p-1 rounded-full"
+                          onClick={
+                            () => {
+                              Swal.fire({
+                                title: "Asistentes",
+                                html: 
+                                  attendees.map((attendee) => `<h1>${attendee.name}</h1>`).join(''),
+                                confirmButtonText: 'Cerrar',
+                              })
+                            }
+                          }
+                        >
+                         <Image 
+                            src="/whiteHamburguer.svg"
+                            alt="card image"
+                            width={40}
+                            height={20}
+                         />
+                        </button>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -166,10 +203,14 @@ export default function Event({ params }) {
       ) : (
         <p>Cargando datos...</p>
       )}
-      <article className="p-5 flex gap-3 sticky bottom-0 border border-slate-200 bg-white shadow-lg">
-        <div className="flex mx-auto w-[1400px]">
-          <AsistBar />
-        </div>
+      <article className="p-5 flex gap-3 sticky bottom-0 border border-slate-200 bg-white shadow-lg mt-8">
+        {status === "authenticated" 
+        ? 
+          <div className="flex mx-auto w-[1400px]">
+            <AsistBar userEmail={session.user?.email} eventData={eventData}/>
+          </div>
+        : ''
+        }
       </article>
     </div>
   );

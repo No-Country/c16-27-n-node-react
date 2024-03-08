@@ -38,7 +38,7 @@ const EventFilters = ({ setAllEvents }) => {
     }
 
     if (selectedCity !== 'all') {
-      filteredEvents = filteredEvents.filter(event => event.city === selectedCity.value.description);
+      filteredEvents = filteredEvents.filter(event => event.city?.includes('Colombia'));
     }
   
     setAllEvents(filteredEvents);
@@ -47,7 +47,7 @@ const EventFilters = ({ setAllEvents }) => {
   return (
     <>
       <select
-        className="border border-slate-400 rounded h-8"
+        className="border border-slate-400 rounded h-9 shadow font-segoe font-bold text-[#494949] bg-transparent bg-white"
         onChange={handleChangeType}
         value={selectedType}
       >
@@ -55,7 +55,7 @@ const EventFilters = ({ setAllEvents }) => {
         <option value="inPerson">Presencial</option>
         <option value="online">En línea</option>
       </select>
-      <select className="border border-slate-400 rounded h-8" value={selectedCategory}
+      <select className="border border-slate-400 rounded h-9 shadow font-segoe font-bold text-[#494949] bg-transparent bg-white" value={selectedCategory}
               onChange={handleChangeCategory}>
         <option value="all">Cualquier categoría</option>
         {categories.map((category, index) => (
@@ -70,7 +70,8 @@ const EventFilters = ({ setAllEvents }) => {
             />
       <button
         onClick={resetFilters}
-        className="bg-dodgerBlue text-white font-bold rounded p-2"
+        className="bg-dodgerBlue text-white rounded p-2 shadow font-segoe font-semibold h-9"
+        
       >
         Restablecer filtros
       </button>

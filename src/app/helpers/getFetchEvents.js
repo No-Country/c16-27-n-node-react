@@ -1,6 +1,6 @@
 export async function fetchEvents() {
   try {
-    const response = await fetch('https://apimeethubbackend.onrender.com/api/events');
+    const response = await fetch('http://localhost:4000/api/events');
     if (!response.ok) {
       throw new Error('Failed to fetch events');
     }
@@ -11,3 +11,4 @@ export async function fetchEvents() {
     throw error;
   }
 }
+
